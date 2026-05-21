@@ -299,7 +299,8 @@
   align-items: center;
   gap: 6px;
   padding: 5px 12px;
-  border: none;
+  border: 1px solid transparent;
+  border-bottom: none;
   border-radius: 0;
   background: transparent;
   color: var(--cqr-text-dim);
@@ -309,10 +310,11 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all var(--cqr-transition);
+  transition: color var(--cqr-transition), background var(--cqr-transition), border-color var(--cqr-transition);
   white-space: nowrap;
-  border-bottom: 2px solid transparent;
+  box-shadow: inset 0 -2px 0 transparent;
   margin-bottom: -1px;
+  position: relative;
 }
 
 .cqr-tab:hover {
@@ -323,10 +325,8 @@
 .cqr-tab.active {
   color: var(--cqr-cat-color, var(--cqr-accent));
   background: rgba(13,11,10,0.6);
-  border-bottom-color: var(--cqr-cat-color, var(--cqr-accent));
-  border-left: 1px solid var(--cqr-border);
-  border-right: 1px solid var(--cqr-border);
-  border-top: 1px solid var(--cqr-border);
+  border-color: var(--cqr-border);
+  box-shadow: inset 0 -2px 0 var(--cqr-cat-color, var(--cqr-accent));
 }
 
 .cqr-tab i {
@@ -366,9 +366,7 @@
   color: var(--cqr-cat-color);
   border-bottom: 1px solid var(--cqr-border-soft);
   margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
+  line-height: 1;
   opacity: 0.9;
 }
 

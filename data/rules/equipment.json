@@ -1,7 +1,7 @@
 {
   "id": "equipment",
   "label": "Équipement",
-  "icon": "fa-solid fa-shield-halved",
+  "icon": "",
   "color": "#8e44ad",
   "description": "L'Équipement regroupe les armes, armures, accessoires et consommables que les personnages peuvent porter, utiliser et améliorer.",
   "rules": [

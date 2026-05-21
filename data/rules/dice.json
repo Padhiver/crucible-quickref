@@ -1,7 +1,7 @@
 {
   "id": "dice",
   "label": "Mécanique des dés",
-  "icon": "ra ra-dice-five",
+  "icon": "",
   "color": "#8e44ad",
   "description": "Crucible utilise un pool de 3d8 modifié par des Faveurs et des Fléaux, auxquels s'ajoutent les bonus de caractéristique, de compétence et d'enchantement.",
   "rules": [

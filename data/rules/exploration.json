@@ -1,7 +1,7 @@
 {
   "id": "exploration",
   "label": "Exploration",
-  "icon": "fa-solid fa-compass",
+  "icon": "",
   "color": "#27ae60",
   "description": "Les règles d'Exploration couvrent les périls environnementaux, les températures, les tests de compétence individuels, passifs et de groupe.",
   "rules": [

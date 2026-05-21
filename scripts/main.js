@@ -109,11 +109,12 @@ class QuickRefApp extends ApplicationV2 {
       rules = rules.filter(r => r._categoryId === this._activeCatId);
     if (q)
       rules = rules.filter(r =>
-        r._isSeparator ||
-        r.title.toLowerCase().includes(q) ||
-        (r.subtitle || "").toLowerCase().includes(q) ||
-        (r.summary  || "").toLowerCase().includes(q) ||
-        (r.tags     || []).some(t => t.toLowerCase().includes(q))
+        !r._isSeparator && (
+          r.title.toLowerCase().includes(q) ||
+          (r.subtitle || "").toLowerCase().includes(q) ||
+          (r.summary  || "").toLowerCase().includes(q) ||
+          (r.tags     || []).some(t => t.toLowerCase().includes(q))
+        )
       );
     return rules;
   }
@@ -277,6 +278,7 @@ class QuickRefApp extends ApplicationV2 {
     detailEl.innerHTML = rule
       ? this._buildDetailHTML(rule, seeAlso)
       : `<div class="cqr-detail-empty"><i class="fa-solid fa-book-open"></i><span>Sélectionnez une règle</span></div>`;
+    detailEl.scrollTop = 0;
     this._bindInlineLinks(detailEl);
   }
 
@@ -296,10 +298,11 @@ class QuickRefApp extends ApplicationV2 {
 
     for (const [catId, catRules] of grouped) {
       const cat = catMap[catId] ?? { label: catId, color: "#e94560", description: "", icon: "fa-solid fa-list" };
-      html += `<div class="cqr-category-header" style="--cqr-cat-color:${cat.color}">
-        <i class="${cat.icon}"></i>${cat.label}</div>`;
-      if (cat.description && this._activeCatId !== "all")
-        html += `<div class="cqr-category-desc">${cat.description}</div>`;
+      if (!this._searchQuery.trim()) {
+        html += `<div class="cqr-category-header" style="--cqr-cat-color:${cat.color}">${cat.label}</div>`;
+        if (cat.description && this._activeCatId !== "all")
+          html += `<div class="cqr-category-desc">${cat.description}</div>`;
+      }
       for (const rule of catRules) {
         if (rule._isSeparator) {
           html += `<div class="cqr-list-separator">

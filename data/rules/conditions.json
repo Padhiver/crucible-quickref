@@ -1,7 +1,7 @@
 {
   "id": "conditions",
   "label": "Conditions",
-  "icon": "ra ra-fairy-wand",
+  "icon": "",
   "color": "#16a085",
   "description": "Les Conditions sont des effets de statut temporaires qui modifient les actions, ressources ou règles applicables à un personnage.",
   "rules": [

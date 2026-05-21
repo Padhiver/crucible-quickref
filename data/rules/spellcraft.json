@@ -1,7 +1,7 @@
 {
   "id": "spellcraft",
   "label": "Sorcellerie",
-  "icon": "ra ra-lightning-trio",
+  "icon": "",
   "color": "#2980b9",
   "description": "La Sorcellerie compose des sorts en combinant une Rune (l'essence), un Signe (la forme) et optionnellement une Inflexion (la modification).",
   "rules": [

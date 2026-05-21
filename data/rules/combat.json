@@ -1,7 +1,7 @@
 {
   "id": "combat",
   "label": "Combat",
-  "icon": "ra ra-sword",
+  "icon": "",
   "color": "#c0392b",
   "description": "Le combat se déroule en Rounds et Tours, organisés par l'Initiative. Chaque personnage dispose d'un pool d'Action pour agir.",
   "rules": [
