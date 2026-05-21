@@ -27,7 +27,7 @@ jobs:
         
     # Create a zip file with all files required by the module to add to the release
     - name: Create archive
-      run: zip crucible-quickref.zip module.json README.md -r scripts styles data lang -x ".*"
+      run: zip crucible-quickref.zip module.json TO-DO.md README.md -r scripts styles data lang -x ".*"
       
     # Create a release for this specific version
     - name: Update Release with Files
