@@ -1,0 +1,279 @@
+{
+  "id": "exploration",
+  "label": "Exploration",
+  "icon": "fa-solid fa-compass",
+  "color": "#27ae60",
+  "description": "Les règles d'Exploration couvrent les périls environnementaux, les températures, les tests de compétence individuels, passifs et de groupe.",
+  "rules": [
+    {
+      "id": "exploration.sep.privation",
+      "type": "separator",
+      "title": "Privation"
+    },
+    {
+      "id": "exploration.deprivation.dehydration",
+      "title": "Déshydratation",
+      "subtitle": "Péril croissant après 24 h sans eau",
+      "icon": "fa-solid fa-droplet-slash",
+      "summary": "Une créature peut survivre sans eau pendant 24 heures. Au-delà, elle affronte chaque jour un péril Grave de Fortitude contre la Santé, de dangerosité égale à 10 × le nombre de jours sans eau.",
+      "description": "En cas d'échec au péril de déshydratation, un péril secondaire identique affecte le Moral (Soif démente). Ce double péril se répète quotidiennement jusqu'à réhydratation suffisante.",
+      "reference": "Crucible Core — Exploration > Périls environnementaux",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Mécanique",
+          "items": [
+            "Péril déclenché après <b>24 heures sans eau</b>.",
+            "Dangerosité = <b>10 × nombre de jours sans eau</b> (jours 1 inclus).",
+            "Péril primaire : <b>Fortitude / Santé / Grave</b>.",
+            "En cas d'échec : péril secondaire <b>Fortitude / Moral / Grave</b> (Soif démente)."
+          ]
+        }
+      ],
+      "links": ["exploration.deprivation.starvation", "exploration.deprivation.sleep"],
+      "tags": ["déshydratation", "eau", "fortitude", "santé", "moral", "privation", "péril"]
+    },
+    {
+      "id": "exploration.deprivation.starvation",
+      "title": "Famine",
+      "subtitle": "Péril croissant après 3 jours sans nourriture",
+      "icon": "fa-solid fa-utensils-slash",
+      "summary": "Les effets de la famine apparaissent après 3 jours sans nourriture. Un péril Grave de Fortitude contre la Santé est affronté chaque jour, de dangerosité égale au nombre de jours sans nourriture.",
+      "description": "En cas d'échec, un péril secondaire de même dangerosité affecte le Moral (Faim démente). Ce cycle se répète jusqu'à alimentation suffisante.",
+      "reference": "Crucible Core — Exploration > Périls environnementaux",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Mécanique",
+          "items": [
+            "Péril déclenché après <b>3 jours sans nourriture</b>.",
+            "Dangerosité = <b>nombre de jours sans nourriture</b> (72 premières heures incluses).",
+            "Péril primaire : <b>Fortitude / Santé / Grave</b>.",
+            "En cas d'échec : péril secondaire <b>Fortitude / Moral / Grave</b> (Faim démente)."
+          ]
+        }
+      ],
+      "links": ["exploration.deprivation.dehydration", "exploration.deprivation.sleep"],
+      "tags": ["famine", "nourriture", "fortitude", "santé", "moral", "privation", "péril"]
+    },
+    {
+      "id": "exploration.deprivation.sleep",
+      "title": "Privation de sommeil",
+      "subtitle": "Péril croissant après 24 h sans repos",
+      "icon": "fa-solid fa-moon",
+      "summary": "Une créature peut fonctionner normalement pendant 24 heures sans sommeil. Au-delà, elle affronte un péril de Volonté contre le Moral dont la dangerosité augmente de 2 par jour supplémentaire sans repos.",
+      "description": "En cas d'échec, la créature devient Épuisée jusqu'à un Repos réussi. Si la privation est imposée par un effet physique, psychologique ou magique, le péril devient Grave et accumule de la Folie.",
+      "reference": "Crucible Core — Exploration > Périls environnementaux",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Mécanique",
+          "items": [
+            "Péril déclenché après <b>24 heures sans sommeil</b>.",
+            "Dangerosité = <b>2 × nombre de jours sans sommeil</b>.",
+            "Péril : <b>Volonté / Moral</b>.",
+            "En cas d'échec : condition <b>Épuisé</b> jusqu'au prochain Repos."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "Si la privation est imposée par un effet (physique, psychologique ou magique), le péril devient Grave et cause une accumulation de Folie."
+        }
+      ],
+      "links": ["exploration.deprivation.dehydration", "exploration.deprivation.starvation"],
+      "tags": ["sommeil", "repos", "volonté", "moral", "folie", "épuisé", "privation", "péril"]
+    },
+    {
+      "id": "exploration.sep.perils",
+      "type": "separator",
+      "title": "Périls graves"
+    },
+    {
+      "id": "exploration.hazard.suffocation",
+      "title": "Asphyxie",
+      "subtitle": "Après 2 minutes sans air",
+      "icon": "fa-solid fa-lungs",
+      "summary": "Les personnages privés d'air pendant plus de 2 minutes subissent la condition Asphyxié, qui inflige des dégâts Graves aux Lésions et à la Folie à chaque tour jusqu'à la mort.",
+      "description": "Les personnages asphyxiés sont également Aphones, ce qui les empêche de parler ou d'utiliser des Inflexions magiques.",
+      "reference": "Crucible Core — Exploration > Périls graves",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Déclenché après <b>2 minutes sans accès à l'air</b>.",
+            "Inflige des dégâts <b>Graves aux Lésions et à la Folie</b> à chaque tour.",
+            "Continue jusqu'à la <b>mort</b> si non résolu.",
+            "Applique également la condition <b>Aphone</b>."
+          ]
+        }
+      ],
+      "links": ["exploration.hazard.fall", "exploration.hazard.exposure"],
+      "tags": ["asphyxie", "noyade", "lésions", "folie", "aphone", "mort", "péril"]
+    },
+    {
+      "id": "exploration.hazard.fall",
+      "title": "Chute",
+      "subtitle": "Trois degrés selon la hauteur",
+      "icon": "fa-solid fa-person-falling",
+      "summary": "Les chutes sont classées en trois degrés de gravité selon la hauteur. Les chutes de plus de 10 pieds présentent un péril formel, croissant avec la distance.",
+      "description": "Un test d'Athlétisme peut permettre d'éviter une chute. Si toutes les tentatives échouent, le péril s'applique.",
+      "reference": "Crucible Core — Exploration > Périls graves",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Degrés de chute",
+          "items": [
+            "<b>10 pieds ou moins</b> — Aucun péril formel. Dommages superficiels uniquement.",
+            "<b>11 à 30 pieds</b> — Péril de <b>Réflexe / Santé / Contondant</b>, dangerosité = distance en pieds. En cas d'échec : condition <b>À terre</b>.",
+            "<b>31+ pieds</b> — Péril <b>Grave de Fortitude / Lésions / Contondant</b>, dangerosité = distance en pieds. En cas d'échec : condition <b>À terre</b>."
+          ]
+        }
+      ],
+      "links": ["exploration.hazard.suffocation", "exploration.hazard.exposure"],
+      "tags": ["chute", "hauteur", "réflexe", "fortitude", "santé", "lésions", "contondant", "à terre"]
+    },
+    {
+      "id": "exploration.hazard.exposure",
+      "title": "Exposition",
+      "subtitle": "Périls climatiques prolongés",
+      "icon": "fa-solid fa-temperature-half",
+      "summary": "Les voyages dans des environnements à températures extrêmes sans préparation adéquate exposent les personnages à des périls récurrents, une fois par heure de déplacement.",
+      "description": "Le niveau de danger dépend de l'écart entre la température corporelle optimale de la créature et la température ambiante, mesuré en niveaux de Température.",
+      "reference": "Crucible Core — Exploration > Périls graves",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Niveaux d'exposition",
+          "items": [
+            "<b>Moins de 3 niveaux d'écart</b> — Aucun péril formel.",
+            "<b>3 niveaux d'écart</b> — Péril de <b>Fortitude / Moral</b> (dangerosité 6). Froid extrême ou Chaleur extrême.",
+            "<b>4 niveaux d'écart</b> — Péril <b>Grave de Fortitude / Santé</b> (dangerosité 12). Froid mortel ou Chaleur mortelle."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Ces périls doivent être affrontés une fois par période de 24 heures dans l'environnement hostile, à un moment choisi par le MJ."
+        }
+      ],
+      "links": ["exploration.temperature", "exploration.hazard.fall"],
+      "tags": ["exposition", "température", "froid", "chaleur", "fortitude", "santé", "moral", "péril"]
+    },
+    {
+      "id": "exploration.sep.temperature",
+      "type": "separator",
+      "title": "Température"
+    },
+    {
+      "id": "exploration.temperature",
+      "title": "Niveaux de température",
+      "subtitle": "Glacial → Frais → Tiède → Chaud → Bouillant",
+      "icon": "fa-solid fa-thermometer",
+      "summary": "L'environnement et les créatures sont classés en cinq niveaux de température, du Glacial au Bouillant. L'écart entre température ambiante et température corporelle détermine les risques d'exposition.",
+      "description": "Ces niveaux servent aussi à modéliser la température corporelle des créatures. Certaines mécaniques dépendent de la température ambiante, d'autres de celle de la créature.",
+      "reference": "Crucible Core — Exploration > Température",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Niveaux",
+          "items": [
+            "<b>Glacial</b> — Froid extrême, inhospitalier sans adaptation spécifique.",
+            "<b>Frais</b> — Froid inconfortable pour les créatures à sang chaud, mais non dangereux.",
+            "<b>Tiède</b> — Température ambiante typique, sans particularité.",
+            "<b>Chaud</b> — Chaleur inconfortable pour les créatures à sang froid, mais non dangereuse.",
+            "<b>Bouillant</b> — Chaleur extrême, inhospitalière sans adaptation spécifique."
+          ]
+        }
+      ],
+      "links": ["exploration.hazard.exposure"],
+      "tags": ["température", "glacial", "frais", "tiède", "chaud", "bouillant", "environnement"]
+    },
+    {
+      "id": "exploration.sep.skill",
+      "type": "separator",
+      "title": "Tests de compétence"
+    },
+    {
+      "id": "exploration.skill.check",
+      "title": "Test de compétence",
+      "subtitle": "3d8 + Caractéristiques + Rang + Enchantement",
+      "icon": "fa-solid fa-dice",
+      "summary": "Un test de compétence est un test standard utilisant la formule 3d8 + Moyenne des bonus de Caractéristique + Bonus de rang + Bonus d'enchantement, avec possibilité de Succès ou Échec critique (±6 au DD).",
+      "description": "Le rang de compétence va de Non formé (−4) à Maître (+3), en passant par Novice (0), Compagnon (+1) et Adepte (+2). L'utilisation d'une compétence sans formation impose une pénalité de −4.",
+      "reference": "Crucible Core — Exploration > Tests de compétence",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Rangs de compétence",
+          "items": [
+            "<b>Non formé</b> — Bonus −4.",
+            "<b>Novice</b> — Bonus ±0.",
+            "<b>Compagnon</b> — Bonus +1.",
+            "<b>Adepte</b> — Bonus +2.",
+            "<b>Maître</b> — Bonus +3."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Succès critique si le total dépasse le DD de plus de 6. Échec critique si le total est inférieur au DD de plus de 6."
+        }
+      ],
+      "links": ["exploration.skill.passive", "exploration.skill.group"],
+      "tags": ["compétence", "test", "rang", "dé", "formule", "succès", "échec", "critique"]
+    },
+    {
+      "id": "exploration.skill.passive",
+      "title": "Test de compétence passif",
+      "subtitle": "Succès automatique si Rang + 12 ≥ DD",
+      "icon": "fa-solid fa-eye",
+      "summary": "Un test de compétence peut être résolu passivement si le bonus de rang du personnage ajouté à 12 dépasse le DD. Le MJ peut également autoriser un lancer actif si le joueur en exprime le souhait.",
+      "description": "Les joueurs ne devraient généralement pas savoir qu'un test passif a eu lieu, sauf en cas de succès. Si plusieurs personnages réussissent, le MJ choisit lequel est le point focal narratif, en privilégiant le score passif le plus élevé.",
+      "reference": "Crucible Core — Exploration > Tests de compétence",
+      "bullets": [
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Condition de succès passif : Bonus de rang + 12 ≥ DD. Le joueur peut toujours demander à lancer activement si le MJ le permet."
+        }
+      ],
+      "links": ["exploration.skill.check", "exploration.skill.group"],
+      "tags": ["compétence", "passif", "automatique", "DD", "rang", "test"]
+    },
+    {
+      "id": "exploration.skill.group",
+      "title": "Test de compétence de groupe",
+      "subtitle": "Score collectif vs. nombre de participants",
+      "icon": "fa-solid fa-people-group",
+      "summary": "Lors d'un test de groupe, chaque participant lance individuellement. Le résultat collectif est comparé au nombre de participants pour déterminer le succès ou l'échec global.",
+      "description": "Le score de groupe est calculé en additionnant les résultats individuels : Succès critique +2, Succès +1, Échec 0, Échec critique −1. Ce score est ensuite comparé au nombre de participants.",
+      "reference": "Crucible Core — Exploration > Tests de compétence",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Calcul du score de groupe",
+          "items": [
+            "<b>Succès critique individuel</b> — +2 au score.",
+            "<b>Succès individuel</b> — +1 au score.",
+            "<b>Échec individuel</b> — +0 au score.",
+            "<b>Échec critique individuel</b> — −1 au score."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Résultat global (N = nombre de participants)",
+          "items": [
+            "<b>Succès critique</b> — Score ≥ N.",
+            "<b>Succès</b> — Score > N / 2 (arrondi inférieur).",
+            "<b>Échec</b> — Score positif mais en dessous du seuil de Succès.",
+            "<b>Échec critique</b> — Score ≤ 0."
+          ]
+        }
+      ],
+      "links": ["exploration.skill.check", "exploration.skill.passive"],
+      "tags": ["compétence", "groupe", "collectif", "score", "succès", "échec", "participants"]
+    }
+  ]
+}

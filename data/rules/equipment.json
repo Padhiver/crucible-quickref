@@ -1,0 +1,371 @@
+{
+  "id": "equipment",
+  "label": "Équipement",
+  "icon": "fa-solid fa-shield-halved",
+  "color": "#8e44ad",
+  "description": "L'Équipement regroupe les armes, armures, accessoires et consommables que les personnages peuvent porter, utiliser et améliorer.",
+  "rules": [
+    {
+      "id": "equipment.sep.armes",
+      "type": "separator",
+      "title": "Armes"
+    },
+    {
+      "id": "equipment.weapon.categories",
+      "title": "Catégories d'arme",
+      "subtitle": "Mêlée, à distance, boucliers",
+      "icon": "fa-solid fa-sword",
+      "summary": "Chaque arme appartient à une catégorie qui détermine le nombre de mains requises, la portée, le coût en Action et les dégâts de base.",
+      "description": "Les catégories d'armes définissent les paramètres fondamentaux de l'arme : à une ou deux mains, mêlée ou distance, et les caractéristiques qui pilotent son utilisation.",
+      "reference": "Crucible Core — Équipement > Armes",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Catégories de mêlée à une main",
+          "items": [
+            "<b>Naturelle / Mains nues</b> — Portée 1, Action 2, Dégâts 3. Main secondaire possible.",
+            "<b>Légère (1m)</b> — DEX, Portée 1, Action 2, Dégâts 3. Main secondaire.",
+            "<b>Simple (1m)</b> — FOR, Portée 1, Action 2, Dégâts 4. Main secondaire.",
+            "<b>Équilibrée (1m)</b> — FOR+DEX, Portée 2, Action 2, Dégâts 4. Main secondaire.",
+            "<b>Lourde (1m)</b> — FOR, Portée 2, Action 3, Dégâts 6."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Catégories de mêlée à deux mains",
+          "items": [
+            "<b>Simple (2m)</b> — FOR, Portée 2, Action 3, Dégâts 6.",
+            "<b>Équilibrée (2m)</b> — FOR+DEX, Portée 3, Action 3, Dégâts 6.",
+            "<b>Lourde (2m)</b> — FOR, Portée 3, Action 4, Dégâts 8."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Catégories à distance",
+          "items": [
+            "<b>Projectile (1m)</b> — FOR+DEX, Portée 60, Action 2, Dégâts 4.",
+            "<b>Talisman (1m)</b> — PRE, Portée 30, Action 2, Dégâts 2. Canalisation.",
+            "<b>Mécanique (1m)</b> — DEX, Portée 60, Action 2, Dégâts 4. Rechargement.",
+            "<b>Projectile (2m)</b> — FOR+DEX, Portée 120, Action 3, Dégâts 6.",
+            "<b>Talisman (2m)</b> — PRE, Portée 30, Action 3, Dégâts 3. Canalisation.",
+            "<b>Mécanique (2m)</b> — DEX, Portée 120, Action 2, Dégâts 6. Rechargement."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Main secondaire uniquement",
+          "items": [
+            "<b>Bouclier léger</b> — DEX, Portée 1, Action 2, Dégâts 2. Blocage.",
+            "<b>Bouclier lourd</b> — FOR, Portée 1, Action 2, Dégâts 3. Blocage."
+          ]
+        }
+      ],
+      "links": ["equipment.weapon.quality", "equipment.weapon.enchantment", "equipment.weapon.properties"],
+      "tags": ["arme", "catégorie", "mêlée", "distance", "portée", "dégâts", "action"]
+    },
+    {
+      "id": "equipment.weapon.quality",
+      "title": "Qualité d'arme",
+      "subtitle": "Bonus de dégâts et modificateur de rareté",
+      "icon": "fa-solid fa-gem",
+      "summary": "La qualité de fabrication d'une arme lui confère un bonus de dégâts et influence son score de Rareté. Elle est fixée à la création et ne peut plus être améliorée.",
+      "description": "Cinq niveaux de qualité existent, de Bâclée à Chef-d'œuvre. Le niveau de qualité détermine aussi le budget d'enchantement disponible pour les affixes.",
+      "reference": "Crucible Core — Équipement > Armes",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Niveaux de qualité",
+          "items": [
+            "<b>Bâclée</b> — Dégâts −2, Rareté −1.",
+            "<b>Commune</b> — Dégâts ±0, Rareté ±0.",
+            "<b>Raffinée</b> — Dégâts +1, Rareté +1.",
+            "<b>Supérieure</b> — Dégâts +2, Rareté +2.",
+            "<b>Chef-d'œuvre</b> — Dégâts +3, Rareté +4."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "La qualité est établie à la création et ne peut jamais être augmentée après coup. Une arme Cassée inflige la moitié de ses dégâts normaux et ne peut contribuer aux défenses de Blocage ou de Parade."
+        }
+      ],
+      "links": ["equipment.weapon.enchantment", "equipment.affixes"],
+      "tags": ["qualité", "arme", "dégâts", "rareté", "cassée"]
+    },
+    {
+      "id": "equipment.weapon.enchantment",
+      "title": "Enchantement d'arme",
+      "subtitle": "Bonus d'attaque et modificateur de rareté",
+      "icon": "fa-solid fa-wand-sparkles",
+      "summary": "L'enchantement d'une arme reflète son imprégnation magique et lui confère un bonus aux jets d'attaque.",
+      "description": "Le niveau d'enchantement est calculé automatiquement à partir des affixes appliqués à l'arme.",
+      "reference": "Crucible Core — Équipement > Armes",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Niveaux d'enchantement",
+          "items": [
+            "<b>Trivial</b> — Attaque ±0, Rareté ±0.",
+            "<b>Mineur</b> — Attaque +1, Rareté +2.",
+            "<b>Majeur</b> — Attaque +2, Rareté +4.",
+            "<b>Légendaire</b> — Attaque +3, Rareté +6."
+          ]
+        }
+      ],
+      "links": ["equipment.weapon.quality", "equipment.affixes"],
+      "tags": ["enchantement", "arme", "attaque", "rareté", "magique"]
+    },
+    {
+      "id": "equipment.weapon.properties",
+      "title": "Propriétés spéciales d'arme",
+      "subtitle": "Sournoise, Blocage, Parade, Flexible…",
+      "icon": "fa-solid fa-star",
+      "summary": "Certaines armes possèdent des propriétés spéciales conférant des avantages particuliers, souvent accompagnés d'un compromis.",
+      "description": "Les propriétés spéciales décrivent des caractéristiques physiques uniques de l'arme. Toutes présentent un avantage, mais la plupart impliquent un compromis pour maintenir l'équilibre de jeu.",
+      "reference": "Crucible Core — Équipement > Armes",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Propriétés",
+          "items": [
+            "<b>Sournoise</b> — Peut être dégainée gratuitement ou en Réaction. Portée réduite de 1 pied (mêlée) ou 10 pieds (distance).",
+            "<b>Blocage</b> — +1 à la défense de Blocage si non Cassée. Dégâts de base réduits de 1 (1 main) ou 2 (2 mains).",
+            "<b>Engagement</b> — +1 Engagement. Dégâts de base réduits de 1 (1 main) ou 2 (2 mains).",
+            "<b>Intuitive</b> — Pénalité de compétence sans formation réduite à −1 au lieu de −4.",
+            "<b>Démesurée</b> — +1 dégât (1m) ou +2 dégâts (2m), mais +2 Fléaux aux jets d'Initiative.",
+            "<b>Parade</b> — +1 à la défense de Parade si non Cassée. Seuil de coup critique augmenté de +1.",
+            "<b>Flexible</b> — Utilisable à deux mains (+2 dégâts, +1 coût en Action) si la main secondaire est libre.",
+            "<b>Lancer</b> — Peut frapper jusqu'à 20 pieds. L'arme est déséquipée après le lancer."
+          ]
+        }
+      ],
+      "links": ["equipment.weapon.categories", "equipment.weapon.quality"],
+      "tags": ["propriété", "arme", "sournoise", "blocage", "parade", "flexible", "lancer", "démesurée"]
+    },
+    {
+      "id": "equipment.sep.armures",
+      "type": "separator",
+      "title": "Armures"
+    },
+    {
+      "id": "equipment.armor.categories",
+      "title": "Catégories d'armure",
+      "subtitle": "Légère, Intermédiaire, Lourde, Naturelle",
+      "icon": "fa-solid fa-shield",
+      "summary": "La catégorie d'une armure détermine sa plage de défense d'Armure, sa défense d'Esquive de base, et le seuil de Dextérité à partir duquel l'Esquive continue de progresser.",
+      "description": "La Défense physique totale est la somme de l'Armure de base, du Bonus d'armure (qualité), de l'Esquive de base et du Bonus d'esquive (Dextérité + enchantement). Porter une armure Lourde supprime le Déplacement gratuit à chaque tour, sauf talent spécifique.",
+      "reference": "Crucible Core — Équipement > Armures",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Catégories",
+          "items": [
+            "<b>Sans armure</b> — Armure 0, Esquive 8, Seuil 0 DEX.",
+            "<b>Légère</b> — Armure 4–8, Esquive 6–8, Seuil 4 DEX.",
+            "<b>Intermédiaire</b> — Armure 9–13, Esquive 3–5, Seuil 6 DEX.",
+            "<b>Lourde</b> — Armure 14–18, Esquive 0–2, Seuil 8 DEX. Pas de Déplacement gratuit.",
+            "<b>Naturelle</b> — Armure 0–18, Esquive 0–8, Seuil 0 DEX."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Le Bonus d'Esquive = Max(Dextérité − Seuil, 0) + Bonus d'enchantement. Une armure Cassée ne bénéficie que de la moitié de sa défense d'Armure de base."
+        }
+      ],
+      "links": ["equipment.armor.quality", "equipment.armor.enchantment", "equipment.armor.properties"],
+      "tags": ["armure", "catégorie", "défense", "esquive", "dextérité", "lourde"]
+    },
+    {
+      "id": "equipment.armor.quality",
+      "title": "Qualité d'armure",
+      "subtitle": "Bonus d'armure et modificateur de rareté",
+      "icon": "fa-solid fa-gem",
+      "summary": "La qualité de l'armure confère un bonus à la défense d'Armure et influence son score de Rareté. Elle est fixée à la création.",
+      "description": "Les niveaux de qualité pour les armures fonctionnent comme pour les armes, mais le bonus s'applique à la défense d'Armure plutôt qu'aux dégâts.",
+      "reference": "Crucible Core — Équipement > Armures",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Niveaux de qualité",
+          "items": [
+            "<b>Bâclée</b> — Armure −2, Rareté −1.",
+            "<b>Commune</b> — Armure ±0, Rareté ±0.",
+            "<b>Raffinée</b> — Armure +1, Rareté +1.",
+            "<b>Supérieure</b> — Armure +2, Rareté +2.",
+            "<b>Chef-d'œuvre</b> — Armure +3, Rareté +4."
+          ]
+        }
+      ],
+      "links": ["equipment.armor.enchantment", "equipment.affixes"],
+      "tags": ["qualité", "armure", "défense", "rareté"]
+    },
+    {
+      "id": "equipment.armor.enchantment",
+      "title": "Enchantement d'armure",
+      "subtitle": "Bonus d'Esquive et modificateur de rareté",
+      "icon": "fa-solid fa-wand-sparkles",
+      "summary": "L'enchantement d'une armure lui confère un bonus supplémentaire à la défense d'Esquive. Contrairement à la qualité, l'enchantement peut être ajouté ou amélioré après création.",
+      "description": "Le niveau d'enchantement est calculé automatiquement à partir des affixes appliqués à l'armure.",
+      "reference": "Crucible Core — Équipement > Armures",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Niveaux d'enchantement",
+          "items": [
+            "<b>Trivial</b> — Esquive ±0, Rareté ±0.",
+            "<b>Mineur</b> — Esquive +1, Rareté +2.",
+            "<b>Majeur</b> — Esquive +2, Rareté +4.",
+            "<b>Légendaire</b> — Esquive +3, Rareté +6."
+          ]
+        }
+      ],
+      "links": ["equipment.armor.quality", "equipment.affixes"],
+      "tags": ["enchantement", "armure", "esquive", "rareté", "magique"]
+    },
+    {
+      "id": "equipment.armor.properties",
+      "title": "Propriétés spéciales d'armure",
+      "subtitle": "Encombrante",
+      "icon": "fa-solid fa-weight-hanging",
+      "summary": "Certaines armures possèdent des propriétés spéciales qui modifient leur comportement en jeu.",
+      "description": "À ce jour, la seule propriété spéciale d'armure documentée est la propriété Encombrante.",
+      "reference": "Crucible Core — Équipement > Armures",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Propriétés",
+          "items": [
+            "<b>Encombrante</b> — Difficile à porter. Inflige <b>+2 Fléaux</b> à tous les jets d'Initiative."
+          ]
+        }
+      ],
+      "links": ["equipment.armor.categories"],
+      "tags": ["propriété", "armure", "encombrante", "initiative", "fléaux"]
+    },
+    {
+      "id": "equipment.sep.affixes",
+      "type": "separator",
+      "title": "Affixes & Valeur"
+    },
+    {
+      "id": "equipment.affixes",
+      "title": "Affixes",
+      "subtitle": "Préfixes et Suffixes magiques",
+      "icon": "fa-solid fa-scroll",
+      "summary": "Les affixes sont des enchantements magiques appliqués aux armes, armures et accessoires. Chaque affixe est un Préfixe ou un Suffixe et possède un Palier (1 à 3) consommant du budget d'enchantement.",
+      "description": "Le budget d'enchantement d'un objet dépend de sa qualité, réparti équitablement entre préfixes et suffixes. Les objets Uniques ne peuvent pas recevoir d'affixes.",
+      "reference": "Crucible Core — Équipement > Affixes",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Budget d'enchantement par qualité",
+          "items": [
+            "<b>Bâclée / Commune</b> — Budget total 0 (0 préfixe / 0 suffixe).",
+            "<b>Raffinée</b> — Budget total 2 (1 préfixe / 1 suffixe).",
+            "<b>Supérieure</b> — Budget total 4 (2 préfixe / 2 suffixe).",
+            "<b>Chef-d'œuvre</b> — Budget total 6 (3 préfixe / 3 suffixe)."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Règles clés",
+          "items": [
+            "Un objet ne peut pas avoir d'<b>affixes en double</b>.",
+            "Les <b>Préfixes</b> ajoutent un adjectif au nom (ex. : Épée <em>Aiguisée</em>).",
+            "Les <b>Suffixes</b> ajoutent un nom précédé de « de » (ex. : Épée de <em>Puissance</em>).",
+            "Certains affixes confèrent des <b>Actions supplémentaires</b> utilisables en combat."
+          ]
+        }
+      ],
+      "links": ["equipment.weapon.enchantment", "equipment.armor.enchantment", "equipment.item.value"],
+      "tags": ["affixe", "préfixe", "suffixe", "enchantement", "budget", "qualité", "magique"]
+    },
+    {
+      "id": "equipment.item.value",
+      "title": "Valeur des objets",
+      "subtitle": "Coût basé sur la rareté",
+      "icon": "fa-solid fa-coins",
+      "summary": "La valeur monétaire d'un objet est calculée à partir de son Coût de base et de son Score de rareté selon la formule : (1 + Rareté³) × Coût de base.",
+      "description": "Un objet de rareté élevée peut valoir une fortune. Par exemple, une épée longue commune (coût de base 50) vaut 50, mais en qualité Chef-d'œuvre elle atteint 3 200, et avec un enchantement Légendaire, 25 650.",
+      "reference": "Crucible Core — Équipement > Aperçu",
+      "bullets": [
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-calculator",
+          "content": "Valeur = (1 + Rareté³) × Coût de base. Le score de Rareté cumule les modificateurs de qualité, d'enchantement et des propriétés spéciales."
+        }
+      ],
+      "links": ["equipment.affixes", "equipment.weapon.quality", "equipment.armor.quality"],
+      "tags": ["valeur", "rareté", "coût", "prix", "formule"]
+    },
+    {
+      "id": "equipment.sep.accessoires",
+      "type": "separator",
+      "title": "Accessoires & Consommables"
+    },
+    {
+      "id": "equipment.accessories",
+      "title": "Accessoires",
+      "subtitle": "3 emplacements — Investissement requis",
+      "icon": "fa-solid fa-ring",
+      "summary": "Les accessoires sont des objets portables à effets magiques. Les personnages disposent de 3 emplacements. La plupart nécessitent un Investissement pour activer leurs effets.",
+      "description": "L'Investissement s'effectue lors d'une Récupération ou d'un Repos. Un objet déséquipé perd son statut d'investi.",
+      "reference": "Crucible Core — Équipement > Accessoires",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Catégories d'accessoires",
+          "items": [
+            "<b>Vêtements</b> — Capes, manteaux, bottes, gants. Souvent enchantés pour la protection ou la mobilité.",
+            "<b>Bijoux</b> — Bagues, amulettes, bracelets. Vecteur le plus courant de l'enchantement puissant.",
+            "<b>Babioles</b> — Amulettes, jetons, talismans. Souvent des objets uniques aux effets spécifiques.",
+            "<b>Autres</b> — Accessoires inclassables."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Un accessoire doit être à la fois équipé ET investi pour que ses effets magiques soient actifs. L'Investissement se réalise uniquement lors d'une Récupération ou d'un Repos."
+        }
+      ],
+      "links": ["equipment.affixes", "equipment.consumables"],
+      "tags": ["accessoire", "investissement", "bijoux", "vêtements", "babioles", "enchantement"]
+    },
+    {
+      "id": "equipment.consumables",
+      "title": "Consommables",
+      "subtitle": "3 emplacements de ceinture — Usage unique ou limité",
+      "icon": "fa-solid fa-flask",
+      "summary": "Les consommables sont des objets à usage limité consommés lors de leur activation. Leur efficacité dépend uniquement de leur qualité, sans niveau d'enchantement.",
+      "description": "Les personnages disposent de 3 emplacements de ceinture porte-outils pour les consommables. Un parchemin de sort confère temporairement les composantes de sorcellerie qu'il contient.",
+      "reference": "Crucible Core — Équipement > Consommables",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Catégories de consommables",
+          "items": [
+            "<b>Munitions</b> — Consommées automatiquement par les armes à distance.",
+            "<b>Bombes</b> — Lancées sur une zone, infligent des dégâts de zone et effets de statut.",
+            "<b>Fioles</b> — Élixirs de guérison, stimulants, préparations alchimiques. Effets immédiats.",
+            "<b>Kits</b> — Outils pour l'artisanat, les soins ou les travaux de terrain.",
+            "<b>Parchemins</b> — Contiennent des composantes de sorcellerie (Runes, Signes, Inflexions).",
+            "<b>Pièges</b> — Dispositifs mécaniques ou magiques à poser.",
+            "<b>Autres</b> — Consommables inclassables."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Parchemins de sort — Capacité par qualité",
+          "items": [
+            "<b>Raffiné</b> — 1 composante.",
+            "<b>Supérieur</b> — 2 composantes.",
+            "<b>Chef-d'œuvre</b> — 3 composantes."
+          ]
+        }
+      ],
+      "links": ["equipment.accessories"],
+      "tags": ["consommable", "fiole", "bombe", "parchemin", "munitions", "kit", "piège", "ceinture"]
+    }
+  ]
+}

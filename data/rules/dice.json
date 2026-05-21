@@ -1,0 +1,297 @@
+{
+  "id": "dice",
+  "label": "Mécanique des dés",
+  "icon": "ra ra-dice-five",
+  "color": "#8e44ad",
+  "description": "Crucible utilise un pool de 3d8 modifié par des Faveurs et des Fléaux, auxquels s'ajoutent les bonus de caractéristique, de compétence et d'enchantement.",
+  "rules": [
+    {
+      "id": "dice.sep.core",
+      "type": "separator",
+      "title": "Pool Fondamental"
+    },
+    {
+      "id": "dice.standard-check",
+      "title": "Test standard",
+      "subtitle": "Pool de 3d8",
+      "icon": "fa-solid fa-dice",
+      "summary": "Additionne trois dés à 8 faces, modifiés par les Faveurs et les Fléaux, plus les bonus applicables.",
+      "description": "Le Test standard est la résolution de base de toute action dans Crucible. Il détermine si une tentative réussit et de combien.",
+      "reference": "Crucible Core — Mécanique des dés",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Le pool de départ est <b>3d8</b>. Les @[dice.boons]{Faveurs} et @[dice.banes]{Faveurs} modifient la taille de ces dés avant de les lancer."
+        },
+        {
+          "type": "list",
+          "title": "Formule du test standard",
+          "items": [
+            "<b>3d8</b> [Faveurs, Fléaux]",
+            "+ Bonus de caractéristique",
+            "+ Bonus de compétence",
+            "+ Bonus d'enchantement"
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Un seul bonus de chaque type (caractéristique, compétence, enchantement) s'applique par jet : si plusieurs sources existent, seul le plus élevé compte."
+        }
+      ],
+      "links": ["dice.boons", "dice.banes", "dice.bonus-stacking"],
+      "tags": ["dés", "test", "pool", "3d8"]
+    },
+    {
+      "id": "dice.bonus-stacking",
+      "title": "Empilement des bonus",
+      "subtitle": "Un seul bonus de chaque type",
+      "icon": "fa-solid fa-layer-group",
+      "summary": "Pour chaque type de bonus (caractéristique, compétence, enchantement), seule la valeur la plus haute s'applique si plusieurs sources existent.",
+      "description": "La règle d'empilement garantit l'équilibre du système en empêchant l'accumulation infinie de bonus du même type.",
+      "reference": "Crucible Core — Empilement de bonus",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Types de bonus (un seul par type)",
+          "items": [
+            "<b>Bonus de caractéristique</b> : dérivé des scores de caractéristique du personnage.",
+            "<b>Bonus de compétence</b> : déterminé par le rang de formation dans la compétence ou l'arme.",
+            "<b>Bonus d'enchantement</b> : conféré par des propriétés magiques d'équipement."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Exemple : Zarajah porte des robes (+1 enchantement à Sorcellerie) et un bâton (+2 enchantement à Flamme). Pour un sort de Flamme, elle bénéficie du +2, pas de la somme des deux."
+        }
+      ],
+      "links": ["dice.standard-check"],
+      "tags": ["empilement", "bonus", "enchantement", "compétence", "caractéristique"]
+    },
+    {
+      "id": "dice.sep.modifiers",
+      "type": "separator",
+      "title": "Altérations du Pool"
+    },
+    {
+      "id": "dice.boons",
+      "title": "Faveurs",
+      "subtitle": "Améliorent les dés du pool",
+      "icon": "fa-solid fa-arrow-up",
+      "summary": "Chaque Faveur augmente la valeur du premier dé du pool de +2, jusqu'à un maximum de d12.",
+      "description": "Les Faveurs représentent des circonstances avantageuses qui améliorent les chances de réussite d'un test.",
+      "reference": "Crucible Core — Faveurs et Fléaux",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Chaque Faveur améliore le premier dé du pool de <b>+2 faces</b> (d4 → d6 → d8 → d10 → d12). Si le premier dé est déjà un d12, l'amélioration s'applique au dé suivant."
+        },
+        {
+          "type": "list",
+          "title": "Exemple : 2 Faveurs sur 3d8",
+          "items": [
+            "Faveur 1 : d8 → d10",
+            "Faveur 2 : d10 → d12",
+            "Résultat : <b>1d12 + 1d8 + 1d8</b>"
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Mathématiquement, chaque Faveur augmente le résultat attendu de son dé de 1. Un jet ne peut avoir plus de 6 Faveurs."
+        }
+      ],
+      "links": ["dice.banes", "dice.standard-check"],
+      "tags": ["faveur", "dés", "avantage", "pool"]
+    },
+    {
+      "id": "dice.banes",
+      "title": "Fléaux",
+      "subtitle": "Dégradent les dés du pool",
+      "icon": "fa-solid fa-arrow-down",
+      "summary": "Chaque Fléau réduit la valeur du dernier dé du pool de -2, jusqu'à un minimum de d4.",
+      "description": "Les Fléaux représentent des circonstances défavorables qui réduisent les chances de réussite d'un test.",
+      "reference": "Crucible Core — Faveurs et Fléaux",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Chaque Fléau dégrade le dernier dé du pool de <b>-2 faces</b> (d12 → d10 → d8 → d6 → d4). Si le dernier dé est déjà un d4, la dégradation s'applique au dé précédent."
+        },
+        {
+          "type": "list",
+          "title": "Exemple : 1 Faveur + 2 Fléaux sur 3d8",
+          "items": [
+            "Faveur 1 : premier dé d8 → d10",
+            "Fléau 1 : dernier dé d8 → d6",
+            "Fléau 2 : dernier dé d6 → d4",
+            "Résultat : <b>1d10 + 1d8 + 1d4</b>"
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "Au-delà de 4 Faveurs and 4 Fléaux simultanés, leurs effets commencent à s'annuler mutuellement. Un jet ne peut avoir plus de 6 Fléaux."
+        }
+      ],
+      "links": ["dice.boons", "dice.standard-check"],
+      "tags": ["fléau", "dés", "désavantage", "pool"]
+    },
+    {
+      "id": "dice.sep.checks",
+      "type": "separator",
+      "title": "Types de Tests & Difficultés"
+    },
+    {
+      "id": "dice.skill-check",
+      "title": "Tests de compétence",
+      "subtitle": "Formule avec double caractéristique",
+      "icon": "fa-solid fa-person-running",
+      "summary": "Les tests de compétence utilisent la moyenne arrondie au supérieur de deux caractéristiques, plus le bonus de compétence et d'enchantement.",
+      "description": "Contrairement aux jets d'attaque qui utilisent une seule caractéristique, les tests de compétence combinent deux attributs pour refléter la nature polyvalente des compétences.",
+      "reference": "Crucible Core — Tests de compétence",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Formule : <b>3d8 [Faveurs, Fléaux] + ⌈(Carac. A + Carac. B) / 2⌉ + Bonus de compétence + Bonus d'enchantement</b>"
+        },
+        {
+          "type": "list",
+          "title": "Rangs de compétence et bonus associés",
+          "items": [
+            "<b>Non formé</b> : −4",
+            "<b>Novice</b> : +0",
+            "<b>Compagnon</b> : +1",
+            "<b>Adepte</b> : +2",
+            "<b>Maître</b> : +3"
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Test passif : si le rang de compétence permet de dépasser le DD en ajoutant 12 au bonus total, le test réussit automatiquement sans lancer les dés."
+        }
+      ],
+      "links": ["dice.standard-check", "dice.passive-check", "dice.group-check"],
+      "tags": ["compétence", "test", "caractéristique", "rang", "DD"]
+    },
+    {
+      "id": "dice.passive-check",
+      "title": "Tests passifs",
+      "subtitle": "Réussite automatique si bonus + 12 ≥ DD",
+      "icon": "fa-solid fa-eye",
+      "summary": "Un test est passif si le bonus total du personnage + 12 atteint ou dépasse le DD. Aucun lancer n'est nécessaire.",
+      "description": "Les tests passifs permettent aux personnages suffisamment compétents de réussir automatiquement des tâches routinières sans ralentir le jeu.",
+      "reference": "Crucible Core — Tests de compétence passifs",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Formule du score passif : <b>12 + Bonus de caractéristique + Bonus de compétence + Bonus d'enchantement</b>"
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Un joueur peut toujours choisir d'effectuer un lancer actif plutôt qu'un test passif, s'il le souhaite. Les tests passifs peuvent également être utilisés comme Défense passive (ex : Intimidation vs score passif d'Intimidation de la cible)."
+        }
+      ],
+      "links": ["dice.skill-check"],
+      "tags": ["passif", "score passif", "automatique", "vigilance", "DD"]
+    },
+    {
+      "id": "dice.group-check",
+      "title": "Tests de groupe",
+      "subtitle": "Résultat collectif sur succès/échecs",
+      "icon": "fa-solid fa-people-group",
+      "summary": "Chaque participant lance séparément. Le résultat global dépend du nombre de succès individuels parmi les participants.",
+      "description": "Les tests de groupe s'appliquent quand tout le groupe doit affronter un défi collectif, comme se faufiler discrètement ou escalader une falaise ensemble.",
+      "reference": "Crucible Core — Tests de compétence de groupe",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Résultat individuel", "Score contribué"],
+          "rows": [
+            ["Échec critique", "−1"],
+            ["Échec", "0"],
+            ["Succès", "+1"],
+            ["Succès critique", "+2"]
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Seuils du résultat collectif",
+          "items": [
+            "<b>Succès critique</b> : score ≥ nombre de participants.",
+            "<b>Succès</b> : score > moitié des participants (arrondi inférieur).",
+            "<b>Échec</b> : score positif mais sous le seuil de succès.",
+            "<b>Échec critique</b> : score ≤ 0."
+          ]
+        }
+      ],
+      "links": ["dice.skill-check"],
+      "tags": ["groupe", "collectif", "test de groupe", "succès", "échec"]
+    },
+    {
+      "id": "dice.difficulty-ratings",
+      "title": "Niveaux de difficulté (DD)",
+      "subtitle": "Référence des seuils de challenge",
+      "icon": "fa-solid fa-signal",
+      "summary": "Le Maître du jeu fixe un Degré de Difficulté (DD) pour évaluer les tests de compétence. Voici les paliers indicatifs.",
+      "description": "Ces valeurs indicatives aident le MJ à calibrer ses demandes de tests selon la difficulté narrative souhaitée.",
+      "reference": "Crucible Core — Tests de compétence",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Difficulté", "DD indicatif"],
+          "rows": [
+            ["Très facile", "8"],
+            ["Facile", "12"],
+            ["Modérée", "16"],
+            ["Difficile", "20"],
+            ["Très difficile", "24"],
+            ["Héroïque", "28"],
+            ["Légendaire", "32+"]
+          ]
+        }
+      ],
+      "links": ["dice.skill-check", "dice.passive-check"],
+      "tags": ["DD", "difficulté", "seuil", "MJ", "challenge"]
+    },
+    {
+      "id": "dice.sep.degrees",
+      "type": "separator",
+      "title": "Réussite & Seuils Critiques"
+    },
+    {
+      "id": "dice.critical-success",
+      "title": "Succès et Échecs critiques",
+      "subtitle": "Seuil de ±6 par défaut",
+      "icon": "fa-solid fa-star-half-stroke",
+      "summary": "Un résultat dépassant la défense de plus de 6 est un Coup critique. Un résultat inférieur de plus de 6 est un Échec critique.",
+      "description": "Les critiques ne modifient pas directement les dégâts mais ouvrent des opportunités pour des effets spéciaux via les talents.",
+      "reference": "Crucible Core — Coup et échec critique",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Résultat", "Condition", "Effet de base"],
+          "rows": [
+            ["Coup critique", "Jet > Défense + 6", "Ouvre des effets de talent spéciaux"],
+            ["Touché", "Jet > Défense", "Dégâts normaux"],
+            ["Raté", "Jet ≤ Défense", "Aucun dégât (ou Coup superficiel via Armure)"],
+            ["Échec critique", "Jet < Défense − 6", "Ouvre des réactions ennemies spéciales"]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Le Coup critique augmente toujours les dégâts indirectement via le Surplus plus élevé. Il ne double pas les dégâts, mais active les effets de talents comme Ébranlé, Enflammé, récupération de Focus, etc."
+        },
+        {
+          "type": "paragraph",
+          "content": "Pour les <b>Tests de compétence</b>, un Succès critique se produit si le total dépasse le DD de plus de 6, et un Échec critique si le total est inférieur au DD de plus de 6. Le MJ peut appliquer des conséquences narratives supplémentaires."
+        }
+      ],
+      "links": ["combat.attack-roll", "dice.standard-check"],
+      "tags": ["critique", "succès critique", "échec critique", "seuil", "surplus"]
+    }
+  ]
+}

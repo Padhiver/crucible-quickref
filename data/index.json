@@ -1,0 +1,11 @@
+{
+  "categories": [
+    "dice",
+    "combat",
+    "conditions",
+    "spellcraft",
+    "exploration",
+    "equipment"
+  ],
+  "_comment": "Add new category filenames here (without .json) to register them. Files must be in data/rules/. Order determines display order in the UI."
+}

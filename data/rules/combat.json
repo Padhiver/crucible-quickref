@@ -1,0 +1,696 @@
+{
+  "id": "combat",
+  "label": "Combat",
+  "icon": "ra ra-sword",
+  "color": "#c0392b",
+  "description": "Le combat se déroule en Rounds et Tours, organisés par l'Initiative. Chaque personnage dispose d'un pool d'Action pour agir.",
+  "rules": [
+    {
+      "id": "combat.sep.time-flow",
+      "type": "separator",
+      "title": "Structure et Initiative"
+    },
+    {
+      "id": "combat.rounds-turns",
+      "title": "Rounds et Tours",
+      "subtitle": "~10 secondes par tour",
+      "icon": "fa-solid fa-clock-rotate-left",
+      "summary": "Un Round regroupe les tours de tous les combattants. Chaque Tour représente environ 10 secondes. Six rounds correspondent à une minute de combat.",
+      "description": "La structure Round/Tour organise le temps de combat de façon tactique et narrative.",
+      "reference": "Crucible Core — Rounds et Tours",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Définitions",
+          "items": [
+            "<b>Round</b> : un cycle complet où chaque combattant a l'occasion d'agir, dans l'ordre d'initiative.",
+            "<b>Tour</b> : les actions entreprises par le combattant dont c'est le moment d'agir.",
+            "6 rounds = environ <b>1 minute</b> de temps réel en combat."
+          ]
+        }
+      ],
+      "links": ["combat.initiative", "combat.actions-pool"],
+      "tags": ["round", "tour", "temps", "combat", "structure"]
+    },
+    {
+      "id": "combat.initiative",
+      "title": "Initiative",
+      "subtitle": "Relancée chaque round",
+      "icon": "fa-solid fa-bolt",
+      "summary": "L'Initiative détermine l'ordre d'action. Elle est relancée à chaque round et vaut 3d8 + (Dextérité + Intellect) / 4.",
+      "description": "L'Initiative répercute la vivacité de corps et d'esprit d'un personnage. Elle est relancée automatiquement au début de chaque round de combat.",
+      "reference": "Crucible Core — Initiative et ordre de tour",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Formule : <b>3d8 [Faveurs, Fléaux] + (Dextérité + Intellect) / 4</b>"
+        },
+        {
+          "type": "list",
+          "title": "Modificateurs situationnels",
+          "items": [
+            "Points d'Action non dépensés à la fin du tour précédent : chacun ajoute <b>1 Faveur</b> au prochain jet d'Initiative.",
+            "Créatures <b>Distraites</b> : agissent toujours à l'Initiative 1.",
+            "Créatures <b>Neutralisées ou Mortes</b> : placées à l'Initiative 0."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Départage des égalités (dans l'ordre)",
+          "items": [
+            "Combattant ayant utilisé l'action Retarder à cette Initiative.",
+            "Initiative originelle la plus haute parmi ceux ayant retardé.",
+            "Bonus passif d'Initiative le plus élevé.",
+            "Maximum d'Action le plus élevé.",
+            "Les Adversaires agissent avant les Héros.",
+            "Ordre alphabétique."
+          ]
+        }
+      ],
+      "links": ["combat.actions-pool", "combat.heroism"],
+      "tags": ["initiative", "ordre de tour", "round", "dextérité", "intellect"]
+    },
+    {
+      "id": "combat.actions-pool",
+      "title": "Pool d'Action",
+      "subtitle": "6 points par tour",
+      "icon": "fa-solid fa-circle-notch",
+      "summary": "Chaque personnage dispose de 6 points d'Action par tour, renouvelés au début de son tour.",
+      "description": "Les points d'Action représentent le temps et l'effort physique disponibles pendant un tour de combat. Différentes actions ont des coûts différents.",
+      "reference": "Crucible Core — Actions",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Les 6 points d'Action sont <b>entièrement renouvelés</b> au début de chaque tour. Les points non dépensés se convertissent en <b>Faveurs à l'Initiative</b> du round suivant."
+        },
+        {
+          "type": "list",
+          "title": "Types de coûts",
+          "items": [
+            "<b>Coût en Action</b> : temps et effort physique de l'action.",
+            "<b>Coût en Focus</b> : concentration et énergie mentale.",
+            "<b>Coût d'Héroïsme</b> : exploit extraordinaire nécessitant de l'Héroïsme accumulé.",
+            "<b>Coût d'arme</b> : certaines actions ajoutent le coût en points d'action de l'arme équipée."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Catégories d'adversaires (points d'Action)",
+          "items": [
+            "<b>Laquais</b> : 2 points d'Action.",
+            "<b>Normal</b> : 3 points d'Action.",
+            "<b>Élite</b> : 4 points d'Action.",
+            "<b>Chef</b> : 5 points d'Action."
+          ]
+        }
+      ],
+      "links": ["combat.initiative", "combat.attack-roll"],
+      "tags": ["action", "pool", "tour", "coût"]
+    },
+    {
+      "id": "combat.sep.space-movement",
+      "type": "separator",
+      "title": "Positionnement & Mouvements"
+    },
+    {
+      "id": "combat.grid-positioning",
+      "title": "Grille et Positionnement",
+      "subtitle": "Grille fine et visibilité à 360°",
+      "icon": "fa-solid fa-border-all",
+      "summary": "Le positionnement utilise une grille fine de 1 pied pour une grande précision tactique, libérée des contraintes d'orientation.",
+      "description": "Le combat gère précisément les distances de mouvement et les tailles de créatures sans mécanique d'orientation imposée pour les tokens.",
+      "reference": "Crucible Core — Déplacement",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "<b>Grille tactique et mesure</b> : Le système utilise une sous-grille de <b>1 pied</b> (avec des scènes configurées à 5 pieds sur Foundry Virtual Tabletop). Le calcul des distances en diagonale s'effectue obligatoirement via le mode de mesure diagonale <b>Exact √2</b>."
+        },
+        {
+          "type": "paragraph",
+          "content": "<b>Absence de direction</b> : Il n'existe pas de mécanique de direction pour les tokens. Un personnage est nativement capable de percevoir et d'agir dans un rayon complet de <b>360 degrés</b>, sauf restriction spécifique."
+        },
+        {
+          "type": "list",
+          "title": "Règles d'application du mouvement",
+          "items": [
+            "Une action dotée de l'étiquette <b>Déplacement</b> permet de franchir une distance en pieds inférieure ou égale à la <b>Foulée</b>.",
+            "La distance autorisée par une action de déplacement ne peut être <b>ni divisée ni interrompue</b>.",
+            "Il n'y a <b>pas de déplacement restant sauvegardé</b> entre deux actions de déplacement distinctes si vous bougez de moins que votre Foulée."
+          ]
+        }
+      ],
+      "links": ["combat.movement"],
+      "tags": ["grille", "foundryvtt", "diagonale", "direction", "360 degrés", "foulée"]
+    },
+    {
+      "id": "combat.movement",
+      "title": "Déplacement",
+      "subtitle": "Coût = ⌈Distance effective / Foulée⌉",
+      "icon": "fa-solid fa-person-walking",
+      "summary": "Le déplacement coûte des points d'Action selon la distance parcourue et la Foulée du personnage. La première action de déplacement par tour est gratuite pour la plupart.",
+      "description": "Le positionnement tactique est central dans Crucible. La grille de 1 pied et la sous-grille de 5 pieds permettent une gestion fine des distances.",
+      "reference": "Crucible Core — Déplacement",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Formule : <b>Coût en Action = ⌈Distance effective / Foulée⌉</b>. Si un Déplacement gratuit est disponible, le coût final est réduit de 1."
+        },
+        {
+          "type": "list",
+          "title": "Modificateurs de distance effective",
+          "items": [
+            "<b>Conditions</b> (Ralenti, Accéléré, Entravé) appliquées en premier.",
+            "<b>Terrain difficile</b> appliqué ensuite.",
+            "<b>Type de déplacement</b> (Marche, Saut, Escalade, Nage…) appliqué en dernier."
+          ]
+        },
+        {
+          "type": "table",
+          "headers": ["Type de déplacement", "Distance effective"],
+          "rows": [
+            ["Marche", "Normale (×1)"],
+            ["Marche prudente", "Doublée (×2)"],
+            ["Reptation (À terre)", "Doublée (×2)"],
+            ["Saut", "Doublée (×2)"],
+            ["Escalade", "Doublée (×2)"],
+            ["Nage", "Doublée (×2)"],
+            ["Vol", "Réduite"],
+            ["Clignotement (téléport)", "Ignoré (×0)"]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Déplacement gratuit indisponible si : Affaibli, À terre, Ralenti, ou portant une armure Lourde sans le talent Efficacité en armure."
+        }
+      ],
+      "links": ["combat.actions-pool", "combat.engagement"],
+      "tags": ["déplacement", "foulée", "action", "distance", "terrain"]
+    },
+    {
+      "id": "combat.free-movement",
+      "title": "Déplacement gratuit",
+      "subtitle": "−1 Action à la première action de déplacement",
+      "icon": "fa-solid fa-person-running",
+      "summary": "La première action de Déplacement de chaque round est réduite de 1 point d'Action. Dans la plupart des cas, cela la rend gratuite.",
+      "description": "Le Déplacement gratuit encourage la mobilité tactique sans pénaliser les personnages pour leurs repositionnements de base.",
+      "reference": "Crucible Core — Déplacement gratuit",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Perd le déplacement gratuit si :",
+          "items": [
+            "Condition <b>Affaibli</b>",
+            "Condition <b>À terre</b>",
+            "Condition <b>Ralenti</b>",
+            "Port d'une armure <b>Lourde</b> (sauf talent Efficacité en armure)"
+          ]
+        }
+      ],
+      "links": ["combat.movement"],
+      "tags": ["déplacement gratuit", "action", "mouvement", "armure lourde"]
+    },
+    {
+      "id": "combat.forced-movement",
+      "title": "Déplacement forcé",
+      "subtitle": "Sans coût d'Action",
+      "icon": "fa-solid fa-wind",
+      "summary": "Un déplacement forcé déplace involontairement une créature sans coût d'Action et sans consommer le Déplacement gratuit.",
+      "description": "Le déplacement forcé représente les projections, chutes, poussées et autres mouvements subis, distincts des déplacements volontaires.",
+      "reference": "Crucible Core — Déplacement forcé",
+      "bullets": [
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Exemples : être projeté par un coup, tomber d'une corniche, être traîné par des ennemis. Ce type de mouvement n'entraîne aucun coût d'Action et ne consomme pas le Déplacement gratuit."
+        }
+      ],
+      "links": ["combat.movement"],
+      "tags": ["déplacement forcé", "poussée", "chute", "involontaire"]
+    },
+    {
+      "id": "combat.movement-conditions",
+      "title": "Conditions de Déplacement",
+      "subtitle": "Impact des statuts sur la mobilité",
+      "icon": "fa-solid fa-traffic-light",
+      "summary": "Certaines conditions temporaires modifient directement la distance effective calculée ou bloquent le mouvement.",
+      "description": "Les effets de statut magiques, physiques ou alchimiques altèrent l'effort requis pour se repositionner.",
+      "reference": "Crucible Core — Déplacement",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets des statuts sur la distance effective",
+          "items": [
+            "<b>Ralenti</b> : La distance effective parcourue par tout déplacement est <b>doublée</b> (rendant le coût en points d'Action plus élevé).",
+            "<b>Accéléré</b> : La distance effective parcourue par tout déplacement est <b>divisée par deux</b> (rendant le coût en points d'Action plus faible).",
+            "<b>Entravé</b> : Le déplacement est tout simplement devenu <b>impossible</b>."
+          ]
+        }
+      ],
+      "links": ["combat.movement"],
+      "tags": ["conditions", "ralenti", "accéléré", "entravé", "mobilité"]
+    },
+    {
+      "id": "combat.sep.actions-attacks",
+      "type": "separator",
+      "title": "Attaques & Défenses"
+    },
+    {
+      "id": "combat.actions-attributes",
+      "title": "Attributs des Actions",
+      "subtitle": "Propriétés et caractéristiques",
+      "icon": "fa-solid fa-list-check",
+      "summary": "Les actions possèdent des propriétés spécifiques définissant leur fonctionnement, leurs coûts et leurs effets.",
+      "description": "Chaque action en combat englobe des activités, techniques ou sortilèges caractérisés par des attributs précis décrivant comment ils s'appliquent au cours de l'affrontement.",
+      "reference": "Crucible Core — Actions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Propriétés d'une action",
+          "items": [
+            "<b>Coût en Action</b> : Signifie et représente le temps et l'effort physique requis au milieu du combat.",
+            "<b>Coût en Focus</b> : Représente l'énergie mentale et la concentration requises pour des exploits exceptionnels (sorcellerie, dextérité martiale).",
+            "<b>Coût d'Héroïsme</b> : Effort extraordinaire requis pour activer des actions particulièrement puissantes.",
+            "<b>Coût d'arme</b> : S'ajoute au coût propre de l'action selon l'arme équipée (les armes lourdes ou complexes sont plus lentes mais plus puissantes).",
+            "<b>Étiquettes d'action</b> : Décrivent le comportement et modifient les aspects de l'action (prérequis, cibles, dégâts, etc.).",
+            "<b>Type de ciblage & Cible concernée</b> : Définissent la zone d'effet et les dispositions des créatures affectées (Alliés uniquement, Ennemis uniquement, Toutes, Soi-même, Aucune).",
+            "<b>Condition d'activation</b> : Prérequis spécifique nécessaire pour que l'action soit utilisable (ex: la Roulade défensive nécessite d'Esquiver une Frappe).",
+            "<b>Effets appliqués</b> : Effets actifs appliqués aux cibles avec une durée définie en rounds ou illimitée."
+          ]
+        }
+      ],
+      "links": ["combat.actions-pool", "combat.targeting-types", "combat.action-tags"],
+      "tags": ["actions", "attributs", "coût", "focus", "héroïsme", "effets"]
+    },
+    {
+      "id": "combat.targeting-types",
+      "title": "Types de Ciblage",
+      "subtitle": "Zones d'effet et sélection de cibles",
+      "icon": "fa-solid fa-crosshairs",
+      "summary": "Chaque action définit une zone d'effet géométrique ou un mode de sélection des créatures cibles.",
+      "description": "Les formes de zones tactiques et les modes de sélection permettent une gestion spatiale fine des capacités sur le champ de bataille.",
+      "reference": "Crucible Core — Actions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Zones et Gabarits",
+          "items": [
+            "<b>Explosion</b> : Zone circulaire centrée sur une case choisie, définie par une Taille (rayon d’effet) et une Distance (portée maximale).",
+            "<b>Cône</b> : Zone étroite de 60 degrés prenant naissance au centre de la case du personnage. Spécifie une Distance et peut être pivotée par incréments de 15 degrés.",
+            "<b>Éventail</b> : Zone large de 210 degrés prenant naissance au centre de la case du personnage. Spécifie une Distance et peut être pivotée par incréments de 15 degrés.",
+            "<b>Onde</b> : Zone circulaire d'effet centrée sur le personnage qui effectue l'action, définie par une Distance (rayon).",
+            "<b>Rayon</b> : Zone en ligne droite partant du personnage, définie par une Distance (longueur).",
+            "<b>Soi-même</b> : N'affecte que la créature qui exécute l'action, sans portée requise.",
+            "<b>Sélectif</b> : Cible un Nombre précis de créatures individuelles à une Distance (portée) donnée.",
+            "<b>Mur</b> : Ligne droite perpendiculaire au personnage, définie par une Taille (épaisseur) et une Distance (portée max de son centre).",
+            "<b>Invocation</b> : Invoque une ou plusieurs créatures placées dans une zone rectangulaire proche.",
+            "<b>Déplacement</b> : Implique la planification d'un itinéraire et se résout selon la distance parcourue.",
+            "<b>Aucun</b> : Ne cible aucune créature en particulier mais produit des effets généraux."
+          ]
+        }
+      ],
+      "links": ["combat.actions-attributes"],
+      "tags": ["ciblage", "zone d'effet", "explosion", "cône", "rayon", "gabarit"]
+    },
+    {
+      "id": "combat.action-tags",
+      "title": "Étiquettes d'Action",
+      "subtitle": "Modificateurs et exigences des capacités",
+      "icon": "fa-solid fa-tags",
+      "summary": "Les étiquettes classent les exigences et modificateurs applicables aux actions de combat.",
+      "description": "Le fonctionnement de chaque action repose sur un ensemble d'étiquettes décrivant ses prérequis matériels, contextuels et ses altérations de dégâts.",
+      "reference": "Crucible Core — Étiquettes d'action",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Catégories principales d'étiquettes",
+          "items": [
+            "<b>Exigences d'équipement</b> : Ambidextrie, À une main, Finesse, Brute, Projectile, Mécanique, Bouclier, Mains nues, Sans armure.",
+            "<b>Exigences de contexte</b> : Vocable (nécessite de parler, interdit si Aphone), Auditif (exclut les cibles Assourdies), Réaction (pendant le tour d'autrui), Hors combat, Débordement.",
+            "<b>Étiquettes d'attaque</b> : Mêlée, À distance, Main principale, À deux mains, Main secondaire, Lancer, Naturelle.",
+            "<b>Modificateurs d'attaque</b> : Mortel (+1 multiplicateur de dégâts), Difficile (+1 Fléau), Amélioré (+6 dégâts de base), Précis (+2 Faveurs), Inoffensif (toujours 0 dégât), Affaibli (-6 dégâts de base), Grave (convertit la Santé en Lésions et le Moral en Folie).",
+            "<b>Défenses et Ressources</b> : Fortitude, Réflexe, Volonté, Guérison (restaure la Santé via les Lésions), Ralliement (restaure le Moral via la Folie).",
+            "<b>Autres étiquettes</b> : Sort, Déplacement, Rechargement, Désarmement, Maintenu (nécessite une dépense de Focus continue à chaque tour)."
+          ]
+        }
+      ],
+      "links": ["combat.actions-attributes"],
+      "tags": ["étiquettes", "tags", "équipement", "attaque", "modificateurs"]
+    },
+    {
+      "id": "combat.attack-roll",
+      "title": "Jet d'attaque",
+      "subtitle": "Test standard vs défense",
+      "icon": "fa-solid fa-khanda",
+      "summary": "Un jet d'attaque est un Test standard opposé à un Score de défense de la cible.",
+      "description": "Les jets d'attaque s'appliquent aux attaques d'armes, aux sorts offensifs, aux soins et aux compétences utilisées en combat.",
+      "reference": "Crucible Core — Jets d'attaque",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Formule : <b>3d8 [Faveurs, Fléaux] + Modificateur de caractéristique + Bonus de compétence + Bonus d'enchantement</b>"
+        },
+        {
+          "type": "list",
+          "title": "Résultats possibles",
+          "items": [
+            "<b>Touché</b> : le jet dépasse le Score de défense.",
+            "<b>Raté</b> : le jet est inférieur ou égal à la défense. Le type de raté (Armure, Esquivé, Paré, Bloqué) dépend de la composition de la Défense physique.",
+            "<b>Coup critique</b> : le jet dépasse la défense de plus de 6 (seuil habituel).",
+            "<b>Échec critique</b> : le jet est inférieur à la défense de plus de 6."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Le <b>Surplus</b> (différence entre le jet et la défense) détermine les dégâts : <b>Dégâts = (Surplus × Multiplicateur) + Bonus de dégâts − Résistance cible</b>. Les dégâts directs infligent toujours au moins 1 point."
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Les dégâts sur la durée (conditions comme Enflammé, Empoisonné…) peuvent, eux, être réduits à zéro par la Résistance."
+        }
+      ],
+      "links": ["combat.defenses", "dice.boons", "dice.critical-success"],
+      "tags": ["attaque", "jet", "surplus", "dégâts", "coup critique"]
+    },
+    {
+      "id": "combat.defenses",
+      "title": "Défenses",
+      "subtitle": "Quatre types principaux",
+      "icon": "fa-solid fa-shield-halved",
+      "summary": "La Défense physique (Armure + Esquive + Parade + Blocage) et trois défenses non physiques : Fortitude, Volonté et Réflexe.",
+      "description": "Les défenses définissent à quel point certaines actions sont difficiles à accomplir contre un personnage. Le résultat du jet doit dépasser la valeur de défense (en cas d'égalité, le défenseur l'emporte).",
+      "reference": "Crucible Core — Défenses",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Défense physique",
+          "items": [
+            "<b>Armure</b> : protection de l'équipement ou de la biologie naturelle. Un raté par Armure (non critique) = Coup superficiel (dégâts réduits). Un Échec critique = totalement absorbé.",
+            "<b>Esquive</b> : rapidité et agilité physique (basée sur la Dextérité). Résultat : Esquivé — aucun dégât, ouvre des réactions d'esquive.",
+            "<b>Parade</b> : bloquer avec une arme équipée. Résultat : Paré — aucun dégât, ouvre des réactions de parade.",
+            "<b>Blocage</b> : se protéger avec un bouclier ou arme de blocage. Résultat : Bloqué — aucun dégât, ouvre des réactions de blocage."
+          ]
+        },
+        {
+          "type": "table",
+          "headers": ["Défense", "Formule"],
+          "rows": [
+            ["Fortitude", "12 + (Force + Sagesse) / 2 + Bonus"],
+            ["Volonté", "12 + (Robustesse + Présence) / 2 + Bonus"],
+            ["Réflexe", "12 + (Dextérité + Intellect) / 2 + Bonus"]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Une créature Neutralisée perd ses défenses d'Esquive, Blocage et Parade (= 0) et les bonus de Caractéristique à ses défenses non physiques."
+        }
+      ],
+      "links": ["combat.attack-roll", "combat.engagement"],
+      "tags": ["défense", "armure", "esquive", "fortitude", "volonté", "réflexe"]
+    },
+    {
+      "id": "combat.damage-types",
+      "title": "Types de dégâts",
+      "subtitle": "12 types, résistances et vulnérabilités",
+      "icon": "fa-solid fa-explosion",
+      "summary": "Crucible utilise 12 types de dégâts. Chaque type est associé à une condition déclenchée sur Coup critique, et à des résistances/vulnérabilités possibles.",
+      "description": "Connaître les types de dégâts permet d'exploiter les vulnérabilités ennemies et d'anticiper les résistances.",
+      "reference": "Crucible Core — Types de dégâts",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Catégorie", "Type", "Condition liée"],
+          "rows": [
+            ["Physique", "Contondant", "Ébranlé"],
+            ["Physique", "Perforant", "Ensanglanté"],
+            ["Physique", "Tranchant", "Ensanglanté"],
+            ["Physique", "Poison", "Empoisonné"],
+            ["Élémentaire", "Acide", "Corrodé"],
+            ["Élémentaire", "Feu", "Enflammé"],
+            ["Élémentaire", "Froid", "Gelé"],
+            ["Élémentaire", "Électrique", "Électrocuté"],
+            ["Spirituel", "Corruption", "Putréfié"],
+            ["Spirituel", "Psychique", "Confus"],
+            ["Spirituel", "Radiant", "Irradié"],
+            ["Spirituel", "Vide", "Dérangé"]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "<b>Résistance</b> : réduit les dégâts entrants du montant de résistance (peut réduire à 0 les dégâts sur la durée, mais jamais les dégâts directs en dessous de 1). <b>Vulnérabilité</b> : augmente les dégâts reçus, plafonné à deux fois les dégâts de base."
+        }
+      ],
+      "links": ["combat.attack-roll", "conditions.burning", "conditions.bleeding"],
+      "tags": ["dégâts", "type", "résistance", "vulnérabilité", "condition"]
+    },
+    {
+      "id": "combat.cover",
+      "title": "Couverture",
+      "subtitle": "De +1 à +4 Fléaux aux attaquants",
+      "icon": "fa-solid fa-box",
+      "summary": "Les obstacles entre attaquant et cible accordent de la Couverture. Plus la couverture est importante, plus les attaques directes sont pénalisées.",
+      "description": "La Couverture s'applique aux attaques directes à cible unique. Les attaques de zone (Cône, Explosion, Onde) l'ignorent.",
+      "reference": "Crucible Core — Couverture",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Type de couverture", "Effet sur les attaques"],
+          "rows": [
+            ["Couverture totale", "Attaques directes impossibles"],
+            ["Couverture supérieure", "+4 Fléaux"],
+            ["Couverture partielle", "+2 Fléaux"],
+            ["Couverture légère", "+1 Fléau"]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Les attaques à zone d'effet (Cône, Explosion, Onde, Éventail) ignorent entièrement la Couverture."
+        }
+      ],
+      "links": ["combat.movement"],
+      "tags": ["couverture", "fléau", "abri", "protection", "terrain"]
+    },
+    {
+      "id": "combat.engagement",
+      "title": "Engagement et Débordement",
+      "subtitle": "Score d'Engagement de base : 1",
+      "icon": "fa-solid fa-people-group",
+      "summary": "Quand une créature est engagée par plus d'adversaires que son Score d'Engagement, elle subit la condition Débordé.",
+      "description": "L'Engagement définit combien d'adversaires peuvent simultanément combattre un personnage sans lui conférer d'avantage. Le Débordement octroie des Faveurs aux attaquants.",
+      "reference": "Crucible Core — Engagement et Débordement",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Score d'Engagement de base : <b>1 pour les Héros</b>, <b>Taille − 2 (min 1) pour les Adversaires</b>."
+        },
+        {
+          "type": "paragraph",
+          "content": "Formule du palier de Débordement : <b>Ennemis engagés − Score d'Engagement − Bonus d'engagement des alliés adjacents</b>. Chaque palier confère <b>+1 Faveur</b> aux jets d'attaque de mêlée contre la créature Débordée."
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Les alliés adjacents contribuent leur propre Score d'Engagement comme bonus si ils partagent des ennemis engagés en commun."
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Lorsqu'un adversaire quitte ton engagement sans Se désengager, tu peux effectuer une Frappe réactive (Réaction). Impossible si tu es Distrait ou Débordé par d'autres adversaires."
+        }
+      ],
+      "links": ["combat.defenses", "combat.reactions"],
+      "tags": ["engagement", "débordement", "flanquer", "faveur", "mêlée"]
+    },
+    {
+      "id": "combat.reactions",
+      "title": "Réactions",
+      "subtitle": "Pendant le tour d'une autre créature",
+      "icon": "fa-solid fa-reply",
+      "summary": "Les Réactions sont des actions déclenchées pendant le tour d'une autre créature. Elles ont des conditions d'activation spécifiques et coûtent des points d'Action ou de Focus.",
+      "description": "Les réactions permettent aux combattants de répondre aux actions adverses : esquive, riposte, contre-attaque, etc.",
+      "reference": "Crucible Core — Réactions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Règles clés",
+          "items": [
+            "Ne peuvent être effectuées que <b>pendant le tour d'une autre créature</b>.",
+            "Coûtent des points d'<b>Action ou de Focus</b> — impossibles si les ressources manquent.",
+            "Nécessitent de remplir la <b>condition d'activation</b> indiquée (ex : 'Vous Esquivez une Frappe de mêlée').",
+            "Impossibles si la créature est <b>Distraite</b> ou <b>Neutralisée</b>."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Exemple de réaction : la Frappe réactive lorsqu'un ennemi quitte votre Engagement sans se désengager."
+        }
+      ],
+      "links": ["combat.engagement", "combat.actions-pool"],
+      "tags": ["réaction", "frappe réactive", "tour", "condition", "engagement"]
+    },
+    {
+      "id": "combat.skill-attacks",
+      "title": "Attaques de compétence",
+      "subtitle": "Compétences utilisées en combat",
+      "icon": "fa-solid fa-comment-dots",
+      "summary": "Certaines compétences (Intimidation, Diplomatie…) peuvent être utilisées en combat comme attaques ciblant une défense ou un score passif de compétence.",
+      "description": "Les attaques de compétence permettent de combattre autrement qu'avec les armes, en exploitant les forces sociales, martiales ou cognitives d'un personnage.",
+      "reference": "Crucible Core — Attaques de compétence",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Une Attaque de compétence lance un <b>Test de compétence</b> contre une défense nommée (Volonté, Fortitude, Réflexe) ou contre le <b>score passif</b> d'une compétence de la cible."
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Exemple : Krag utilise Intimider (Adepte) contre un Gobelin. Son résultat de 27 vs le score passif d'Intimidation du Gobelin (14) produit 17 points de dégâts de Vide au Moral, rendant le Gobelin Démoralisé."
+        }
+      ],
+      "links": ["combat.attack-roll", "dice.skill-check"],
+      "tags": ["compétence", "attaque", "intimidation", "moral", "vide"]
+    },
+    {
+      "id": "combat.sep.resources-health",
+      "type": "separator",
+      "title": "Ressources"
+    },
+    {
+      "id": "combat.resources",
+      "title": "Ressources du personnage",
+      "subtitle": "Santé, Lésions, Moral, Folie, Focus",
+      "icon": "fa-solid fa-heart",
+      "summary": "Chaque personnage dispose de plusieurs réserves de ressources représentant sa santé physique, mentale et sa capacité d'action.",
+      "description": "La gestion de ces ressources est au cœur du gameplay de Crucible, aussi bien en combat qu'à l'exploration.",
+      "reference": "Crucible Core — Ressources",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Ressource", "Description", "Remplie par"],
+          "rows": [
+            ["Santé", "Réserve physique temporaire. À 0 : Affaibli.", "Récupération, sorts de soin"],
+            ["Lésions", "Blessures permanentes. Au max : Mort.", "Réduite par le Repos (= niveau/repos)"],
+            ["Moral", "Réserve mentale temporaire. À 0 : Démoralisé.", "Récupération, sorts de ralliement"],
+            ["Folie", "Traumatismes permanents. Au max : Dément.", "Réduite par le Repos (= niveau/repos)"],
+            ["Focus", "Énergie pour exploits extraordinaires et magie.", "Récupération ou Repos"],
+            ["Héroïsme", "Ressource accumulée en combat.", "Actions affectant autrui"]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Particularité : les créatures avec Robustesse à 0 (incorporelles) n'ont pas de Santé — leur Moral la remplace. Les créatures avec Présence à 0 n'ont pas de Moral — leur Santé la remplace."
+        }
+      ],
+      "links": ["combat.rest-recovery", "combat.heroism"],
+      "tags": ["santé", "lésions", "moral", "folie", "focus", "héroïsme", "ressource"]
+    },
+    {
+      "id": "combat.heroism",
+      "title": "Héroïsme",
+      "subtitle": "Ressource accumulée en combat",
+      "icon": "fa-solid fa-star",
+      "summary": "Les actions qui affectent d'autres créatures génèrent de l'Héroïsme. Quand le seuil est atteint, tous les combattants gagnent +1 Héroïsme.",
+      "description": "L'Héroïsme est une ressource spéciale qui s'accumule au fil des actions en combat et permet de déclencher des capacités extraordinaires.",
+      "reference": "Crucible Core — Héroïsme",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Chaque action affectant d'autres créatures contribue à l'Héroïsme d'un montant égal à son <b>coût en Action</b>. Les actions ne ciblant que soi-même (Déplacement, Défendre) ne contribuent pas."
+        },
+        {
+          "type": "paragraph",
+          "content": "Seuil d'Héroïsme : <b>Nombre de Héros × 12</b>. Quand il est atteint, chaque combattant gagne <b>+1 Héroïsme</b>. L'Héroïsme existant est supprimé lors d'une Récupération."
+        },
+        {
+          "type": "list",
+          "title": "Escalade du Moral",
+          "items": [
+            "Après le 6e round, au début de chaque round suivant :",
+            "Le combattant avec la plus haute Initiative <b>gagne</b> du Moral = numéro du round.",
+            "Le combattant avec la plus basse Initiative <b>perd</b> du Moral = numéro du round."
+          ]
+        }
+      ],
+      "links": ["combat.initiative", "combat.actions-pool"],
+      "tags": ["héroïsme", "moral", "ressource", "combat"]
+    },
+    {
+      "id": "combat.rest-recovery",
+      "title": "Repos et Récupération",
+      "subtitle": "Deux niveaux de repos",
+      "icon": "fa-solid fa-bed",
+      "summary": "La Récupération (10 min) restaure Santé, Moral, Action et Focus. Le Repos (10 h) restaure tout et réduit Lésions et Folie.",
+      "description": "Gérer les ressources entre les rencontres est une composante stratégique clé de Crucible.",
+      "reference": "Crucible Core — Repos et Récupération",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Action", "Durée", "Effets"],
+          "rows": [
+            ["Récupération", "10 minutes", "Restaure Santé, Moral, Action, Focus. Supprime l'Héroïsme. Retire les effets temporaires courts."],
+            ["Repos", "10 heures", "Tous les effets de la Récupération + réduit Lésions et Folie du niveau du personnage. Retire les effets temporaires longs."]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "Le Repos permet aussi de monter de niveau si suffisamment d'Échelons ont été accumulés. Les Lésions et la Folie ne sont jamais remises à zéro directement — elles diminuent progressivement via le Repos."
+        }
+      ],
+      "links": ["combat.heroism", "combat.actions-pool"],
+      "tags": ["repos", "récupération", "santé", "lésions", "folie", "focus"]
+    },
+    {
+      "id": "combat.adversary-defeat",
+      "title": "Vaincre les adversaires",
+      "subtitle": "Santé à 0 = Mort (adversaires)",
+      "icon": "fa-solid fa-skull-crossbones",
+      "summary": "Les adversaires n'ont ni Lésions ni Folie. Their Santé ou Moral à 0 les met hors combat.",
+      "description": "Les adversaires sont plus fragiles que les Héros face à l'attrition : pas de tampon de Lésions/Folie.",
+      "reference": "Crucible Core — Vaincre les adversaires",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Conditions de défaite",
+          "items": [
+            "<b>Santé à 0</b> : l'adversaire est Mort (ou Neutralisé si le MJ préfère pour des raisons narratives).",
+            "<b>Moral à 0</b> : l'adversaire est Démoralisé et tente de fuir le combat, sauf s'il manque d'instinct de survie ou si la fuite est impossible."
+          ]
+        }
+      ],
+      "links": ["combat.resources", "conditions.dead", "conditions.broken"],
+      "tags": ["adversaire", "mort", "démoralisé", "santé", "moral"]
+    },
+    {
+      "id": "combat.encounter-balance",
+      "title": "Équilibrage des rencontres",
+      "subtitle": "Menace cumulative alliés ≈ ennemis",
+      "icon": "fa-solid fa-scale-balanced",
+      "summary": "Les rencontres équilibrées alignent la Menace totale des ennemis sur celle des Héros. Les Lésions absorbent la variance de chance.",
+      "description": "Le système de Menace permet d'ajuster facilement la difficulté. Les Lésions évitent qu'une seule malchance soit fatale.",
+      "reference": "Crucible Core — Équilibrage et difficulté",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "<b>Niveau de menace</b> d'un adversaire = Niveau × Multiplicateur de menace (Laquais ×0.5, Normal ×1, Élite ×1.5, Chef ×2)."
+        },
+        {
+          "type": "list",
+          "title": "Principes clés",
+          "items": [
+            "Une rencontre équilibrée a ~50% de chances de se conclure en faveur du groupe.",
+            "Les <b>Lésions</b> des Héros compensent la malchance : victoire probable même en cas de jeu sous-optimal.",
+            "Les adversaires n'ont pas de Lésions → avantage intentionnel pour les Héros sur la durée."
+          ]
+        }
+      ],
+      "links": ["combat.resources", "combat.adversary-defeat"],
+      "tags": ["menace", "équilibrage", "rencontre", "lésions", "difficulté"]
+    }
+  ]
+}

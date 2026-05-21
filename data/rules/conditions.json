@@ -1,0 +1,970 @@
+{
+  "id": "conditions",
+  "label": "Conditions",
+  "icon": "ra ra-fairy-wand",
+  "color": "#16a085",
+  "description": "Les Conditions sont des effets de statut temporaires qui modifient les actions, ressources ou règles applicables à un personnage.",
+  "rules": [
+    {
+      "id": "conditions.sep.sante",
+      "type": "separator",
+      "title": "Santé"
+    },
+    {
+      "id": "conditions.dead",
+      "title": "Mort",
+      "subtitle": "Lésions au maximum",
+      "icon": "fa-solid fa-skull",
+      "summary": "Les Lésions d'un Héros ont atteint leur maximum, ou la Santé d'un Adversaire est tombée à zéro.",
+      "description": "Un personnage Mort est également Neutralisé, ne peut plus prendre de Repos, et ne peut être ranimé que par des moyens magiques.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Le personnage est également considéré comme <b>Neutralisé</b>.",
+            "Impossible de prendre un <b>Repos</b>.",
+            "Ne peut être ranimé que par des <b>moyens magiques</b>."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "Pour les Adversaires, la Santé à zéro suffit à causer la Mort. Les Héros ont besoin que leurs Lésions atteignent le maximum."
+        }
+      ],
+      "links": ["conditions.weakened", "conditions.incapacitated"],
+      "tags": ["mort", "lésions", "adversaire", "héros"]
+    },
+    {
+      "id": "conditions.diseased",
+      "title": "Malade",
+      "subtitle": "Récupération de Santé impossible",
+      "icon": "fa-solid fa-virus",
+      "summary": "Impossible de récupérer de la Santé ou de soigner des Lésions pendant toute la durée de l'effet.",
+      "description": "La Maladie blocks les soins physiques, rendant toute récupération impossible jusqu'à guérison.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "<b>Bloque toute récupération</b> de Santé ou soin des Lésions."
+          ]
+        }
+      ],
+      "links": ["conditions.weakened", "conditions.poisoned"],
+      "tags": ["malade", "santé", "lésions", "soin", "bloquer"]
+    },
+    {
+      "id": "conditions.invulnerable",
+      "title": "Invulnérable",
+      "subtitle": "Immunité temporaire aux dégâts de Santé",
+      "icon": "fa-solid fa-shield-heart",
+      "summary": "La créature est temporairement immunisée aux dégâts sur la Santé ou les Lésions.",
+      "description": "L'Invulnérabilité est souvent conférée par un sort ou un talent puissant et dure un nombre limité de rounds.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Confère une <b>immunité complète</b> temporaire aux dégâts sur la Santé ou les Lésions."
+          ]
+        }
+      ],
+      "links": ["conditions.resolute"],
+      "tags": ["invulnérable", "immunité", "santé", "lésions", "dégâts"]
+    },
+    {
+      "id": "conditions.weakened",
+      "title": "Affaibli",
+      "subtitle": "Santé à zéro",
+      "icon": "fa-solid fa-heart-crack",
+      "summary": "La Santé est à zéro. Tout dégât supplémentaire augmente les Lésions. −2 au max d'Action, pas de Déplacement gratuit.",
+      "description": "Une créature Affaiblie est vulnérable aux blessures mortelles. Les Héros deviennent Affaiblis lorsque leur Santé atteint zéro.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Tout dégât sur la Santé augmente les <b>Lésions</b> à la place.",
+            "Maximum d'<b>Action réduit de 2</b>.",
+            "Perd l'accès au <b>Déplacement gratuit</b>."
+          ]
+        }
+      ],
+      "links": ["conditions.dead", "conditions.incapacitated"],
+      "tags": ["santé", "lésions", "affaibli", "zéro"]
+    },
+    {
+      "id": "conditions.sep.moral",
+      "type": "separator",
+      "title": "Moral"
+    },
+    {
+      "id": "conditions.broken",
+      "title": "Démoralisé",
+      "subtitle": "Moral à zéro",
+      "icon": "fa-solid fa-face-sad-tear",
+      "summary": "Le Moral est à zéro. Tout dégât supplémentaire augmente la Folie. Impossible de dépenser du Focus, +2 Fléaux à toutes les actions.",
+      "description": "Une créature Démoralisée est vulnérable au traumatisme psychologique. Les ennemis non-joueurs Démoralisés tentent de fuir.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Tout dégât sur le Moral augmente la <b>Folie</b> à la place.",
+            "Impossible de dépenser du <b>Focus</b>.",
+            "<b>+2 Fléaux</b> à toutes les actions.",
+            "Ne peut pas contribuer au <b>Débordement</b>.",
+            "Les Adversaires PNJ tentent de <b>fuir</b>."
+          ]
+        }
+      ],
+      "links": ["conditions.insane"],
+      "tags": ["moral", "folie", "démoralisé", "focus"]
+    },
+    {
+      "id": "conditions.frightened",
+      "title": "Paniqué",
+      "subtitle": "Récupération de Moral impossible",
+      "icon": "fa-solid fa-face-flushed",
+      "summary": "Impossible de récupérer du Moral ou de soigner la Folie pendant la durée de l'effet.",
+      "description": "La Panique bloque les soins mentaux, plongeant la créature dans une terreur paralysante sur le plan psychologique.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "<b>Bloque toute récupération</b> de Moral ou soin de la Folie."
+          ]
+        }
+      ],
+      "links": ["conditions.broken"],
+      "tags": ["paniqué", "moral", "folie", "soin", "bloquer"]
+    },
+    {
+      "id": "conditions.insane",
+      "title": "Dément",
+      "subtitle": "Folie au maximum",
+      "icon": "fa-solid fa-brain",
+      "summary": "La Folie d'un Héros a atteint son maximum. Le personnage n'est plus contrôlé par son joueur.",
+      "description": "Un personnage Dément échappe au contrôle de son joueur et est géré par le MJ. Cet état ne peut être soigné que par des moyens magiques.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Le personnage <b>échappe au contrôle de son joueur</b> et passe sous la gestion du MJ."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "La Démence ne peut être soignée ou guérie que par des moyens magiques extraordinaires."
+        }
+      ],
+      "links": ["conditions.broken"],
+      "tags": ["dément", "folie", "contrôle", "magique"]
+    },
+    {
+      "id": "conditions.resolute",
+      "title": "Déterminé",
+      "subtitle": "Immunité temporaire aux dégâts de Moral",
+      "icon": "fa-solid fa-fist-raised",
+      "summary": "La créature est temporairement immunisée aux dégâts sur le Moral ou la Folie.",
+      "description": "L'état Déterminé est l'équivalent mental de l'Invulnérabilité, protégeant la psyché de toute atteinte.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Confère une <b>immunité complète</b> temporaire aux dégâts sur le Moral ou la Folie."
+          ]
+        }
+      ],
+      "links": ["conditions.invulnerable"],
+      "tags": ["déterminé", "immunité", "moral", "folie", "mental"]
+    },
+    {
+      "id": "conditions.sep.deplacement",
+      "type": "separator",
+      "title": "Déplacement"
+    },
+    {
+      "id": "conditions.hastened",
+      "title": "Accéléré",
+      "subtitle": "Distance effective divisée par 2, +1 Action max",
+      "icon": "fa-solid fa-forward-fast",
+      "summary": "Distance effective réduite de moitié pour le Déplacement. Maximum d'Action augmenté de +1.",
+      "description": "L'opposé du Ralenti, l'Accéléré représente une créature magiquement ou physiquement boostée.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Distance effective de Déplacement <b>divisée par deux</b>.",
+            "Maximum d'<b>Action +1</b> par tour."
+          ]
+        }
+      ],
+      "links": ["conditions.slowed", "combat.movement"],
+      "tags": ["accéléré", "déplacement", "action", "vitesse"]
+    },
+    {
+      "id": "conditions.prone",
+      "title": "À terre",
+      "subtitle": "Renversé ou au sol",
+      "icon": "fa-solid fa-person-falling",
+      "summary": "Attaques de mêlée reçues +1 Faveur. Attaques à distance reçues +1 Fléau. Attaques effectuées +1 Fléau. Se relever coûte une action de Déplacement.",
+      "description": "Une créature renversée ou s'étant volontairement jetée au sol est À terre.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Situation", "Effet"],
+          "rows": [
+            ["Attaques de mêlée reçues", "+1 Faveur (pour l'attaquant)"],
+            ["Attaques à distance reçues", "+1 Fléau (pour l'attaquant)"],
+            ["Attaques effectuées par la créature", "+1 Fléau"],
+            ["Déplacement gratuit", "Impossible"],
+            ["Se relever", "1 action de Déplacement"]
+          ]
+        }
+      ],
+      "links": ["combat.movement", "conditions.slowed"],
+      "tags": ["à terre", "prone", "mêlée", "distance", "déplacement"]
+    },
+    {
+      "id": "conditions.restrained",
+      "title": "Entravé",
+      "subtitle": "Déplacement impossible",
+      "icon": "fa-solid fa-link",
+      "summary": "Impossible d'effectuer une action impliquant un Déplacement. +2 Fléaux aux jets d'attaque.",
+      "description": "Une créature Entravée est clouée sur place et peine à attaquer efficacement.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Impossible d'effectuer toute action avec l'étiquette <b>Déplacement</b>.",
+            "<b>+2 Fléaux</b> aux jets d'attaque."
+          ]
+        }
+      ],
+      "links": ["conditions.slowed", "conditions.paralyzed"],
+      "tags": ["entravé", "déplacement", "fléau", "attaque"]
+    },
+    {
+      "id": "conditions.slowed",
+      "title": "Ralenti",
+      "subtitle": "Distance effective doublée",
+      "icon": "fa-solid fa-person-walking-arrow-right",
+      "summary": "La distance effective est doublée pour calculer le coût de Déplacement. Pas de Déplacement gratuit.",
+      "description": "Une créature Ralentie treats la distance comme doublée pour le calcul du coût de l'action de Déplacement.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "La distance effective est <b>doublée</b> pour calculer le coût de Déplacement.",
+            "Perd l'accès au <b>Déplacement gratuit</b>."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Une créature Ralentie ne peut pas bénéficier du Déplacement gratuit."
+        }
+      ],
+      "links": ["conditions.restrained", "combat.movement"],
+      "tags": ["ralenti", "déplacement", "vitesse"]
+    },
+    {
+      "id": "conditions.sep.actions",
+      "type": "separator",
+      "title": "Actions"
+    },
+    {
+      "id": "conditions.asleep",
+      "title": "Assoupi",
+      "subtitle": "Neutralisé, réveillé par les dégâts",
+      "icon": "fa-solid fa-moon",
+      "summary": "Traité comme Neutralisé. Tout dégât de Santé ou de Lésions réveille immédiatement la créature. Immunisé aux dégâts de Moral pendant le sommeil.",
+      "description": "Une créature Assoupie est totalement unconscious mais réagit immédiatement aux blessures physiques.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Traitée comme <b>Neutralisée</b>.",
+            "Tout dégât de <b>Santé ou Lésions</b> réveille immédiatement.",
+            "Immunisée aux dégâts de <b>Moral</b> pendant le sommeil (sauf indication contraire)."
+          ]
+        }
+      ],
+      "links": ["conditions.incapacitated"],
+      "tags": ["assoupi", "sommeil", "neutralisé", "moral", "réveil"]
+    },
+    {
+      "id": "conditions.disoriented",
+      "title": "Désorienté",
+      "subtitle": "+1 Focus à toutes les actions en nécessitant",
+      "icon": "fa-solid fa-arrows-spin",
+      "summary": "Le coût en Focus de toutes les actions est augmenté de +1.",
+      "description": "La Désorientation perturbe la concentration, rendant les exploits magiques et héroïques plus coûteux.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Le coût en <b>Focus</b> de toutes les actions est <b>augmenté de +1</b>."
+          ]
+        }
+      ],
+      "links": ["conditions.confused"],
+      "tags": ["désorienté", "focus", "concentration", "coût"]
+    },
+    {
+      "id": "conditions.paralyzed",
+      "title": "Paralysé",
+      "subtitle": "Aucune Action possible",
+      "icon": "fa-solid fa-ban",
+      "summary": "Impossible d'effectuer des Actions. La cible est Neutralisée jusqu'à la fin de la paralysie.",
+      "description": "Une créature Paralysée ne peut absolument rien faire.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "<b>Impossible d'effectuer</b> la moindre Action.",
+            "Entraîne automatiquement l'état <b>Neutralisé</b>."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "La Paralysie entraîne automatiquement l'état Neutralisé pendant toute sa durée."
+        }
+      ],
+      "links": ["conditions.incapacitated", "conditions.stunned"],
+      "tags": ["paralysé", "neutralisé", "action"]
+    },
+    {
+      "id": "conditions.staggered",
+      "title": "Ébranlé",
+      "subtitle": "Maximum d'Action −2",
+      "icon": "fa-solid fa-dizzy",
+      "summary": "Le maximum d'Action est réduit de 2.",
+      "description": "Une créature Ébranlée est déstabilisée et dispose de moins d'Action par tour. Causé typiquement par des dégâts Contondants critiques.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Le maximum d'<b>Action est réduit de 2</b> par tour."
+          ]
+        }
+      ],
+      "links": ["conditions.stunned"],
+      "tags": ["ébranlé", "action", "maximum", "contondant"]
+    },
+    {
+      "id": "conditions.stunned",
+      "title": "Étourdi",
+      "subtitle": "Maximum d'Action −4",
+      "icon": "fa-solid fa-star-of-life",
+      "summary": "Le maximum d'Action est réduit de 4.",
+      "description": "Une créature Étourdie dispose de bien moins de ressources pour agir en combat.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Le maximum d'<b>Action est réduit de 4</b> par tour."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "L'état Ébranlé réduit le maximum d'Action de 2 seulement. L'Étourdi est donc bien plus sévère."
+        }
+      ],
+      "links": ["conditions.staggered", "conditions.incapacitated"],
+      "tags": ["étourdi", "action", "maximum"]
+    },
+    {
+      "id": "conditions.sep.defenses",
+      "type": "separator",
+      "title": "Défenses"
+    },
+    {
+      "id": "conditions.enraged",
+      "title": "Enragé",
+      "subtitle": "Blocage et Parade nuls, Focus impossible",
+      "icon": "fa-solid fa-face-angry",
+      "summary": "Les défenses de Blocage et de Parade sont nulles. Impossible de dépenser du Focus.",
+      "description": "Une créature Enragée combat avec une fougue incontrôlée, abandonnant toute défense réfléchie.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Défenses de <b>Blocage</b> et de <b>Parade</b> deviennent nulles.",
+            "Impossible de <b>dépenser du Focus</b>."
+          ]
+        }
+      ],
+      "links": ["combat.defenses"],
+      "tags": ["enraged", "blocage", "parade", "focus", "furie"]
+    },
+    {
+      "id": "conditions.exhausted",
+      "title": "Exténué",
+      "subtitle": "Esquive et Réflexe divisés par 2",
+      "icon": "fa-solid fa-battery-empty",
+      "summary": "Les défenses d'Esquive et de Réflexe sont réduites de moitié.",
+      "description": "Une créature Exténuée ne peut plus se défendre activement, son corps n'ayant plus les ressources nécessaires.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Les défenses d'<b>Esquive</b> et de <b>Réflexe</b> sont <b>réduites de moitié</b>."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "L'Exténuation peut résulter d'une privation de sommeil non traitée."
+        }
+      ],
+      "links": ["combat.defenses"],
+      "tags": ["exténué", "esquive", "réflexe", "défense", "fatigue"]
+    },
+    {
+      "id": "conditions.exposed",
+      "title": "Exposé",
+      "subtitle": "Défense d'Armure −2",
+      "icon": "fa-solid fa-shield-virus",
+      "summary": "La défense d'Armure de base souffre d'une pénalité de −2.",
+      "description": "Une créature Exposée présente une faille dans sa protection, rendue vulnérable par une attaque ou un effet.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Applique une pénalité de <b>−2 à la défense d'Armure</b> de base."
+          ]
+        }
+      ],
+      "links": ["combat.defenses"],
+      "tags": ["exposé", "armure", "défense", "pénalité"]
+    },
+    {
+      "id": "conditions.flanked",
+      "title": "Débordé",
+      "subtitle": "Trop d'ennemis engagés simultanément",
+      "icon": "fa-solid fa-circle-exclamation",
+      "summary": "Engagé par plus d'ennemis que son Score d'Engagement. Chaque palier de Débordement confère +1 Faveur aux attaques de mêlée contre cette créature.",
+      "description": "Le Débordement pénalise les créatures encerclées. Les alliés adjacents peuvent compenser ce désavantage.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Palier = Ennemis engagés − Score d'Engagement − Bonus d'engagement des alliés. Chaque palier = <b>+1 Faveur</b> aux jets d'attaque de mêlée des adversaires."
+        },
+        {
+          "type": "list",
+          "title": "Effets supplémentaires",
+          "items": [
+            "Ne peut pas contribuer au Débordement si <b>Démoralisé</b>.",
+            "Ne peut pas effectuer de Frappe réactive si <b>Débordé</b> par d'autres adversaires."
+          ]
+        }
+      ],
+      "links": ["combat.engagement"],
+      "tags": ["débordé", "engagement", "faveur", "mêlée", "encerclé"]
+    },
+    {
+      "id": "conditions.guarded",
+      "title": "Protégé",
+      "subtitle": "+1 Fléau aux attaques reçues",
+      "icon": "fa-solid fa-shield",
+      "summary": "Les attaques contre la créature Protégée subissent +1 Fléau.",
+      "description": "La condition Protégée représente un avantage défensif temporaire conféré par un terrain ou une capacité.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Toutes les attaques ciblant la créature subissent <b>+1 Fléau</b>."
+          ]
+        }
+      ],
+      "links": ["combat.defenses", "combat.cover"],
+      "tags": ["protégé", "fléau", "défense", "terrain"]
+    },
+    {
+      "id": "conditions.incapacitated",
+      "title": "Neutralisé",
+      "subtitle": "Incapable d'agir",
+      "icon": "fa-solid fa-circle-xmark",
+      "summary": "Défenses d'Esquive, Blocage et Parade nulles. Plus de bonus de Caractéristique aux défenses non physiques. Ne peut pas aider ses alliés.",
+      "description": "Quand une créature est totalement incapable d'agir, elle est Neutralisée.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Défenses d'<b>Esquive</b>, <b>Blocage</b> et <b>Parade</b> = 0.",
+            "Plus de bonus de <b>Caractéristique</b> aux défenses de Fortitude, Volonté et Réflexe.",
+            "Ne peut pas contribuer au <b>Débordement</b> ni aider ses alliés.",
+            "Placé à l'<b>Initiative 0</b>."
+          ]
+        }
+      ],
+      "links": ["conditions.paralyzed", "conditions.dead"],
+      "tags": ["neutralisé", "défense", "esquive", "incapacité"]
+    },
+    {
+      "id": "conditions.sep.perception",
+      "type": "separator",
+      "title": "Perception"
+    },
+    {
+      "id": "conditions.blinded",
+      "title": "Aveuglé",
+      "subtitle": "Perception visuelle nulle",
+      "icon": "fa-solid fa-eye-slash",
+      "summary": "Impossible de voir. +2 Fléaux aux attaques effectuées, +2 Faveurs aux attaques reçues. Actions nécessitant une cible visible impossibles.",
+      "description": "Une créature Aveuglée ne peut pas utiliser de perception basée sur la lumière.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Situation", "Effet"],
+          "rows": [
+            ["Attaques effectuées", "+2 Fléaux"],
+            ["Attaques reçues", "+2 Faveurs (pour l'attaquant)"],
+            ["Actions nécessitant la vue", "Impossible"]
+          ]
+        }
+      ],
+      "links": ["conditions.deafened"],
+      "tags": ["aveuglé", "perception", "fléau", "faveur"]
+    },
+    {
+      "id": "conditions.burrowing",
+      "title": "Enfoui",
+      "subtitle": "Totalement submergé dans le sol",
+      "icon": "fa-solid fa-hill-rockslide",
+      "summary": "Une créature enfouie ne peut ni voir ni être vue par une perception basée sur la lumière.",
+      "description": "L'état Enfoui représente une créature se déplaçant dans la terre ou ayant plongé sous la surface.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Rend la créature <b>incapable de voir ou d'être vue</b> par une perception basée sur la lumière."
+          ]
+        }
+      ],
+      "links": [],
+      "tags": ["enfoui", "sol", "vue", "perception", "lumière"]
+    },
+    {
+      "id": "conditions.deafened",
+      "title": "Assourdi",
+      "subtitle": "Perception auditive nulle",
+      "icon": "fa-solid fa-ear-deaf",
+      "summary": "Impossible d'utiliser la perception sonore. Immunisé aux actions avec l'étiquette Auditif.",
+      "description": "Une créature Assourdie ne peut ni entendre ni être affectée par les effets sonores.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Ne peut pas utiliser de <b>perception basée sur le son</b>.",
+            "Immunisé aux actions avec l'étiquette <b>Auditif</b>."
+          ]
+        }
+      ],
+      "links": ["conditions.blinded"],
+      "tags": ["assourdi", "son", "auditif", "perception"]
+    },
+    {
+      "id": "conditions.invisible",
+      "title": "Invisible",
+      "subtitle": "Indétectable visuellement",
+      "icon": "fa-solid fa-ghost",
+      "summary": "Une créature Invisible ne peut pas être détectée par la vue.",
+      "description": "L'invisibilité empêche la détection visuelle, conférant des avantages offensifs et défensifs significatifs.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Rend la créature <b>complètement indétectable</b> par la vue."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Des règles avancées pour l'invisibilité (furtivité, détection alternative) seront développées dans une mise à jour future."
+        }
+      ],
+      "links": ["conditions.blinded"],
+      "tags": ["invisible", "vue", "détection", "furtivité"]
+    },
+    {
+      "id": "conditions.silenced",
+      "title": "Aphone",
+      "subtitle": "Aucune action Vocable ni Inflexion",
+      "icon": "fa-solid fa-comment-slash",
+      "summary": "Impossible d'utiliser une action avec l'étiquette Vocable ou de lancer un sort incluant une Inflexion.",
+      "description": "Un personnage Aphone ne peut ni parler ni vocaliser, ce qui bloque une partie de ses capacités magiques.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Impossible d'effectuer une action avec l'étiquette <b>Vocable</b>.",
+            "Impossible de lancer un sort incluant une <b>Inflexion</b> métamagique."
+          ]
+        }
+      ],
+      "links": ["spellcraft.inflections", "conditions.suffocating"],
+      "tags": ["aphone", "vocable", "inflexion", "silence", "magie"]
+    },
+    {
+      "id": "conditions.unaware",
+      "title": "Distrait",
+      "subtitle": "Initiative 1, pas de Réaction",
+      "icon": "fa-solid fa-eye-low-vision",
+      "summary": "Une créature Distraite agit à l'Initiative 1 et ne peut pas effectuer de Réactions.",
+      "description": "Un personnage Distrait est pris par surprise ou pas conscient de la menace, le rendant très vulnérable en début de combat.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Agit au combat avec une <b>Initiative de 1</b>.",
+            "Ne peut pas effectuer de <b>Réactions</b>.",
+            "Une fois la condition levée, l'Initiative est relancée normalement."
+          ]
+        }
+      ],
+      "links": ["combat.initiative", "combat.reactions"],
+      "tags": ["distrait", "surprise", "initiative", "réaction"]
+    },
+    {
+      "id": "conditions.sep.dot",
+      "type": "separator",
+      "title": "Dégâts sur la durée"
+    },
+    {
+      "id": "conditions.bleeding",
+      "title": "Ensanglanté",
+      "subtitle": "Dégâts Perforant/Tranchant récurrents",
+      "icon": "fa-solid fa-droplet",
+      "summary": "Subit des dégâts Perforant ou Tranchant (selon le déclencheur) à la Santé au début de chaque tour suivant.",
+      "description": "Condition récurrente causée par une blessure ouverte suite à un Coup critique Perforant ou Tranchant.",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts continus <b>Perforants ou Tranchants</b> à la Santé au début de chaque tour."
+          ]
+        }
+      ],
+      "links": ["conditions.poisoned", "conditions.burning"],
+      "tags": ["saignement", "dégâts", "santé", "perforant", "tranchant"]
+    },
+    {
+      "id": "conditions.burning",
+      "title": "Enflammé",
+      "subtitle": "Dégâts de Feu récurrents (Santé + Moral)",
+      "icon": "fa-solid fa-fire",
+      "summary": "Subit des dégâts de Feu à la Santé ET au Moral au début de chaque tour suivant.",
+      "description": "Condition récurrente causée par des dégâts de Feu, généralement suite à un Coup critique.",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts de <b>Feu</b> récurrents appliqués simultanément à la <b>Santé ET au Moral</b> au début de chaque tour."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "L'Enflammé est l'une des rares conditions de dégâts sur la durée à affecter à la fois la Santé ET le Moral (de même que l'Irradié)."
+        }
+      ],
+      "links": ["conditions.freezing", "conditions.poisoned"],
+      "tags": ["feu", "dégâts", "santé", "moral", "durée"]
+    },
+    {
+      "id": "conditions.confused",
+      "title": "Confus",
+      "subtitle": "Dégâts Psychiques au Moral + Désorienté",
+      "icon": "fa-solid fa-head-side-virus",
+      "summary": "Subit des dégâts Psychiques au Moral au début de chaque tour et est également Désorienté.",
+      "description": "La Confusion combine dégâts permanents sur le Moral et perturbation de la concentration.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets combinés",
+          "items": [
+            "Dégâts <b>Psychiques</b> au <b>Moral</b> au début de chaque tour.",
+            "Également <b>Désorienté</b> (+1 Focus à toutes les actions en nécessitant)."
+          ]
+        }
+      ],
+      "links": ["conditions.disoriented", "conditions.broken"],
+      "tags": ["confus", "psychique", "moral", "désorienté", "focus"]
+    },
+    {
+      "id": "conditions.corroding",
+      "title": "Corrodé",
+      "subtitle": "Dégâts d'Acide récurrents",
+      "icon": "fa-solid fa-flask-vial",
+      "summary": "Subit des dégâts d'Acide à la Santé au début de chaque tour suivant.",
+      "description": "Condition récurrente causée par des dégâts d'Acide critiques.",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts d'<b>Acide</b> continus à la Santé au début de chaque tour."
+          ]
+        }
+      ],
+      "links": ["conditions.burning"],
+      "tags": ["acide", "corrodé", "dégâts", "santé", "durée"]
+    },
+    {
+      "id": "conditions.decaying",
+      "title": "Putréfié",
+      "subtitle": "Dégâts de Corruption récurrents",
+      "icon": "fa-solid fa-bacterium",
+      "summary": "Subit des dégâts de Corruption à la Santé au début de chaque tour suivant.",
+      "description": "Condition récurrente causée par des dégâts de Corruption (type spirituel).",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts de <b>Corruption</b> continus à la Santé au début de chaque tour."
+          ]
+        }
+      ],
+      "links": ["conditions.burning"],
+      "tags": ["corruption", "putréfié", "dégâts", "santé", "durée"]
+    },
+    {
+      "id": "conditions.entropy",
+      "title": "Dérangé",
+      "subtitle": "Dégâts de Vide à la Santé + Paniqué",
+      "icon": "fa-solid fa-infinity",
+      "summary": "Subit des dégâts de Vide à la Santé au début de chaque tour et est également Paniqué.",
+      "description": "Le Dérangement combine une attrition physique et un blocage de la récupération de Moral.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets combinés",
+          "items": [
+            "Dégâts de <b>Vide</b> à la <b>Santé</b> au début de chaque tour.",
+            "Également <b>Paniqué</b> (impossible de récupérer du Moral ou de soigner la Folie)."
+          ]
+        }
+      ],
+      "links": ["conditions.frightened"],
+      "tags": ["vide", "dérangé", "santé", "paniqué", "moral"]
+    },
+    {
+      "id": "conditions.freezing",
+      "title": "Gelé",
+      "subtitle": "Dégâts de Froid récurrents",
+      "icon": "fa-solid fa-snowflake",
+      "summary": "Subit des dégâts de Froid à la Santé au début de chaque tour suivant.",
+      "description": "Condition récurrente causée par des dégâts de Froid.",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts de <b>Froid</b> continus à la Santé au début de chaque tour."
+          ]
+        }
+      ],
+      "links": ["conditions.burning", "conditions.poisoned"],
+      "tags": ["froid", "dégâts", "santé", "durée", "gelé"]
+    },
+    {
+      "id": "conditions.inspired",
+      "title": "Inspiré",
+      "subtitle": "Récupération graduelle de Moral",
+      "icon": "fa-solid fa-face-smile-beam",
+      "summary": "Recouvre une quantité définie de Moral au début de chaque tour.",
+      "description": "L'état Inspiré représente un regain de confiance ou un soutien moral actif, restaurant le Moral progressivement.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "<b>Restaure progressivement</b> une quantité définie de Moral au début de chaque tour."
+          ]
+        }
+      ],
+      "links": ["conditions.mending"],
+      "tags": ["inspiré", "moral", "ralliement", "régénération"]
+    },
+    {
+      "id": "conditions.irradiated",
+      "title": "Irradié",
+      "subtitle": "Dégâts Radiants (Santé + Moral)",
+      "icon": "fa-solid fa-radiation",
+      "summary": "Subit des dégâts Radiants à la Santé et au Moral au début de chaque tour suivant.",
+      "description": "Comme l'Enflammé, l'Irradié est l'une des rares conditions à affecter deux ressources simultanément.",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts <b>Radiants</b> continus à la fois à la <b>Santé ET au Moral</b> au début de chaque tour."
+          ]
+        }
+      ],
+      "links": ["conditions.burning"],
+      "tags": ["radiant", "irradié", "santé", "moral", "durée"]
+    },
+    {
+      "id": "conditions.mending",
+      "title": "Vivifié",
+      "subtitle": "Récupération graduelle de Santé",
+      "icon": "fa-solid fa-heart-pulse",
+      "summary": "Recouvre une quantité définie de Santé au début de chaque tour.",
+      "description": "La condition Vivifié représente une guérison magique ou naturelle en cours, restaurant progressivement la Santé.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "<b>Restaure progressivement</b> une quantité définie de Santé au début de chaque tour."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "La quantité de Santé récupérée est définie par la valeur de l'effet Vivifié correspondant."
+        }
+      ],
+      "links": ["conditions.inspired"],
+      "tags": ["vivifié", "santé", "guérison", "régénération"]
+    },
+    {
+      "id": "conditions.poisoned",
+      "title": "Empoisonné",
+      "subtitle": "Dégâts de Poison récurrents",
+      "icon": "fa-solid fa-biohazard",
+      "summary": "Subit des dégâts de Poison à la Santé au début de chaque tour suivant.",
+      "description": "Condition récurrente causée par des dégâts de Poison.",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts de <b>Poison</b> continus à la Santé au début de chaque tour."
+          ]
+        }
+      ],
+      "links": ["conditions.burning", "conditions.bleeding"],
+      "tags": ["poison", "dégâts", "santé", "durée"]
+    },
+    {
+      "id": "conditions.suffocating",
+      "title": "Asphyxié",
+      "subtitle": "Dégâts de Vide aux Lésions + Folie + Aphone",
+      "icon": "fa-solid fa-lungs",
+      "summary": "Subit des dégâts de Vide aux Lésions et à la Folie au début de chaque tour. Est également Aphone.",
+      "description": "L'Asphyxie représente une privation d'air, causant un traumatisme pulmonaire et une panique croissante. Apparaît après 2 minutes sans respiration.",
+      "reference": "Crucible Core — Conditions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Dégâts de <b>Vide</b> aux <b>Lésions</b> et à la <b>Folie</b> au début de chaque tour.",
+            "Également <b>Aphone</b> (ne peut ni parler ni utiliser les Inflexions)."
+          ]
+        }
+      ],
+      "links": ["conditions.silenced"],
+      "tags": ["asphyxie", "vide", "lésions", "folie", "aphone", "noyade"]
+    },
+    {
+      "id": "conditions.shocked",
+      "title": "Électrocuté",
+      "subtitle": "Dégâts Électriques récurrents au Moral",
+      "icon": "fa-solid fa-bolt-lightning",
+      "summary": "Subit des dégâts Électriques au Moral au début de chaque tour suivant.",
+      "description": "Particularité notable : l'Électrocuté affecte le Moral plutôt que la Santé.",
+      "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Effets",
+          "items": [
+            "Inflige des dégâts <b>Électriques</b> continus appliqués au <b>Moral</b> au début de chaque tour."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Contrairement à la plupart des dégâts sur la durée physiques, l'Électrocuté cible le Moral."
+        }
+      ],
+      "links": ["conditions.burning"],
+      "tags": ["électrique", "moral", "dégâts", "durée", "choc"]
+    }
+  ]
+}

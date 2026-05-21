@@ -1,0 +1,360 @@
+{
+  "id": "spellcraft",
+  "label": "Sorcellerie",
+  "icon": "ra ra-lightning-trio",
+  "color": "#2980b9",
+  "description": "La Sorcellerie compose des sorts en combinant une Rune (l'essence), un Signe (la forme) et optionnellement une Inflexion (la modification).",
+  "rules": [
+    {
+      "id": "spellcraft.sep.core",
+      "type": "separator",
+      "title": "Fondations de la Magie"
+    },
+    {
+      "id": "spellcraft.overview",
+      "title": "Composition de sort",
+      "subtitle": "Rune + Signe [+ Inflexion]",
+      "icon": "fa-solid fa-wand-magic-sparkles",
+      "summary": "Chaque sort est composed d'une Rune et d'un Signe, avec une Inflexion optionnelle. La combinaison détermine le coût, la portée, les dégâts et la cible.",
+      "description": "La Sorcellerie est un système génératif permettant de créer des sorts variés à partir d'un nombre limité de composantes apprises.",
+      "reference": "Crucible Core — Aperçu de la Sorcellerie",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Les trois composantes",
+          "items": [
+            "<b>Rune</b> (sujet) : l'essence magique. Ex. Flamme, Givre, Âme. Détermine le type de dégâts, la défense ciblée et la ressource affectée.",
+            "<b>Signe</b> (verbe) : la forme du sort. Ex. Flèche, Contact, Influence. Détermine la portée, le ciblage, les dégâts de base et le coût.",
+            "<b>Inflexion</b> (complément, optionnel) : modifie le sort. Ex. Hâter, Pousser, Rappeler. Nécessite de pouvoir parler (étiquette Vocable)."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Pensez au sort comme à une phrase : Rune = sujet, Signe = verbe, Inflexion = complément. Exemple : Hâter : Flèche – Flamme. Un sorcier connaissant 3 Runes, 3 Signes et 1 Inflexion a accès à 18 combinaisons différentes."
+        }
+      ],
+      "links": ["spellcraft.runes", "spellcraft.gestures", "spellcraft.inflections"],
+      "tags": ["sort", "composition", "rune", "signe", "inflexion"]
+    },
+    {
+      "id": "spellcraft.spell-cost",
+      "title": "Coût des sorts",
+      "subtitle": "Action + Focus, variable selon composantes",
+      "icon": "fa-solid fa-coins",
+      "summary": "Chaque sort a un coût en Action et en Focus déterminé par la combinaison de Rune, Signe et Inflexion choisie.",
+      "description": "Le Focus est la ressource principale de la magie. Il ne se régénère pas naturellement en combat et doit être géré avec soin.",
+      "reference": "Crucible Core — Le coût de la magie",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Le coût de base est défini par le <b>Signe</b>. La Rune et l'Inflexion peuvent modifier ce coût. Le Sort iconique et les sorts façonnés suivent les mêmes principes."
+        },
+        {
+          "type": "list",
+          "title": "Signe Contact (sort de départ)",
+          "items": [
+            "Portée : <b>1 pied</b> (corps à corps)",
+            "Dégâts de base : <b>6</b>",
+            "Coût : <b>2 Actions + 1 Focus</b>",
+            "Caractéristique : <b>Dextérité</b>",
+            "Nécessite : <b>1 main libre</b>"
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "Le Focus se renouvelle lors d'une Récupération ou d'un Repos — pas naturellement en combat. Gérer son Focus est essentiel pour les lanceurs de sorts."
+        }
+      ],
+      "links": ["spellcraft.overview", "spellcraft.gestures", "combat.rest-recovery"],
+      "tags": ["focus", "coût", "action", "sort", "récupération"]
+    },
+    {
+      "id": "spellcraft.sep.components",
+      "type": "separator",
+      "title": "Runes, Signes et Inflexions"
+    },
+    {
+      "id": "spellcraft.runes",
+      "title": "Runes",
+      "subtitle": "L'essence du sort",
+      "icon": "fa-solid fa-yin-yang",
+      "summary": "Les Runes déterminent le type de dégâts, la défense ciblée, la ressource affectée et la caractéristique d'évolution du sort.",
+      "description": "Il existe 12 Runes, réparties en 6 Runes du Chaos et 6 Runes de l'Ordre. Chaque Rune s'oppose à une autre.",
+      "reference": "Crucible Core — Runes",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Rune", "Axiome", "Type de dégâts", "Défense ciblée", "Opposition"],
+          "rows": [
+            ["Flamme", "Chaos", "Feu", "Réflexe", "Givre"],
+            ["Givre", "Ordre", "Froid", "Fortitude", "Flamme"],
+            ["Foudre", "Chaos", "Électrique", "Fortitude", "Terre"],
+            ["Terre", "Ordre", "Acide", "Réflexe", "Foudre"],
+            ["Illusion", "Chaos", "Psychique", "Volonté", "Illumination"],
+            ["Illumination", "Ordre", "Radiant", "Réflexe", "Illusion"],
+            ["Néant", "Chaos", "Vide", "Volonté", "Âme"],
+            ["Âme", "Ordre", "Psychique*", "Volonté", "Néant"],
+            ["Contrôle", "Ordre", "Psychique", "Volonté", "Kinésie"],
+            ["Kinésie", "Chaos", "Physique", "Physique", "Contrôle"],
+            ["Vie", "Chaos", "Poison*", "Fortitude", "Mort"],
+            ["Mort", "Ordre", "Corruption", "Fortitude", "Vie"]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "* Âme et Vie sont principalement utilisées pour la Restauration (soins) plutôt que pour infliger des dégâts."
+        },
+        {
+          "type": "list",
+          "title": "Affinités avec les types de créatures",
+          "items": [
+            "Flamme → Dragons, Élémentaires de feu",
+            "Givre → Géants, Élémentaires de givre",
+            "Foudre → Artificiels, Élémentaires de tempête",
+            "Terre → Vases, Élémentaires de terre",
+            "Illusion → Fées",
+            "Illumination → Célestes",
+            "Néant → Extérieurs",
+            "Âme → Humanoïdes",
+            "Contrôle → Fiélons",
+            "Kinésie → Monstruosités",
+            "Vie → Plantes, Bêtes",
+            "Mort → Morts-vivants"
+          ]
+        }
+      ],
+      "links": ["spellcraft.overview", "spellcraft.gestures"],
+      "tags": ["rune", "feu", "froid", "type de dégâts", "défense", "opposition"]
+    },
+    {
+      "id": "spellcraft.gestures",
+      "title": "Signes",
+      "subtitle": "La forme du sort",
+      "icon": "fa-solid fa-hand-sparkles",
+      "summary": "Les Signes déterminent la portée, le ciblage, le coût et les dégâts de base. Tout lanceur connaissant une Rune a automatiquement accès au Signe Contact.",
+      "description": "Les Signes sont les composantes physiques et somatiques du sort. Elles définissent comment la Rune se manifeste dans le monde.",
+      "reference": "Crucible Core — Signes",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Signe de départ : Contact (acquis automatiquement)",
+          "items": [
+            "Portée : <b>1 pied</b> (corps à corps)",
+            "Dégâts de base : <b>6</b>",
+            "Coût : <b>2 Actions + 1 Focus</b>",
+            "Caractéristique : <b>Dextérité</b>",
+            "Nécessite : <b>1 Main libre</b>"
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Signes de Palier 1 (niveaux 1–5)",
+          "items": [
+            "<b>Flèche</b> : projectile unique, portée 10 cases.",
+            "<b>Aspect</b> : améliore temporairement soi-même.",
+            "<b>Créer</b> : crée un objet ou une substance.",
+            "<b>Éventail</b> : zone en arc large (210°).",
+            "<b>Influence</b> : affecte l'esprit ou le comportement d'une cible.",
+            "<b>Rayon</b> : ligne droite depuis le lanceur.",
+            "<b>Sens</b> : perceptions magiques étendues.",
+            "<b>Pas</b> : téléportation courte ou déplacement magique.",
+            "<b>Frappe</b> : attaque de mêlée magique renforcée.",
+            "<b>Rempart</b> : crée une barrière ou zone protectrice."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Signes de Palier 2 (niveaux 6–11)",
+          "items": [
+            "<b>Aura</b> : zone autour du lanceur, effet continu.",
+            "<b>Explosion</b> : zone circulaire centrée sur un point.",
+            "<b>Cône</b> : zone en cône étroit (60°).",
+            "<b>Invocation</b> : fait apparaître une créature.",
+            "<b>Pulsion</b> : onde centrée sur le lanceur.",
+            "<b>Sursaut</b> : effet puissant à déclenchement rapide."
+          ]
+        }
+      ],
+      "links": ["spellcraft.runes", "spellcraft.inflections"],
+      "tags": ["signe", "contact", "portée", "dégâts de base", "focus", "palier"]
+    },
+    {
+      "id": "spellcraft.inflections",
+      "title": "Inflexions",
+      "subtitle": "Modificateurs verbaux optionnels",
+      "icon": "fa-solid fa-microphone",
+      "summary": "Les Inflexions modifient les effets du sort, en amplifiant ou substituant certaines propriétés. Elles nécessitent la capacité de parler.",
+      "description": "Les Inflexions sont des composantes verbales optionnelles qui altèrent presque toute propriété que la Rune ou le Signe confèrent à un sort.",
+      "reference": "Crucible Core — Inflexions",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Inflexions de Palier 1 (niveaux 1–6)",
+          "items": [
+            "<b>Composer</b> : combine deux effets de sort.",
+            "<b>Déterminer</b> : cible spécifiquement un aspect précis.",
+            "<b>Esquiver</b> : réduit l'exposition du lanceur.",
+            "<b>Étendre</b> : augmente la portée ou la durée.",
+            "<b>Nier</b> : annule ou supprime un effet.",
+            "<b>Attirer</b> : déplace la cible vers le lanceur.",
+            "<b>Pousser</b> : déplace la cible à l'opposé du lanceur.",
+            "<b>Hâter</b> : réduit le coût en Action du sort."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Inflexions de Palier 2 (niveaux 7–12)",
+          "items": [
+            "<b>Remodeler</b> : modifie la forme ou la zone d'effet."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "Une créature Aphone ne peut pas utiliser d'Inflexion. Les Inflexions portent l'étiquette Vocable."
+        }
+      ],
+      "links": ["spellcraft.overview", "conditions.silenced"],
+      "tags": ["inflexion", "vocable", "modification", "sort", "palier", "aphone"]
+    },
+    {
+      "id": "spellcraft.sep.resolution",
+      "type": "separator",
+      "title": "Ciblage et Attaques"
+    },
+    {
+      "id": "spellcraft.targeting",
+      "title": "Types de ciblage des sorts",
+      "subtitle": "Zone, cible unique, personnel…",
+      "icon": "fa-solid fa-crosshairs",
+      "summary": "Chaque Signe définit un type de ciblage précis qui détermine quelles créatures sont affectées et selon quelle forme.",
+      "description": "Comprendre les types de ciblage est essentiel pour maximiser l'efficacité des sorts et savoir quand la Couverture s'applique.",
+      "reference": "Crucible Core — Types de ciblage",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Type", "Description", "Couverture ignorée ?"],
+          "rows": [
+            ["Sélectif", "Nombre défini de cibles individuelles dans la portée.", "Non"],
+            ["Rayon", "Ligne droite depuis le lanceur.", "Non"],
+            ["Cône", "Zone de 60° depuis le lanceur.", "Oui"],
+            ["Éventail", "Zone de 210° depuis le lanceur.", "Oui"],
+            ["Explosion", "Zone circulaire autour d'un point choisi.", "Oui"],
+            ["Onde (Pulsion)", "Zone circulaire centrée sur le lanceur.", "Oui"],
+            ["Aura", "Zone permanente autour du lanceur.", "Oui"],
+            ["Personnel", "Le lanceur uniquement.", "—"],
+            ["Invocation", "Zone rectangulaire pour placer des créatures.", "—"]
+          ]
+        }
+      ],
+      "links": ["spellcraft.gestures", "combat.cover"],
+      "tags": ["ciblage", "zone", "cône", "explosion", "onde", "sélectif", "couverture"]
+    },
+    {
+      "id": "spellcraft.spell-attack",
+      "title": "Jets d'attaque de sort",
+      "subtitle": "Même mécanique que les armes",
+      "icon": "fa-solid fa-hand-holding-magic",
+      "summary": "Les sorts offensifs utilisent un jet d'attaque standard, avec des caractéristiques déterminées par la Rune et le Signe utilisés.",
+      "description": "Le même système de Surplus et de dégâts s'applique aux sorts qu'aux attaques d'armes.",
+      "reference": "Crucible Core — Sorcellerie et jets d'attaque",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "La <b>Caractéristique d'évolution</b> d'un sort est déterminée conjointement par la Rune et le Signe. Si les deux partagent la même caractéristique, celle-ci est utilisée seule. Sinon, une formule combinée s'applique."
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Exemple : Hâter : Flèche – Flamme. Flèche et Flamme évoluent toutes deux avec l'Intellect → jet d'attaque avec Intellect seul. Résultat de 28 vs Réflexe 21 = Surplus 7 + Dégâts de base Flèche 10 = 17 dégâts de Feu."
+        }
+      ],
+      "links": ["combat.attack-roll", "spellcraft.runes", "spellcraft.gestures"],
+      "tags": ["jet d'attaque", "sort", "surplus", "dégâts", "caractéristique"]
+    },
+    {
+      "id": "spellcraft.countermagic",
+      "title": "Contre-magie",
+      "subtitle": "Annuler un sort en cours",
+      "icon": "fa-solid fa-shield-halved",
+      "summary": "Le Contre-sort est une Réaction qui tente d'annuler le sort d'un adversaire. Il nécessite une connaissance adéquate des composantes.",
+      "description": "La Contre-magie is l'art de la défense magique, opposant une sorcellerie rivale pour annuler celle d'un adversaire.",
+      "reference": "Crucible Core — Contre-magie",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Utiliser un Contre-sort est une <b>Réaction</b>. Plus la connaissance magique du défenseur est élevée, plus il lui est facile d'identifier les composantes du sort adverse et de construire une opposition efficace."
+        },
+        {
+          "type": "list",
+          "title": "Processus",
+          "items": [
+            "Identifier la <b>Rune</b>, le <b>Signe</b> et éventuellement l'<b>Inflexion</b> du sort en cours de lancement.",
+            "Construire une opposition en utilisant ses propres composantes connues.",
+            "En cas de doute, une magie de <b>perturbation générale</b> peut tenter d'interférer sans correspondance exacte."
+          ]
+        }
+      ],
+      "links": ["spellcraft.overview", "spellcraft.runes", "combat.reactions"],
+      "tags": ["contre-sort", "réaction", "magie", "défense", "annuler"]
+    },
+    {
+      "id": "spellcraft.sep.special",
+      "type": "separator",
+      "title": "Sorts Iconiques et Parchemins"
+    },
+    {
+      "id": "spellcraft.iconic-spells",
+      "title": "Sorts iconiques",
+      "subtitle": "Effets spéciaux hors du système façonné",
+      "icon": "fa-solid fa-scroll",
+      "summary": "Les Sorts iconiques sont des sorts uniques avec des effets spécialisés impossibles via le système de Sorts façonnés. Ils occupent des emplacements de sorts débloqués par certains talents.",
+      "description": "Les Sorts iconiques complètent la palette magique en permettant des effets narratifs ou mécaniques particuliers.",
+      "reference": "Crucible Core — Sorts iconiques",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Fonctionnement",
+          "items": [
+            "Chaque personnage commence avec <b>0 emplacement de Sort iconique</b>.",
+            "Certains talents de Sorcellerie débloquent un emplacement supplémentaire.",
+            "Un Sort iconique peut être <b>remplacé</b> lors d'une montée de niveau.",
+            "Nécessite la connaissance préalable requise pour l'apprendre."
+          ]
+        }
+      ],
+      "links": ["spellcraft.overview"],
+      "tags": ["sort iconique", "emplacement", "talent", "sorcellerie", "spécial"]
+    },
+    {
+      "id": "spellcraft.spell-scrolls",
+      "title": "Parchemins de sort",
+      "subtitle": "Composantes magiques temporaires",
+      "icon": "fa-solid fa-file-invoice",
+      "summary": "Un Parchemin de sort confère temporairement la connaissance de composantes magiques. Consommé à l'usage.",
+      "description": "Les parchemins permettent d'accéder à des composantes inconnues du lanceur pour un usage unique.",
+      "reference": "Crucible Core — Parchemins de sort",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Qualité", "Nombre de composantes"],
+          "rows": [
+            ["Raffiné", "1"],
+            ["Supérieur", "2"],
+            ["Chef-d'œuvre", "3"]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Un seul effet de parchemin peut être actif à la fois. Lire un nouveau parchemin remplace l'effet en cours. Le parchemin est consommé à l'utilisation."
+        }
+      ],
+      "links": ["spellcraft.overview", "spellcraft.runes"],
+      "tags": ["parchemin", "composante", "consommable", "magie", "temporaire"]
+    }
+  ]
+}

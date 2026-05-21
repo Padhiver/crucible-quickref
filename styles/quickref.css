@@ -1,0 +1,940 @@
+/* =============================================
+   CRUCIBLE QUICK REFERENCE — STYLES
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  /* Palette Crucible-fidèle */
+  --cqr-bg:           #0d0b0a;
+  --cqr-bg-alt:       #1c1a1a;
+  --cqr-surface:      #221e1b;
+  --cqr-surface-alt:  #2a2420;
+  --cqr-border:       #3f3128;
+  --cqr-border-soft:  rgba(63, 49, 40, 0.6);
+
+  /* Accents Crucible */
+  --cqr-accent:       #cf9356;          /* color-accent Crucible */
+  --cqr-accent-soft:  rgba(207, 147, 86, 0.12);
+  --cqr-accent-alt:   #f36739;          /* color-link-text Crucible */
+  --cqr-gold:         #d7c4a9;          /* color-secondary Crucible */
+  --cqr-gold-soft:    rgba(215, 196, 169, 0.08);
+
+  /* Textes */
+  --cqr-text:         #eee8df;          /* color-text Crucible */
+  --cqr-text-mid:     #d7c4a9;          /* color-secondary */
+  --cqr-text-muted:   #b6967c;          /* color-tertiary */
+  --cqr-text-dim:     #6b5c4e;
+
+  /* Formes */
+  --cqr-radius:       4px;
+  --cqr-radius-lg:    6px;
+  --cqr-shadow:       0 8px 40px rgba(0,0,0,0.7);
+  --cqr-shadow-sm:    0 2px 8px rgba(0,0,0,0.4);
+
+  /* Typographie – on cible les polices Crucible, avec fallbacks */
+  --cqr-font-display: "AwerySmallcaps", "Cinzel", small-caps serif;
+  --cqr-font-body:    "Vollkorn", "Crimson Pro", Georgia, serif;
+  --cqr-font-quote:   "CaslonAntique", "Crimson Pro", Georgia, serif;
+
+  --cqr-transition:   0.15s ease;
+  --cqr-cat-color:    #cf9356;
+
+  /* Header intégré */
+  --cqr-header-h:     46px;
+}
+
+/* =============================================
+   APP SHELL
+   ============================================= */
+
+#crucible-quickref-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--cqr-bg);
+  color: var(--cqr-text);
+  font-family: var(--cqr-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* =============================================
+   INTÉGRATION DE LA BARRE DE TITRE FOUNDRY
+   ─────────────────────────────────────────────
+   On superpose le window-header (transparent)
+   sur le cqr-header interne pour fusionner les
+   deux visuellement. Les boutons (minimize,
+   close…) flottent sur la droite du cqr-header.
+   ============================================= */
+
+/* ApplicationV2 */
+.crucible-quickref.application {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  border: 1px solid var(--cqr-border) !important;
+  box-shadow: var(--cqr-shadow) !important;
+}
+
+.crucible-quickref.application .window-header {
+  /* Overlaid, height 0 → visuellement invisible */
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--cqr-header-h) !important;
+  min-height: 0 !important;
+  padding: 0 10px !important;
+  background: transparent !important;
+  border: none !important;
+  z-index: 30;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  /* Transparent → ne bloque PAS les clics (recherche, etc.) */
+  pointer-events: none !important;
+}
+
+/* Masquer le titre par défaut (notre cqr-header l'affiche) */
+.crucible-quickref.application .window-header .window-title,
+.crucible-quickref.application .window-header .window-icon,
+.crucible-quickref.application .window-header h4 {
+  display: none !important;
+}
+
+/* Boutons de contrôle sur fond intégré */
+.crucible-quickref.application .window-header .header-control,
+.crucible-quickref.application .window-header button {
+  /* Réactiver les clics uniquement sur les boutons */
+  pointer-events: all !important;
+  color: var(--cqr-text-muted) !important;
+  background: rgba(13, 11, 10, 0.55) !important;
+  border: 1px solid var(--cqr-border) !important;
+  border-radius: var(--cqr-radius) !important;
+  width: 26px !important;
+  height: 26px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 11px !important;
+  cursor: pointer !important;
+  transition: all var(--cqr-transition) !important;
+  opacity: 0.75 !important;
+  margin: 0 2px !important;
+  flex: none !important;
+}
+
+.crucible-quickref.application .window-header .header-control:hover,
+.crucible-quickref.application .window-header button:hover {
+  color: var(--cqr-text) !important;
+  background: rgba(63, 49, 40, 0.85) !important;
+  border-color: var(--cqr-accent) !important;
+  opacity: 1 !important;
+}
+
+/* Le contenu prend tout l'espace (pas de décalage pour le header, on est en overlay) */
+.crucible-quickref.application .window-content {
+  flex: 1 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ApplicationV1 (compatibilité) */
+.app.window-app.crucible-quickref .window-content {
+  padding: 0;
+  overflow: hidden;
+  background: var(--cqr-bg);
+}
+
+.app.window-app.crucible-quickref .window-header {
+  background: transparent;
+  border-bottom: none;
+  position: absolute;
+  top: 0; right: 0;
+  left: 0;
+  height: var(--cqr-header-h);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+  pointer-events: none;
+}
+
+.app.window-app.crucible-quickref .window-header > * {
+  pointer-events: all;
+}
+
+.app.window-app.crucible-quickref .window-header h4 {
+  display: none;
+  pointer-events: none;
+}
+
+/* ── Header interne ── */
+
+.cqr-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  height: var(--cqr-header-h);
+  /* Laisser de la place pour les boutons de fenêtre (≈ 90px à droite) */
+  padding-right: 90px;
+  background: var(--cqr-bg-alt);
+  border-bottom: 1px solid var(--cqr-border);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+
+  /* Trait décoratif Crucible en bas du header */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cqr-accent), transparent);
+    pointer-events: none;
+  }
+}
+
+.cqr-header-title {
+  font-family: var(--cqr-font-display);
+  font-size: 13px;
+  font-weight: normal;
+  letter-spacing: 0.12em;
+  color: var(--cqr-accent);
+  text-transform: uppercase;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cqr-header-title i {
+  color: var(--cqr-accent);
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* Séparateur vertical entre titre et recherche */
+.cqr-header-title::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 18px;
+  background: var(--cqr-border);
+  margin: 0 4px;
+}
+
+.cqr-search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 260px;
+}
+
+.cqr-search-wrap i {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cqr-text-dim);
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.cqr-search {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--cqr-border);
+  border-radius: 2px;
+  color: var(--cqr-text);
+  padding: 5px 10px 5px 28px;
+  font-family: var(--cqr-font-body);
+  font-size: 13px;
+  transition: border-color var(--cqr-transition), background var(--cqr-transition);
+  outline: none;
+  box-sizing: border-box;
+  letter-spacing: 0.3px;
+}
+
+.cqr-search::placeholder {
+  color: var(--cqr-text-dim);
+  font-style: italic;
+}
+
+.cqr-search:focus {
+  border-color: var(--cqr-accent);
+  background: rgba(207,147,86,0.05);
+  box-shadow: 0 0 0 2px rgba(207,147,86,0.08);
+}
+
+/* ── Category Tabs ── */
+
+.cqr-tabs {
+  display: flex;
+  gap: 1px;
+  padding: 8px 12px 0;
+  background: var(--cqr-bg-alt);
+  border-bottom: 1px solid var(--cqr-border);
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cqr-tabs::-webkit-scrollbar { display: none; }
+
+.cqr-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--cqr-text-dim);
+  font-family: var(--cqr-font-display);
+  font-size: 10.5px;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--cqr-transition);
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.cqr-tab:hover {
+  color: var(--cqr-text-mid);
+  background: rgba(207,147,86,0.05);
+}
+
+.cqr-tab.active {
+  color: var(--cqr-cat-color, var(--cqr-accent));
+  background: rgba(13,11,10,0.6);
+  border-bottom-color: var(--cqr-cat-color, var(--cqr-accent));
+  border-left: 1px solid var(--cqr-border);
+  border-right: 1px solid var(--cqr-border);
+  border-top: 1px solid var(--cqr-border);
+}
+
+.cqr-tab i {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* ── Body ── */
+
+.cqr-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Rules List (gauche) ── */
+
+.cqr-list {
+  width: 250px;
+  min-width: 200px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-right: 1px solid var(--cqr-border);
+  background: rgba(13,11,10,0.4);
+  scrollbar-width: thin;
+  scrollbar-color: var(--cqr-border) transparent;
+}
+
+.cqr-category-header {
+  padding: 14px 14px 6px;
+  font-family: var(--cqr-font-display);
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cqr-cat-color);
+  border-bottom: 1px solid var(--cqr-border-soft);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  opacity: 0.9;
+}
+
+.cqr-category-desc {
+  padding: 6px 14px 10px;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--cqr-text-muted);
+  border-bottom: 1px solid var(--cqr-border-soft);
+  margin-bottom: 6px;
+  line-height: 1.5;
+  font-family: var(--cqr-font-quote);
+}
+
+/* ── List Separator ── */
+
+.cqr-list-separator {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 12px 6px;
+  margin: 4px 0 2px;
+}
+
+.cqr-list-separator-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cqr-border), transparent);
+  position: relative;
+}
+
+.cqr-list-separator-line::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(207,147,86,0.25), transparent);
+}
+
+.cqr-list-separator-label {
+  font-family: var(--cqr-font-display);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cqr-text-dim);
+  white-space: nowrap;
+  padding: 2px 6px;
+  background: var(--cqr-bg);
+  border: 1px solid var(--cqr-border-soft);
+  border-radius: 2px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.cqr-rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background var(--cqr-transition);
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid rgba(63,49,40,0.3);
+}
+
+.cqr-rule-item:hover {
+  background: rgba(207,147,86,0.05);
+  border-left-color: rgba(207,147,86,0.3);
+}
+
+.cqr-rule-item.active {
+  background: rgba(207,147,86,0.08);
+  border-left-color: var(--cqr-accent);
+}
+
+.cqr-rule-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--cqr-radius);
+  background: rgba(63,49,40,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--cqr-cat-color, var(--cqr-accent));
+  border: 1px solid var(--cqr-border);
+}
+
+.cqr-rule-item.active .cqr-rule-icon {
+  background: rgba(207,147,86,0.12);
+  color: var(--cqr-accent);
+  border-color: rgba(207,147,86,0.3);
+}
+
+.cqr-rule-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.cqr-rule-title {
+  font-family: var(--cqr-font-display);
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--cqr-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  margin-bottom: 2px;
+  letter-spacing: 0.04em;
+}
+
+.cqr-rule-subtitle {
+  font-size: 11.5px;
+  color: var(--cqr-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+  font-family: var(--cqr-font-quote);
+}
+
+/* ── Detail Panel (droite) ── */
+
+.cqr-detail {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cqr-border) transparent;
+}
+
+.cqr-detail-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: var(--cqr-text-dim);
+  font-style: italic;
+  font-size: 14px;
+  font-family: var(--cqr-font-quote);
+}
+
+.cqr-detail-empty i {
+  font-size: 30px;
+  opacity: 0.25;
+}
+
+/* ── Detail Content ── */
+
+.cqr-detail-content {
+  padding: 0 0 24px;
+  animation: cqr-fadein 0.2s ease;
+}
+
+@keyframes cqr-fadein {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cqr-detail-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px 14px;
+  background: var(--cqr-bg-alt);
+  border-bottom: 1px solid var(--cqr-border);
+  position: relative;
+}
+
+/* Trait décoratif Crucible sous le hero */
+.cqr-detail-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cqr-accent), transparent);
+}
+
+.cqr-detail-hero-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--cqr-radius-lg);
+  background: rgba(63,49,40,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--cqr-cat-color, var(--cqr-accent));
+  border: 1px solid var(--cqr-border);
+  flex-shrink: 0;
+}
+
+.cqr-detail-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.cqr-detail-name {
+  font-family: var(--cqr-font-display);
+  font-size: 17px;
+  font-weight: normal;
+  color: var(--cqr-gold);
+  letter-spacing: 0.06em;
+  margin: 0 0 3px;
+  line-height: 1.2;
+}
+
+.cqr-detail-subtitle {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--cqr-text-muted);
+  font-family: var(--cqr-font-quote);
+}
+
+.cqr-detail-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.cqr-btn-icon {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--cqr-border);
+  border-radius: var(--cqr-radius);
+  background: rgba(63,49,40,0.4);
+  color: var(--cqr-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--cqr-transition);
+  font-size: 11px;
+}
+
+.cqr-btn-icon:hover {
+  background: rgba(207,147,86,0.15);
+  color: var(--cqr-accent);
+  border-color: var(--cqr-accent);
+}
+
+/* ── Category Badge ── */
+
+.cqr-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-family: var(--cqr-font-display);
+  font-size: 9px;
+  font-weight: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(63,49,40,0.5);
+  color: var(--cqr-cat-color, var(--cqr-accent));
+  border: 1px solid var(--cqr-border);
+}
+
+/* ── Description intro ── */
+
+.cqr-detail-desc {
+  padding: 14px 20px 8px;
+  font-size: 14.5px;
+  font-style: italic;
+  color: var(--cqr-text-mid);
+  line-height: 1.65;
+  border-bottom: 1px solid var(--cqr-border-soft);
+  font-family: var(--cqr-font-quote);
+}
+
+/* ── Bullets / Content blocks ── */
+
+.cqr-bullets {
+  padding: 12px 20px;
+}
+
+.cqr-block {
+  margin-bottom: 16px;
+}
+
+.cqr-block-title {
+  font-family: var(--cqr-font-display);
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cqr-accent);
+  margin-bottom: 7px;
+}
+
+.cqr-block p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--cqr-text);
+}
+
+.cqr-block ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cqr-block ul li {
+  padding: 5px 10px 5px 24px;
+  background: rgba(63,49,40,0.2);
+  border-radius: var(--cqr-radius);
+  font-size: 13.5px;
+  color: var(--cqr-text);
+  line-height: 1.55;
+  position: relative;
+  border-left: 2px solid var(--cqr-border);
+}
+
+.cqr-block ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 8px;
+  color: var(--cqr-cat-color, var(--cqr-accent));
+  font-size: 9px;
+  top: 8px;
+}
+
+/* ── Callout ── */
+
+.cqr-callout {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--cqr-radius);
+  background: rgba(207,147,86,0.07);
+  border: 1px solid rgba(207,147,86,0.2);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--cqr-text-mid);
+  font-style: italic;
+  font-family: var(--cqr-font-quote);
+}
+
+.cqr-callout i {
+  color: var(--cqr-accent);
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cqr-callout.danger {
+  background: rgba(213,39,39,0.08);
+  border-color: rgba(213,39,39,0.2);
+}
+
+.cqr-callout.danger i {
+  color: #d52727;
+}
+
+/* ── Table ── */
+
+.cqr-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--cqr-radius);
+}
+
+.cqr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.cqr-table th {
+  background: var(--cqr-bg-alt);
+  padding: 7px 12px;
+  text-align: left;
+  font-family: var(--cqr-font-display);
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cqr-gold);
+  border-bottom: 1px solid var(--cqr-border);
+}
+
+.cqr-table td {
+  padding: 7px 12px;
+  color: var(--cqr-text);
+  border-bottom: 1px solid rgba(63,49,40,0.4);
+  line-height: 1.5;
+}
+
+.cqr-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cqr-table tr:nth-child(even) td {
+  background: rgba(63,49,40,0.15);
+}
+
+/* ── Reference ── */
+
+.cqr-reference {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 20px;
+  font-size: 12px;
+  color: var(--cqr-text-dim);
+  font-style: italic;
+  border-top: 1px solid var(--cqr-border-soft);
+  margin-top: 8px;
+  font-family: var(--cqr-font-quote);
+}
+
+.cqr-reference i {
+  font-size: 11px;
+  color: var(--cqr-accent);
+  opacity: 0.5;
+}
+
+/* ── See Also / Links ── */
+
+.cqr-see-also {
+  padding: 10px 20px;
+  border-top: 1px solid var(--cqr-border-soft);
+}
+
+.cqr-see-also-title {
+  font-family: var(--cqr-font-display);
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cqr-text-dim);
+  margin-bottom: 7px;
+}
+
+.cqr-see-also-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cqr-see-also-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  background: rgba(63,49,40,0.3);
+  border: 1px solid var(--cqr-border);
+  font-size: 12px;
+  color: var(--cqr-text-muted);
+  cursor: pointer;
+  transition: all var(--cqr-transition);
+  font-family: var(--cqr-font-display);
+  letter-spacing: 0.04em;
+}
+
+.cqr-see-also-link:hover {
+  background: rgba(207,147,86,0.1);
+  border-color: var(--cqr-accent);
+  color: var(--cqr-accent);
+}
+
+.cqr-see-also-link i {
+  font-size: 10px;
+}
+
+/* ── Inline rule links ── */
+
+a.rule-link {
+  color: var(--cqr-accent-alt);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color var(--cqr-transition);
+}
+
+a.rule-link:hover {
+  color: #f8845a;
+  text-decoration-style: solid;
+}
+
+/* ── Search results state ── */
+
+.cqr-no-results {
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--cqr-text-dim);
+  font-style: italic;
+  font-size: 13px;
+  font-family: var(--cqr-font-quote);
+}
+
+/* ── Tags ── */
+
+.cqr-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px 20px;
+  border-top: 1px solid var(--cqr-border-soft);
+  margin-top: 8px;
+}
+
+.cqr-tag {
+  padding: 1px 7px;
+  border-radius: 2px;
+  background: rgba(63,49,40,0.35);
+  border: 1px solid var(--cqr-border);
+  font-size: 11px;
+  color: var(--cqr-text-dim);
+  font-family: var(--cqr-font-display);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+/* ── Scrollbars ── */
+
+.cqr-list::-webkit-scrollbar,
+.cqr-detail::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cqr-list::-webkit-scrollbar-thumb,
+.cqr-detail::-webkit-scrollbar-thumb {
+  background: var(--cqr-border);
+  border-radius: 2px;
+}
+
+/* ── Player Button (Scene Controls) ── */
+
+.cqr-open-btn {
+  background: linear-gradient(135deg, #8b4a1a, #5c2e0e);
+  border: 1px solid var(--cqr-border);
+  border-radius: var(--cqr-radius);
+  padding: 4px 10px;
+  font-family: var(--cqr-font-display);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cqr-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all var(--cqr-transition);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.cqr-open-btn:hover {
+  background: linear-gradient(135deg, #a85a22, #7a3d12);
+  border-color: var(--cqr-accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}

@@ -1,0 +1,52 @@
+{
+  "id": "crucible-quickref",
+  "title": "Crucible - Aide de jeu",
+  "description": "Une fiche de référence rapide interactive pour les règles de Crucible sur Foundry VTT. Parcourez les catégories, recherchez des règles.",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "authors": [
+    {
+      "name": "Padhiver",
+      "discord": "padhiver"
+    }
+  ],
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/quickref.css"
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    }
+  ],
+      "relationships": {
+        "requires": [
+            {
+                "id": "crucible",
+                "type": "system",
+                "compatibility": {
+                    "minimum": "0.7.7"
+                }
+            }
+        ]
+    },
+        "media": [
+        {
+            "type": "setup",
+            "url": "modules/crucible-fr/crucible-text-light-FR.png",
+            "thumbnail": "modules/crucible-fr/crucible-text-light-FR.png"
+        }
+    ],
+  "url": "This is auto replaced",
+  "manifest": "This is auto replaced",
+  "download": "This is auto replaced",
+  "bugs": "https://github.com/padhiver/crucible-quickref/issues",
+  "changelog": "This is auto replaced"
+}
