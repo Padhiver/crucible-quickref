@@ -1,0 +1,250 @@
+{
+  "id": "adversaries",
+  "label": "Adversaires",
+  "icon": "",
+  "color": "#c0392b",
+  "description": "Les Adversaires peuplent le monde de Crucible. Leur puissance est définie par le Niveau de menace, combinaison du Niveau et de la Catégorie de menace.",
+  "rules": [
+    {
+      "id": "adversaries.sep.overview",
+      "type": "separator",
+      "title": "Vue d'ensemble"
+    },
+    {
+      "id": "adversaries.overview",
+      "title": "Adversaires",
+      "subtitle": "Acteurs non-joueurs du monde",
+      "icon": "fa-solid fa-skull",
+      "summary": "Les Adversaires partagent la plupart des mécaniques avec les Héros, mais évoluent différemment via la Taxonomie et l'Archétype.",
+      "description": "Les Adversaires dans Crucible sont les personnages non-joueurs qui peuplent et habitent le monde. Malgré le nom, tous les adversaires ne sont pas nécessairement antagonistes — le terme désigne simplement tout acteur non-joueur du système.",
+      "reference": "Crucible Core — Adversaires",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Les Adversaires partagent la plupart des concepts mécaniques avec les Personnages joueurs : Scores de caractéristiques, Ressources, Défenses, Compétences, Résistances et Talents. Mais ils évoluent via la <b>Taxonomie</b> et l'<b>Archétype</b> plutôt que l'Ascendance et l'Origine."
+        },
+        {
+          "type": "list",
+          "title": "Ce que les Adversaires partagent avec les Héros",
+          "items": [
+            "Scores de caractéristiques (Force, Dextérité, Robustesse, Sagesse, Présence, Intellect)",
+            "Ressources : Santé, Moral, Focus",
+            "Défenses physiques et magiques",
+            "Compétences et Résistances",
+            "Talents actifs et passifs"
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Les Adversaires n'ont pas de réserves de Lésions ou de Folie comme les Héros. Leur résistance aux dégâts est entièrement déterminée par la Santé et le Moral."
+        }
+      ],
+      "links": ["adversaries.threat-level", "adversaries.taxonomy", "adversaries.archetype"],
+      "tags": ["adversaire", "PNJ", "acteur", "monde"]
+    },
+    {
+      "id": "adversaries.threat-level",
+      "title": "Niveau de menace",
+      "subtitle": "Niveau × Multiplicateur de menace",
+      "icon": "fa-solid fa-gauge-high",
+      "summary": "Le Niveau de menace décrit le défi mécanique d'un Adversaire, défini par la combinaison du Niveau et de la Catégorie de menace.",
+      "description": "Les attributs et la difficulté des adversaires augmentent avec un Niveau plus élevé et une Catégorie de menace plus élevée.",
+      "reference": "Crucible Core — Adversaires",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Le <b>Niveau de menace</b> est la mesure globale du danger que représente un Adversaire : <b>Niveau de menace = Niveau × Multiplicateur de menace</b>."
+        },
+        {
+          "type": "table",
+          "title": "Catégories de menace",
+          "headers": ["Catégorie", "Multiplicateur", "Points d'Action", "Description"],
+          "rows": [
+            ["Laquais", "× 0,5", "2", "Plus faibles, mais peuvent être très nombreux."],
+            ["Normal", "× 1", "3", "Le niveau standard de difficulté à un niveau donné."],
+            ["Élite", "× 1,5", "4", "Plus forts, plus rares, plus dangereux."],
+            ["Chef", "× 2", "5", "Défi ultime — la plupart des rencontres n'en contiennent pas."]
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Les Points d'Action déterminent combien d'actions un adversaire peut effectuer par round de combat. Un Chef dispose de 5 PA là où un Laquais n'en a que 2."
+        }
+      ],
+      "links": ["adversaries.overview", "adversaries.taxonomy", "adversaries.archetype"],
+      "tags": ["niveau de menace", "catégorie", "laquais", "élite", "chef", "PA"]
+    },
+    {
+      "id": "adversaries.sep.building",
+      "type": "separator",
+      "title": "Construction d'un Adversaire"
+    },
+    {
+      "id": "adversaries.taxonomy",
+      "title": "Taxonomie",
+      "subtitle": "La biologie de l'adversaire",
+      "icon": "fa-solid fa-dna",
+      "summary": "La Taxonomie classe la biologie d'un Adversaire et définit ses propriétés de base : taille, déplacement, caractéristiques, résistances.",
+      "description": "La Taxonomie définit l'identité biologique d'un Adversaire — ce qu'il est dans le monde naturel ou surnaturel — et comment ses attributs de base évoluent avec le Niveau de menace.",
+      "reference": "Crucible Core — Adversaires, Taxonomie",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Ce que définit la Taxonomie",
+          "items": [
+            "<b>Catégorie</b> : Bête, Céleste, Humanoïde, Mort-vivant, etc.",
+            "<b>Taille</b> : nombre de cases occupées sur la grille.",
+            "<b>Foulée</b> : vitesse de déplacement de base en pieds.",
+            "<b>Équipement</b> : si la créature peut porter de l'équipement humanoïde ou lancer des sorts.",
+            "<b>Caractéristiques prioritaires</b> : celles qui progressent le plus vite avec le niveau.",
+            "<b>Résistances et Immunités</b> : types de dégâts atténués ou ignorés.",
+            "<b>Talents de base</b> : talents partagés par toutes les créatures de cette Taxonomie."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Exemple : la Taxonomie Hobgobeline favorise une progression rapide de la Force, de l'Intellect et de la Robustesse, avec une progression plus lente de la Sagesse, de la Présence et de la Dextérité."
+        },
+        {
+          "type": "paragraph",
+          "content": "De nombreux Adversaires différents partagent la même Taxonomie. Un <b>Archer hobgobelin</b> (niv. 3), un <b>Guerrier hobgobelin</b> (niv. 4) et un <b>Féticheur hobgobelin</b> (niv. 6) ont tous la Taxonomie Hobgobeline, mais des Archétypes différents."
+        }
+      ],
+      "links": ["adversaries.archetype", "adversaries.threat-level"],
+      "tags": ["taxonomie", "biologie", "taille", "foulée", "catégorie", "résistance"]
+    },
+    {
+      "id": "adversaries.archetype",
+      "title": "Archétype",
+      "subtitle": "Le style de combat et les compétences",
+      "icon": "fa-solid fa-chess-knight",
+      "summary": "L'Archétype définit les compétences et le style de combat d'un Adversaire, affinant la progression des caractéristiques au-delà de la Taxonomie.",
+      "description": "L'Archétype est la seconde couche de définition d'un Adversaire — là où la Taxonomie décrit ce qu'il est, l'Archétype décrit comment il se bat et se spécialise.",
+      "reference": "Crucible Core — Adversaires, Archétype",
+      "bullets": [
+        {
+          "type": "list",
+          "title": "Ce que définit l'Archétype",
+          "items": [
+            "<b>Affinement des caractéristiques</b> : précise quels attributs progressent le plus vite au-delà de la Taxonomie.",
+            "<b>Progression des compétences</b> : rangs de compétence acquis automatiquement à chaque niveau.",
+            "<b>Équipement automatique</b> : armes, armures et boucliers configurés par défaut.",
+            "<b>Talents fournis</b> : ensemble de Talents acquis automatiquement avec l'Archétype."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Exemple : l'Archétype Guerrier favorise Force et Robustesse, et fournit automatiquement les talents Armes lourdes : Entraînement, Rempart et Efficacité en armure."
+        },
+        {
+          "type": "paragraph",
+          "content": "Un <b>Guerrier bandit</b> (niv. 2), un <b>Guerrier hobgobelin</b> (niv. 4) et un <b>Garde infernal</b> (niv. 7) partagent l'Archétype Guerrier mais ont des Taxonomies différentes, donc des résistances et attributs de base distincts."
+        }
+      ],
+      "links": ["adversaries.taxonomy", "adversaries.talent-rules"],
+      "tags": ["archétype", "compétence", "équipement", "talent", "progression"]
+    },
+    {
+      "id": "adversaries.sep.combat",
+      "type": "separator",
+      "title": "Combat & Défaite"
+    },
+    {
+      "id": "adversaries.talent-rules",
+      "title": "Talents des adversaires",
+      "subtitle": "Au-delà des talents d'Archétype",
+      "icon": "fa-solid fa-star",
+      "summary": "En plus des Talents fournis par leur Archétype, les Adversaires peuvent recevoir des Talents supplémentaires attribués par le Maître du jeu.",
+      "description": "Les Talents d'un Adversaire viennent d'abord de son Archétype, mais le MJ peut en ajouter librement pour personnaliser et rendre chaque rencontre unique.",
+      "reference": "Crucible Core — Adversaires, Talents",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Les Adversaires peuvent se voir attribuer des Talents supplémentaires en plus de ceux fournis automatiquement par leur Archétype. Il n'existe pas de limite stricte au nombre ou au niveau des Talents qu'un Adversaire peut avoir."
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-triangle-exclamation",
+          "content": "À terme, des règles pourraient limiter le nombre et le niveau des Talents supplémentaires accordés à un Adversaire. Pour l'instant, le MJ a toute latitude pour enrichir ses adversaires comme il le souhaite."
+        }
+      ],
+      "links": ["adversaries.archetype", "adversaries.defeating"],
+      "tags": ["talent", "MJ", "personnalisation", "archétype"]
+    },
+    {
+      "id": "adversaries.defeating",
+      "title": "Vaincre les adversaires",
+      "subtitle": "Santé à zéro ou Moral brisé",
+      "icon": "fa-solid fa-heart-crack",
+      "summary": "Un Adversaire est vaincu quand sa Santé tombe à zéro (mort) ou que son Moral est brisé (fuite ou capitulation).",
+      "description": "Contrairement aux Héros, les Adversaires n'ont pas de réserves de Lésions ou de Folie. Leur capacité à résister est entièrement déterminée par la Santé et le Moral.",
+      "reference": "Crucible Core — Adversaires, Vaincre",
+      "bullets": [
+        {
+          "type": "table",
+          "headers": ["Ressource", "Tombe à zéro", "Conséquence"],
+          "rows": [
+            ["Santé", "Oui", "L'adversaire est mort — ou Incapacité si le MJ le préfère narrativement."],
+            ["Moral", "Oui", "L'adversaire est Démoralisé — il tente de fuir ou se rend."]
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Comportement d'un Adversaire Démoralisé",
+          "items": [
+            "Tente de fuir le champ de bataille par le chemin le plus rapide.",
+            "Continue à se battre jusqu'à la mort s'il n'a pas d'instinct de survie.",
+            "Continue à se battre si la fuite semble impossible."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Les adversaires sans instinct de survie (automates, morts-vivants, fanatiques) ignorent leur Moral brisé et combattent jusqu'au bout même à Moral nul."
+        }
+      ],
+      "links": ["adversaries.overview", "adversaries.threat-level"],
+      "tags": ["santé", "moral", "défaite", "mort", "démoralisé", "fuite"]
+    },
+    {
+      "id": "adversaries.sep.special",
+      "type": "separator",
+      "title": "Types Spéciaux"
+    },
+    {
+      "id": "adversaries.swarms",
+      "title": "Nuées",
+      "subtitle": "Une masse de créatures comme une seule entité",
+      "icon": "fa-solid fa-locust",
+      "summary": "Une Nuée représente un adversaire unique formé de nombreuses petites créatures coordonnées, qui combat et meurt comme une seule entité.",
+      "description": "Les Nuées — nuages de chauves-souris, tapis de rats, colonnes d'insectes — sont modélisées via l'Archétype Nuée appliqué à n'importe quelle Taxonomie adéquate.",
+      "reference": "Crucible Core — Adversaires, Nuées",
+      "bullets": [
+        {
+          "type": "paragraph",
+          "content": "Les Nuées sont créées en attribuant l'<b>Archétype Nuée</b> à toute Taxonomie susceptible de constituer une masse grouillante. La Taxonomie décrit la biologie de l'entité constitutive ; l'Archétype Nuée reformule cette biologie comme une foule coordonnée."
+        },
+        {
+          "type": "list",
+          "title": "Niveaux de menace des Nuées",
+          "items": [
+            "<b>Laquais</b> : nuée mineure, facilement dispersée.",
+            "<b>Normal / Élite</b> : menace sérieuse pour un groupe non préparé.",
+            "<b>Chef</b> : méga-nuée constituant un adversaire redoutable à part entière."
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "fa-solid fa-circle-info",
+          "content": "Déployer une Nuée oblige les joueurs à adapter leur tactique : les attaques ciblées sur un seul ennemi sont moins efficaces contre une masse de créatures dispersées."
+        }
+      ],
+      "links": ["adversaries.taxonomy", "adversaries.archetype", "adversaries.threat-level"],
+      "tags": ["nuée", "essaim", "masse", "archétype nuée", "tactique"]
+    }
+  ]
+}

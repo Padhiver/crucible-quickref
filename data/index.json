@@ -5,7 +5,8 @@
     "conditions",
     "spellcraft",
     "exploration",
-    "equipment"
+    "equipment",
+    "adversaries"
   ],
   "_comment": "Add new category filenames here (without .json) to register them. Files must be in data/rules/. Order determines display order in the UI."
 }

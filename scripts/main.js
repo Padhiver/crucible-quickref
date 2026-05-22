@@ -36,19 +36,19 @@ class QuickRefData {
           if (rule.type === "separator") {
             ruleMap.set(rule.id, {
               ...rule,
-              _isSeparator:   true,
-              _categoryId:    cat.id,
+              _isSeparator: true,
+              _categoryId: cat.id,
               _categoryColor: cat.color,
               _categoryLabel: cat.label,
-              _categoryIcon:  cat.icon,
+              _categoryIcon: cat.icon,
             });
           } else {
             ruleMap.set(rule.id, {
               ...rule,
-              _categoryId:    cat.id,
+              _categoryId: cat.id,
               _categoryColor: cat.color,
               _categoryLabel: cat.label,
-              _categoryIcon:  cat.icon,
+              _categoryIcon: cat.icon,
             });
           }
         }
@@ -74,23 +74,24 @@ class QuickRefApp extends ApplicationV2 {
   constructor(options = {}) {
     super(options);
     this._activeRuleId = null;
-    this._activeCatId  = "all";
-    this._searchQuery  = "";
-    this._data         = null;
+    this._activeCatId = "all";
+    this._searchQuery = "";
+    this._data = null;
+    this._zoomLevel = 1;   // 1–5 → scale 1.0–1.4 (par paliers de 0.1)
   }
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    id:       "crucible-quickref-window",
-    classes:  ["crucible-quickref"],
-    tag:      "div",
+    id: "crucible-quickref-window",
+    classes: ["crucible-quickref"],
+    tag: "div",
     window: {
-      title:       "QUICKREF.Title",
-      resizable:   true,
+      title: "QUICKREF.Title",
+      resizable: true,
       minimizable: true,
     },
     position: {
-      width:  825,
+      width: 825,
       height: 580,
     },
   };
@@ -112,8 +113,8 @@ class QuickRefApp extends ApplicationV2 {
         !r._isSeparator && (
           r.title.toLowerCase().includes(q) ||
           (r.subtitle || "").toLowerCase().includes(q) ||
-          (r.summary  || "").toLowerCase().includes(q) ||
-          (r.tags     || []).some(t => t.toLowerCase().includes(q))
+          (r.summary || "").toLowerCase().includes(q) ||
+          (r.tags || []).some(t => t.toLowerCase().includes(q))
         )
       );
     return rules;
@@ -166,6 +167,11 @@ class QuickRefApp extends ApplicationV2 {
                    placeholder="${game.i18n.localize("QUICKREF.Search")}"
                    value="${this._searchQuery}" autocomplete="off">
           </div>
+          <div class="cqr-zoom-controls">
+            <button class="cqr-zoom-btn" data-zoom="dec" title="Réduire le zoom" ${this._zoomLevel <= 1 ? "disabled" : ""}>−</button>
+            <span class="cqr-zoom-level">${this._zoomLevel}</span>
+            <button class="cqr-zoom-btn" data-zoom="inc" title="Augmenter le zoom" ${this._zoomLevel >= 5 ? "disabled" : ""}>+</button>
+          </div>
         </div>
         <div class="cqr-tabs">${tabsHTML}</div>
         <div class="cqr-body">
@@ -181,6 +187,8 @@ class QuickRefApp extends ApplicationV2 {
     content.innerHTML = "";
     content.append(...result.childNodes);
     this._activateListeners(content);
+    // Rétablir le zoom si différent du niveau par défaut
+    if (this._zoomLevel > 1) this._applyZoom(content);
   }
 
   /* ── Event wiring ── */
@@ -191,9 +199,58 @@ class QuickRefApp extends ApplicationV2 {
       this._rerenderList(root);
     });
 
+// Défilement horizontal & Effet de Fade sur les onglets
+    const tabsContainer = root.querySelector(".cqr-tabs");
+    if (tabsContainer) {
+      // Fonction pour calculer et appliquer le fade gauche/droite
+      const updateFadeEdges = () => {
+        const scrollLeft = tabsContainer.scrollLeft;
+        // maxScroll = Largeur totale du contenu - Largeur visible du conteneur
+        const maxScroll = tabsContainer.scrollWidth - tabsContainer.clientWidth;
+
+        // Seuil de pixels avant d'activer le fade (ici 5px pour éviter les arrondis bizarres)
+        const showLeftFade = scrollLeft > 5;
+        const showRightFade = scrollLeft < maxScroll - 5;
+
+        // On applique le pourcentage du dégradé (ex: 8% de la largeur totale pour le fondu)
+        tabsContainer.style.setProperty("--cqr-fade-left", showLeftFade ? "20%" : "0%");
+        tabsContainer.style.setProperty("--cqr-fade-right", showRightFade ? "20%" : "0%");
+      };
+
+      // 1. Gestion de la molette de la souris
+      tabsContainer.addEventListener("wheel", (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          tabsContainer.scrollLeft += e.deltaY;
+          // Note : Le scroll behavior "smooth" peut retarder l'événement scroll, 
+          // on appelle donc updateFadeEdges immédiatement pour réactivité.
+          updateFadeEdges();
+        }
+      }, { passive: false });
+
+      // 2. Écoute du défilement (molette, trackpad, ou boutons de zoom/navigation)
+      tabsContainer.addEventListener("scroll", updateFadeEdges);
+
+      // 3. Calcul initial au rendu (et après un léger delay pour s'assurer que le DOM est posé)
+      updateFadeEdges();
+      setTimeout(updateFadeEdges, 50);
+    }
+
+    // Zoom controls
+    root.querySelectorAll(".cqr-zoom-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.dataset.zoom === "inc" && this._zoomLevel < 5) {
+          this._zoomLevel++;
+        } else if (btn.dataset.zoom === "dec" && this._zoomLevel > 1) {
+          this._zoomLevel--;
+        }
+        this._applyZoom(root);
+      });
+    });
+
     root.querySelectorAll(".cqr-tab").forEach(btn => {
       btn.addEventListener("click", () => {
-        this._activeCatId  = btn.dataset.catId;
+        this._activeCatId = btn.dataset.catId;
         this._activeRuleId = null;
         this._rerenderList(root);
         this._rerenderDetail(root);
@@ -213,19 +270,50 @@ class QuickRefApp extends ApplicationV2 {
         if (e.button !== 0) return;
         e.preventDefault();
         const rect = this.element.getBoundingClientRect();
-        const ox   = e.clientX - rect.left;
-        const oy   = e.clientY - rect.top;
+        const ox = e.clientX - rect.left;
+        const oy = e.clientY - rect.top;
         titleEl.style.cursor = "grabbing";
         const onMove = (e) => this.setPosition({ left: e.clientX - ox, top: e.clientY - oy });
-        const onUp   = () => {
+        const onUp = () => {
           document.removeEventListener("pointermove", onMove);
-          document.removeEventListener("pointerup",   onUp);
+          document.removeEventListener("pointerup", onUp);
           titleEl.style.cursor = "grab";
         };
         document.addEventListener("pointermove", onMove);
-        document.addEventListener("pointerup",   onUp);
+        document.addEventListener("pointerup", onUp);
       });
     }
+  }
+
+  _applyZoom(root) {
+    const scale = 1 + (this._zoomLevel - 1) * 0.1;
+    const baseWidth = QuickRefApp.DEFAULT_OPTIONS.position.width;
+    const baseHeight = QuickRefApp.DEFAULT_OPTIONS.position.height;
+
+    // 1. Redimensionner la fenetre Foundry pour qu'elle occupe plus de place
+    this.setPosition({
+      width: Math.round(baseWidth * scale),
+      height: Math.round(baseHeight * scale),
+    });
+
+    // 2. Zoomer le contenu : scale() depuis le coin haut-gauche.
+    //    La fenetre est deja agrandie par setPosition, donc le contenu
+    //    scalé remplit exactement l'espace sans deborder.
+    const appEl = root.querySelector("#crucible-quickref-app");
+    if (appEl) {
+      appEl.style.transform = scale === 1 ? "" : `scale(${scale})`;
+      appEl.style.transformOrigin = "top left";
+      appEl.style.width = scale === 1 ? "" : `${(100 / scale).toFixed(4)}%`;
+      appEl.style.height = scale === 1 ? "" : `${(100 / scale).toFixed(4)}%`;
+    }
+
+    // 3. Mettre a jour le niveau affiche et l'etat disabled des boutons
+    const levelEl = root.querySelector(".cqr-zoom-level");
+    if (levelEl) levelEl.textContent = this._zoomLevel;
+    root.querySelectorAll(".cqr-zoom-btn").forEach(btn => {
+      if (btn.dataset.zoom === "dec") btn.disabled = this._zoomLevel <= 1;
+      if (btn.dataset.zoom === "inc") btn.disabled = this._zoomLevel >= 5;
+    });
   }
 
   _bindRuleItems(root) {
