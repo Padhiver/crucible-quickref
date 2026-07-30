@@ -50,8 +50,8 @@
           "title": "Modificateurs situationnels",
           "items": [
             "Points d'Action non dépensés à la fin du tour précédent : chacun ajoute <b>1 Faveur</b> au prochain jet d'Initiative.",
-            "Créatures <b>Distraites</b> : agissent toujours à l'Initiative 1.",
-            "Créatures <b>Neutralisées ou Mortes</b> : placées à l'Initiative 0."
+            "Créatures @[conditions.unaware]{Distraites} : agissent toujours à l'Initiative 1.",
+            "Créatures @[conditions.incapacitated]{Neutralisées} ou @[conditions.dead]{Mortes} : placées à l'Initiative 0."
           ]
         },
         {
@@ -97,10 +97,10 @@
           "type": "list",
           "title": "Catégories d'adversaires (points d'Action)",
           "items": [
-            "<b>Laquais</b> : 2 points d'Action.",
+            "<b>Minion</b> : 2 points d'Action.",
             "<b>Normal</b> : 3 points d'Action.",
-            "<b>Élite</b> : 4 points d'Action.",
-            "<b>Chef</b> : 5 points d'Action."
+            "<b>Élite</b> : 4 points d'Action, +1 Focus.",
+            "<b>Boss</b> : 5 points d'Action, +2 Focus."
           ]
         }
       ],
@@ -133,7 +133,7 @@
           "type": "list",
           "title": "Règles d'application du mouvement",
           "items": [
-            "Une action dotée de l'étiquette <b>Déplacement</b> permet de franchir une distance en pieds inférieure ou égale à la <b>Foulée</b>.",
+            "Une action dotée de l'étiquette @[combat.movement]{Déplacement} permet de franchir une distance en pieds inférieure ou égale à la <b>Foulée</b>.",
             "La distance autorisée par une action de déplacement ne peut être <b>ni divisée ni interrompue</b>.",
             "Il n'y a <b>pas de déplacement restant sauvegardé</b> entre deux actions de déplacement distinctes si vous bougez de moins que votre Foulée."
           ]
@@ -170,7 +170,7 @@
           "rows": [
             ["Marche", "Normale (×1)"],
             ["Marche prudente", "Doublée (×2)"],
-            ["Reptation (À terre)", "Doublée (×2)"],
+            ["Reptation (@[conditions.prone]{À terre})", "Doublée (×2)"],
             ["Saut", "Doublée (×2)"],
             ["Escalade", "Doublée (×2)"],
             ["Nage", "Doublée (×2)"],
@@ -200,9 +200,9 @@
           "type": "list",
           "title": "Perd le déplacement gratuit si :",
           "items": [
-            "Condition <b>Affaibli</b>",
-            "Condition <b>À terre</b>",
-            "Condition <b>Ralenti</b>",
+            "Condition @[conditions.weakened]{Affaibli}",
+            "Condition @[conditions.prone]{À terre}",
+            "Condition @[conditions.slowed]{Ralenti}",
             "Port d'une armure <b>Lourde</b> (sauf talent Efficacité en armure)"
           ]
         }
@@ -241,9 +241,9 @@
           "type": "list",
           "title": "Effets des statuts sur la distance effective",
           "items": [
-            "<b>Ralenti</b> : La distance effective parcourue par tout déplacement est <b>doublée</b> (rendant le coût en points d'Action plus élevé).",
-            "<b>Accéléré</b> : La distance effective parcourue par tout déplacement est <b>divisée par deux</b> (rendant le coût en points d'Action plus faible).",
-            "<b>Entravé</b> : Le déplacement est tout simplement devenu <b>impossible</b>."
+            "@[conditions.slowed]{Ralenti} : La distance effective parcourue par tout déplacement est <b>doublée</b> (rendant le coût en points d'Action plus élevé).",
+            "@[conditions.hastened]{Accéléré} : La distance effective parcourue par tout déplacement est <b>divisée par deux</b> (rendant le coût en points d'Action plus faible).",
+            "@[conditions.restrained]{Entravé} : Le déplacement est tout simplement devenu <b>impossible</b>."
           ]
         }
       ],
@@ -326,11 +326,11 @@
           "title": "Catégories principales d'étiquettes",
           "items": [
             "<b>Exigences d'équipement</b> : Ambidextrie, À une main, Finesse, Brute, Projectile, Mécanique, Bouclier, Mains nues, Sans armure.",
-            "<b>Exigences de contexte</b> : Vocable (nécessite de parler, interdit si Aphone), Auditif (exclut les cibles Assourdies), Réaction (pendant le tour d'autrui), Hors combat, Débordement.",
+            "<b>Exigences de contexte</b> : Vocable (nécessite de parler, interdit si @[conditions.silenced]{Aphone}), Auditif (exclut les cibles @[conditions.deafened]{Assourdies}), @[combat.reactions]{Réaction} (pendant le tour d'autrui), Hors combat, @[combat.engagement]{Débordement}.",
             "<b>Étiquettes d'attaque</b> : Mêlée, À distance, Main principale, À deux mains, Main secondaire, Lancer, Naturelle.",
             "<b>Modificateurs d'attaque</b> : Mortel (+1 multiplicateur de dégâts), Difficile (+1 Fléau), Amélioré (+6 dégâts de base), Précis (+2 Faveurs), Inoffensif (toujours 0 dégât), Affaibli (-6 dégâts de base), Grave (convertit la Santé en Lésions et le Moral en Folie).",
             "<b>Défenses et Ressources</b> : Fortitude, Réflexe, Volonté, Guérison (restaure la Santé via les Lésions), Ralliement (restaure le Moral via la Folie).",
-            "<b>Autres étiquettes</b> : Sort, Déplacement, Rechargement, Désarmement, Maintenu (nécessite une dépense de Focus continue à chaque tour)."
+            "<b>Autres étiquettes</b> : Sort, @[combat.movement]{Déplacement}, Rechargement, Désarmement, Maintenu (nécessite une dépense de Focus continue à chaque tour)."
           ]
         }
       ],
@@ -355,7 +355,7 @@
           "title": "Résultats possibles",
           "items": [
             "<b>Touché</b> : le jet dépasse le Score de défense.",
-            "<b>Raté</b> : le jet est inférieur ou égal à la défense. Le type de raté (Armure, Esquivé, Paré, Bloqué) dépend de la composition de la Défense physique.",
+            "<b>Raté</b> : le jet est inférieur ou égal à la défense. Le type de raté (Armure, Esquivé, Paré, Bloqué) dépend de la composition de la @[combat.defenses]{Défense physique}.",
             "<b>Coup critique</b> : le jet dépasse la défense de plus de 6 (seuil habituel).",
             "<b>Échec critique</b> : le jet est inférieur à la défense de plus de 6."
           ]
@@ -367,7 +367,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "Les dégâts sur la durée (conditions comme Enflammé, Empoisonné…) peuvent, eux, être réduits à zéro par la Résistance."
+          "content": "Les dégâts sur la durée (conditions comme @[conditions.burning]{Enflammé}, @[conditions.poisoned]{Empoisonné}…) peuvent, eux, être réduits à zéro par la Résistance."
         }
       ],
       "links": ["combat.defenses", "dice.boons", "dice.critical-success"],
@@ -396,15 +396,15 @@
           "type": "table",
           "headers": ["Défense", "Formule"],
           "rows": [
-            ["Fortitude", "12 + (Force + Sagesse) / 2 + Bonus"],
-            ["Volonté", "12 + (Robustesse + Présence) / 2 + Bonus"],
-            ["Réflexe", "12 + (Dextérité + Intellect) / 2 + Bonus"]
+            ["Fortitude", "12 + (Force + Sagesse) / 4 + Bonus"],
+            ["Volonté", "12 + (Robustesse + Présence) / 4 + Bonus"],
+            ["Réflexe", "12 + (Dextérité + Intellect) / 4 + Bonus"]
           ]
         },
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "Une créature Neutralisée perd ses défenses d'Esquive, Blocage et Parade (= 0) et les bonus de Caractéristique à ses défenses non physiques."
+          "content": "Une créature @[conditions.incapacitated]{Neutralisée} perd ses défenses d'Esquive, Blocage et Parade (= 0) et les bonus de Caractéristique à ses défenses non physiques."
         }
       ],
       "links": ["combat.attack-roll", "combat.engagement"],
@@ -423,18 +423,18 @@
           "type": "table",
           "headers": ["Catégorie", "Type", "Condition liée"],
           "rows": [
-            ["Physique", "Contondant", "Ébranlé"],
-            ["Physique", "Perforant", "Ensanglanté"],
-            ["Physique", "Tranchant", "Ensanglanté"],
-            ["Physique", "Poison", "Empoisonné"],
-            ["Élémentaire", "Acide", "Corrodé"],
-            ["Élémentaire", "Feu", "Enflammé"],
-            ["Élémentaire", "Froid", "Gelé"],
-            ["Élémentaire", "Électrique", "Électrocuté"],
-            ["Spirituel", "Corruption", "Putréfié"],
-            ["Spirituel", "Psychique", "Confus"],
-            ["Spirituel", "Radiant", "Irradié"],
-            ["Spirituel", "Vide", "Dérangé"]
+            ["Physique", "Contondant", "@[conditions.staggered]{Ébranlé}"],
+            ["Physique", "Perforant", "@[conditions.bleeding]{Ensanglanté}"],
+            ["Physique", "Tranchant", "@[conditions.bleeding]{Ensanglanté}"],
+            ["Physique", "Poison", "@[conditions.poisoned]{Empoisonné}"],
+            ["Élémentaire", "Acide", "@[conditions.corroding]{Corrodé}"],
+            ["Élémentaire", "Feu", "@[conditions.burning]{Enflammé}"],
+            ["Élémentaire", "Froid", "@[conditions.freezing]{Gelé}"],
+            ["Élémentaire", "Électrique", "@[conditions.shocked]{Électrocuté}"],
+            ["Spirituel", "Corruption", "@[conditions.decaying]{Putréfié}"],
+            ["Spirituel", "Psychique", "@[conditions.confused]{Confus}"],
+            ["Spirituel", "Radiant", "@[conditions.irradiated]{Irradié}"],
+            ["Spirituel", "Vide", "@[conditions.entropy]{Dérangé}"]
           ]
         },
         {
@@ -467,7 +467,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "Les attaques à zone d'effet (Cône, Explosion, Onde, Éventail) ignorent entièrement la Couverture."
+          "content": "Les attaques à zone d'effet (Cône, Explosion, Onde) ignorent entièrement la Couverture."
         }
       ],
       "links": ["combat.movement"],
@@ -488,7 +488,7 @@
         },
         {
           "type": "paragraph",
-          "content": "Formule du palier de Débordement : <b>Ennemis engagés − Score d'Engagement − Bonus d'engagement des alliés adjacents</b>. Chaque palier confère <b>+1 Faveur</b> aux jets d'attaque de mêlée contre la créature Débordée."
+          "content": "Formule du palier de Débordement : <b>Ennemis engagés − Score d'Engagement − Bonus d'engagement des alliés adjacents</b>. Chaque palier confère <b>+1 Faveur</b> aux jets d'attaque de mêlée contre la créature @[conditions.flanked]{Débordée}."
         },
         {
           "type": "callout",
@@ -498,7 +498,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "Lorsqu'un adversaire quitte ton engagement sans Se désengager, tu peux effectuer une Frappe réactive (Réaction). Impossible si tu es Distrait ou Débordé par d'autres adversaires."
+          "content": "Lorsqu'un adversaire quitte ton engagement sans Se désengager, tu peux effectuer une Frappe réactive (@[combat.reactions]{Réaction}). Impossible si tu es @[conditions.unaware]{Distrait} ou @[conditions.flanked]{Débordé} par d'autres adversaires."
         }
       ],
       "links": ["combat.defenses", "combat.reactions"],
@@ -520,7 +520,7 @@
             "Ne peuvent être effectuées que <b>pendant le tour d'une autre créature</b>.",
             "Coûtent des points d'<b>Action ou de Focus</b> — impossibles si les ressources manquent.",
             "Nécessitent de remplir la <b>condition d'activation</b> indiquée (ex : 'Vous Esquivez une Frappe de mêlée').",
-            "Impossibles si la créature est <b>Distraite</b> ou <b>Neutralisée</b>."
+            "Impossibles si la créature est @[conditions.unaware]{Distraite} ou @[conditions.incapacitated]{Neutralisée}."
           ]
         },
         {
@@ -548,7 +548,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "Exemple : Krag utilise Intimider (Adepte) contre un Gobelin. Son résultat de 27 vs le score passif d'Intimidation du Gobelin (14) produit 17 points de dégâts de Vide au Moral, rendant le Gobelin Démoralisé."
+          "content": "Exemple : Krag utilise Intimider (Adepte) contre un Gobelin. Son résultat de 27 vs le score passif d'Intimidation du Gobelin (14) produit 17 points de dégâts de Vide au Moral, rendant le Gobelin @[conditions.broken]{Démoralisé}."
         }
       ],
       "links": ["combat.attack-roll", "dice.skill-check"],
@@ -572,10 +572,10 @@
           "type": "table",
           "headers": ["Ressource", "Description", "Remplie par"],
           "rows": [
-            ["Santé", "Réserve physique temporaire. À 0 : Affaibli.", "Récupération, sorts de soin"],
-            ["Lésions", "Blessures permanentes. Au max : Mort.", "Réduite par le Repos (= niveau/repos)"],
-            ["Moral", "Réserve mentale temporaire. À 0 : Démoralisé.", "Récupération, sorts de ralliement"],
-            ["Folie", "Traumatismes permanents. Au max : Dément.", "Réduite par le Repos (= niveau/repos)"],
+            ["Santé", "Réserve physique temporaire. À 0 : @[conditions.weakened]{Affaibli}.", "Récupération, sorts de soin"],
+            ["Lésions", "Blessures permanentes. Au max : @[conditions.dead]{Mort}.", "Réduite par le Repos (= niveau/repos)"],
+            ["Moral", "Réserve mentale temporaire. À 0 : @[conditions.broken]{Démoralisé}.", "Récupération, sorts de ralliement"],
+            ["Folie", "Traumatismes permanents. Au max : @[conditions.insane]{Dément}.", "Réduite par le Repos (= niveau/repos)"],
             ["Focus", "Énergie pour exploits extraordinaires et magie.", "Récupération ou Repos"],
             ["Héroïsme", "Ressource accumulée en combat.", "Actions affectant autrui"]
           ]
@@ -604,7 +604,7 @@
         },
         {
           "type": "paragraph",
-          "content": "Seuil d'Héroïsme : <b>Nombre de Héros × 12</b>. Quand il est atteint, chaque combattant gagne <b>+1 Héroïsme</b>. L'Héroïsme existant est supprimé lors d'une Récupération."
+          "content": "Seuil d'Héroïsme : <b>Nombre de Héros × 12</b>. Quand il est atteint, chaque combattant gagne <b>+1 Héroïsme</b>. L'Héroïsme existant est supprimé lors d'une @[combat.rest-recovery]{Récupération}."
         },
         {
           "type": "list",
@@ -650,7 +650,7 @@
       "title": "Vaincre les adversaires",
       "subtitle": "Santé à 0 = Mort (adversaires)",
       "icon": "fa-solid fa-skull-crossbones",
-      "summary": "Les adversaires n'ont ni Lésions ni Folie. Their Santé ou Moral à 0 les met hors combat.",
+      "summary": "Les adversaires n'ont ni Lésions ni Folie. Leur Santé ou Moral à 0 les met hors combat.",
       "description": "Les adversaires sont plus fragiles que les Héros face à l'attrition : pas de tampon de Lésions/Folie.",
       "reference": "Crucible Core — Vaincre les adversaires",
       "bullets": [
@@ -658,8 +658,8 @@
           "type": "list",
           "title": "Conditions de défaite",
           "items": [
-            "<b>Santé à 0</b> : l'adversaire est Mort (ou Neutralisé si le MJ préfère pour des raisons narratives).",
-            "<b>Moral à 0</b> : l'adversaire est Démoralisé et tente de fuir le combat, sauf s'il manque d'instinct de survie ou si la fuite est impossible."
+            "<b>Santé à 0</b> : l'adversaire est @[conditions.dead]{Mort} (ou @[conditions.incapacitated]{Neutralisé} si le MJ préfère pour des raisons narratives).",
+            "<b>Moral à 0</b> : l'adversaire est @[conditions.broken]{Démoralisé} et tente de fuir le combat, sauf s'il manque d'instinct de survie ou si la fuite est impossible."
           ]
         }
       ],
@@ -677,7 +677,7 @@
       "bullets": [
         {
           "type": "paragraph",
-          "content": "<b>Niveau de menace</b> d'un adversaire = Niveau × Multiplicateur de menace (Laquais ×0.5, Normal ×1, Élite ×1.5, Chef ×2)."
+          "content": "<b>Niveau de menace</b> d'un adversaire = Niveau × Multiplicateur de menace (Minion ×0.5, Normal ×1, Élite ×1.5, Boss ×2)."
         },
         {
           "type": "list",

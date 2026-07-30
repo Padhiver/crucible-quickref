@@ -15,7 +15,7 @@
       "title": "Composition de sort",
       "subtitle": "Rune + Signe [+ Inflexion]",
       "icon": "fa-solid fa-wand-magic-sparkles",
-      "summary": "Chaque sort est composed d'une Rune et d'un Signe, avec une Inflexion optionnelle. La combinaison détermine le coût, la portée, les dégâts et la cible.",
+      "summary": "Chaque sort est composé d'une Rune et d'un Signe, avec une Inflexion optionnelle. La combinaison détermine le coût, la portée, les dégâts et la cible.",
       "description": "La Sorcellerie est un système génératif permettant de créer des sorts variés à partir d'un nombre limité de composantes apprises.",
       "reference": "Crucible Core — Aperçu de la Sorcellerie",
       "bullets": [
@@ -23,9 +23,9 @@
           "type": "list",
           "title": "Les trois composantes",
           "items": [
-            "<b>Rune</b> (sujet) : l'essence magique. Ex. Flamme, Givre, Âme. Détermine le type de dégâts, la défense ciblée et la ressource affectée.",
-            "<b>Signe</b> (verbe) : la forme du sort. Ex. Flèche, Contact, Influence. Détermine la portée, le ciblage, les dégâts de base et le coût.",
-            "<b>Inflexion</b> (complément, optionnel) : modifie le sort. Ex. Hâter, Pousser, Rappeler. Nécessite de pouvoir parler (étiquette Vocable)."
+            "@[spellcraft.runes]{Rune} (sujet) : l'essence magique. Ex. Flamme, Givre, Âme. Détermine le type de dégâts, la défense ciblée et la ressource affectée.",
+            "@[spellcraft.gestures]{Signe} (verbe) : la forme du sort. Ex. Flèche, Contact, Influence. Détermine la portée, le ciblage, les dégâts de base et le coût.",
+            "@[spellcraft.inflections]{Inflexion} (complément, optionnel) : modifie le sort. Ex. Hâter, Pousser, Rappeler. Nécessite de pouvoir parler (étiquette Vocable)."
           ]
         },
         {
@@ -64,7 +64,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-triangle-exclamation",
-          "content": "Le Focus se renouvelle lors d'une Récupération ou d'un Repos — pas naturellement en combat. Gérer son Focus est essentiel pour les lanceurs de sorts."
+          "content": "Le Focus se renouvelle lors d'une @[combat.rest-recovery]{Récupération} ou d'un Repos — pas naturellement en combat. Gérer son Focus est essentiel pour les lanceurs de sorts."
         }
       ],
       "links": ["spellcraft.overview", "spellcraft.gestures", "combat.rest-recovery"],
@@ -90,8 +90,8 @@
           "rows": [
             ["Flamme", "Chaos", "Feu", "Réflexe", "Givre"],
             ["Givre", "Ordre", "Froid", "Fortitude", "Flamme"],
-            ["Foudre", "Chaos", "Électrique", "Fortitude", "Terre"],
-            ["Terre", "Ordre", "Acide", "Réflexe", "Foudre"],
+            ["Orage", "Chaos", "Électrique", "Fortitude", "Terre"],
+            ["Terre", "Ordre", "Acide", "Réflexe", "Orage"],
             ["Illusion", "Chaos", "Psychique", "Volonté", "Illumination"],
             ["Illumination", "Ordre", "Radiant", "Réflexe", "Illusion"],
             ["Néant", "Chaos", "Vide", "Volonté", "Âme"],
@@ -113,7 +113,7 @@
           "items": [
             "Flamme → Dragons, Élémentaires de feu",
             "Givre → Géants, Élémentaires de givre",
-            "Foudre → Artificiels, Élémentaires de tempête",
+            "Orage → Artificiels, Élémentaires de tempête",
             "Terre → Vases, Élémentaires de terre",
             "Illusion → Fées",
             "Illumination → Célestes",
@@ -214,7 +214,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-triangle-exclamation",
-          "content": "Une créature Aphone ne peut pas utiliser d'Inflexion. Les Inflexions portent l'étiquette Vocable."
+          "content": "Une créature @[conditions.silenced]{Aphone} ne peut pas utiliser d'Inflexion. Les Inflexions portent l'étiquette Vocable."
         }
       ],
       "links": ["spellcraft.overview", "conditions.silenced"],
@@ -241,10 +241,10 @@
             ["Sélectif", "Nombre défini de cibles individuelles dans la portée.", "Non"],
             ["Rayon", "Ligne droite depuis le lanceur.", "Non"],
             ["Cône", "Zone de 60° depuis le lanceur.", "Oui"],
-            ["Éventail", "Zone de 210° depuis le lanceur.", "Oui"],
+            ["Éventail", "Zone de 210° depuis le lanceur.", "Non confirmé"],
             ["Explosion", "Zone circulaire autour d'un point choisi.", "Oui"],
             ["Onde (Pulsion)", "Zone circulaire centrée sur le lanceur.", "Oui"],
-            ["Aura", "Zone permanente autour du lanceur.", "Oui"],
+            ["Aura", "Zone permanente autour du lanceur.", "Non confirmé"],
             ["Personnel", "Le lanceur uniquement.", "—"],
             ["Invocation", "Zone rectangulaire pour placer des créatures.", "—"]
           ]
@@ -281,7 +281,7 @@
       "subtitle": "Annuler un sort en cours",
       "icon": "fa-solid fa-shield-halved",
       "summary": "Le Contre-sort est une Réaction qui tente d'annuler le sort d'un adversaire. Il nécessite une connaissance adéquate des composantes.",
-      "description": "La Contre-magie is l'art de la défense magique, opposant une sorcellerie rivale pour annuler celle d'un adversaire.",
+      "description": "La Contre-magie est l'art de la défense magique, opposant une sorcellerie rivale pour annuler celle d'un adversaire.",
       "reference": "Crucible Core — Contre-magie",
       "bullets": [
         {

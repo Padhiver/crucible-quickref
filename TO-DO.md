@@ -7,5 +7,6 @@
 5. `Ajouter un bouton de zoom dans la barre de menu qui agrandirait la fenêtre entièrement ainsi que toutes les polices.`
 6. `Créer la catégories Adversaire.`
 7. Créer la catégories Artisanat.
-8. Faire des liens (exemple : @[dice.boons]{Faveurs}) dans les fichiers data.
-9. Créer le site web en se basant sur le module, les rendre identiques.
+8. `Faire des liens (exemple : @[dice.boons]{Faveurs}) dans les fichiers data.`
+9. `Ajouter un bouton d'accès dans l'interface Foundry, en dessous de Notes dans les outils à gauche.`
+10. Créer le site web en se basant sur le module, les rendre identiques.

@@ -62,7 +62,7 @@
       "subtitle": "Péril croissant après 24 h sans repos",
       "icon": "fa-solid fa-moon",
       "summary": "Une créature peut fonctionner normalement pendant 24 heures sans sommeil. Au-delà, elle affronte un péril de Volonté contre le Moral dont la dangerosité augmente de 2 par jour supplémentaire sans repos.",
-      "description": "En cas d'échec, la créature devient Épuisée jusqu'à un Repos réussi. Si la privation est imposée par un effet physique, psychologique ou magique, le péril devient Grave et accumule de la Folie.",
+      "description": "En cas d'échec, la créature devient @[conditions.exhausted]{Exténuée} jusqu'à un @[combat.rest-recovery]{Repos} réussi. Si la privation est imposée par un effet physique, psychologique ou magique, le péril devient Grave et accumule de la Folie.",
       "reference": "Crucible Core — Exploration > Périls environnementaux",
       "bullets": [
         {
@@ -72,7 +72,7 @@
             "Péril déclenché après <b>24 heures sans sommeil</b>.",
             "Dangerosité = <b>2 × nombre de jours sans sommeil</b>.",
             "Péril : <b>Volonté / Moral</b>.",
-            "En cas d'échec : condition <b>Épuisé</b> jusqu'au prochain Repos."
+            "En cas d'échec : condition @[conditions.exhausted]{Exténué} jusqu'au prochain Repos."
           ]
         },
         {
@@ -105,7 +105,7 @@
             "Déclenché après <b>2 minutes sans accès à l'air</b>.",
             "Inflige des dégâts <b>Graves aux Lésions et à la Folie</b> à chaque tour.",
             "Continue jusqu'à la <b>mort</b> si non résolu.",
-            "Applique également la condition <b>Aphone</b>."
+            "Applique également la condition @[conditions.silenced]{Aphone}."
           ]
         }
       ],
@@ -126,8 +126,8 @@
           "title": "Degrés de chute",
           "items": [
             "<b>10 pieds ou moins</b> — Aucun péril formel. Dommages superficiels uniquement.",
-            "<b>11 à 30 pieds</b> — Péril de <b>Réflexe / Santé / Contondant</b>, dangerosité = distance en pieds. En cas d'échec : condition <b>À terre</b>.",
-            "<b>31+ pieds</b> — Péril <b>Grave de Fortitude / Lésions / Contondant</b>, dangerosité = distance en pieds. En cas d'échec : condition <b>À terre</b>."
+            "<b>11 à 30 pieds</b> — Péril de <b>Réflexe / Santé / Contondant</b>, dangerosité = distance en pieds. En cas d'échec : condition @[conditions.prone]{À terre}.",
+            "<b>31+ pieds</b> — Péril <b>Grave de Fortitude / Lésions / Contondant</b>, dangerosité = distance en pieds. En cas d'échec : condition @[conditions.prone]{À terre}."
           ]
         }
       ],

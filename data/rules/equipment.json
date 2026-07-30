@@ -130,7 +130,7 @@
           "items": [
             "<b>Sournoise</b> — Peut être dégainée gratuitement ou en Réaction. Portée réduite de 1 pied (mêlée) ou 10 pieds (distance).",
             "<b>Blocage</b> — +1 à la défense de Blocage si non Cassée. Dégâts de base réduits de 1 (1 main) ou 2 (2 mains).",
-            "<b>Engagement</b> — +1 Engagement. Dégâts de base réduits de 1 (1 main) ou 2 (2 mains).",
+            "@[combat.engagement]{Engagement} — +1 Engagement. Dégâts de base réduits de 1 (1 main) ou 2 (2 mains).",
             "<b>Intuitive</b> — Pénalité de compétence sans formation réduite à −1 au lieu de −4.",
             "<b>Démesurée</b> — +1 dégât (1m) ou +2 dégâts (2m), mais +2 Fléaux aux jets d'Initiative.",
             "<b>Parade</b> — +1 à la défense de Parade si non Cassée. Seuil de coup critique augmenté de +1.",

@@ -37,7 +37,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "Les Adversaires n'ont pas de réserves de Lésions ou de Folie comme les Héros. Leur résistance aux dégâts est entièrement déterminée par la Santé et le Moral."
+          "content": "La plupart des Adversaires n'ont pas de réserves de Lésions ou de Folie comme les Héros — leur résistance aux dégâts est alors entièrement déterminée par la Santé et le Moral. Un Adversaire important fait exception et suit ces jauges comme un Héros."
         }
       ],
       "links": ["adversaries.threat-level", "adversaries.taxonomy", "adversaries.archetype"],
@@ -59,22 +59,22 @@
         {
           "type": "table",
           "title": "Catégories de menace",
-          "headers": ["Catégorie", "Multiplicateur", "Points d'Action", "Description"],
+          "headers": ["Catégorie", "Multiplicateur", "Points d'Action", "Bonus de Focus", "Description"],
           "rows": [
-            ["Laquais", "× 0,5", "2", "Plus faibles, mais peuvent être très nombreux."],
-            ["Normal", "× 1", "3", "Le niveau standard de difficulté à un niveau donné."],
-            ["Élite", "× 1,5", "4", "Plus forts, plus rares, plus dangereux."],
-            ["Chef", "× 2", "5", "Défi ultime — la plupart des rencontres n'en contiennent pas."]
+            ["Minion", "× 0,5", "2", "—", "Plus faibles, mais peuvent être très nombreux."],
+            ["Normal", "× 1", "3", "—", "Le niveau standard de difficulté à un niveau donné."],
+            ["Élite", "× 1,5", "4", "+1", "Plus forts, plus rares, plus dangereux."],
+            ["Boss", "× 2", "5", "+2", "Défi ultime — la plupart des rencontres n'en contiennent pas."]
           ]
         },
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "Les Points d'Action déterminent combien d'actions un adversaire peut effectuer par round de combat. Un Chef dispose de 5 PA là où un Laquais n'en a que 2."
+          "content": "Les Points d'Action déterminent combien d'actions un adversaire peut effectuer par round de combat. Un Boss dispose de 5 PA là où un Minion n'en a que 2."
         }
       ],
       "links": ["adversaries.overview", "adversaries.taxonomy", "adversaries.archetype"],
-      "tags": ["niveau de menace", "catégorie", "laquais", "élite", "chef", "PA"]
+      "tags": ["niveau de menace", "catégorie", "minion", "élite", "boss", "PA"]
     },
     {
       "id": "adversaries.sep.building",
@@ -122,7 +122,7 @@
       "subtitle": "Le style de combat et les compétences",
       "icon": "fa-solid fa-chess-knight",
       "summary": "L'Archétype définit les compétences et le style de combat d'un Adversaire, affinant la progression des caractéristiques au-delà de la Taxonomie.",
-      "description": "L'Archétype est la seconde couche de définition d'un Adversaire — là où la Taxonomie décrit ce qu'il est, l'Archétype décrit comment il se bat et se spécialise.",
+      "description": "L'Archétype est la seconde couche de définition d'un Adversaire — là où la @[adversaries.taxonomy]{Taxonomie} décrit ce qu'il est, l'Archétype décrit comment il se bat et se spécialise.",
       "reference": "Crucible Core — Adversaires, Archétype",
       "bullets": [
         {
@@ -181,7 +181,7 @@
       "subtitle": "Santé à zéro ou Moral brisé",
       "icon": "fa-solid fa-heart-crack",
       "summary": "Un Adversaire est vaincu quand sa Santé tombe à zéro (mort) ou que son Moral est brisé (fuite ou capitulation).",
-      "description": "Contrairement aux Héros, les Adversaires n'ont pas de réserves de Lésions ou de Folie. Leur capacité à résister est entièrement déterminée par la Santé et le Moral.",
+      "description": "Contrairement aux Héros, la plupart des Adversaires n'ont pas de réserves de Lésions ou de Folie (sauf les Adversaires importants) : leur capacité à résister est alors entièrement déterminée par la Santé et le Moral.",
       "reference": "Crucible Core — Adversaires, Vaincre",
       "bullets": [
         {
@@ -232,9 +232,9 @@
           "type": "list",
           "title": "Niveaux de menace des Nuées",
           "items": [
-            "<b>Laquais</b> : nuée mineure, facilement dispersée.",
+            "<b>Minion</b> : nuée mineure, facilement dispersée.",
             "<b>Normal / Élite</b> : menace sérieuse pour un groupe non préparé.",
-            "<b>Chef</b> : méga-nuée constituant un adversaire redoutable à part entière."
+            "<b>Boss</b> : méga-nuée constituant un adversaire redoutable à part entière."
           ]
         },
         {

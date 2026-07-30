@@ -23,7 +23,7 @@
           "type": "list",
           "title": "Effets",
           "items": [
-            "Le personnage est également considéré comme <b>Neutralisé</b>.",
+            "Le personnage est également considéré comme @[conditions.incapacitated]{Neutralisé}.",
             "Impossible de prendre un <b>Repos</b>.",
             "Ne peut être ranimé que par des <b>moyens magiques</b>."
           ]
@@ -43,7 +43,7 @@
       "subtitle": "Récupération de Santé impossible",
       "icon": "fa-solid fa-virus",
       "summary": "Impossible de récupérer de la Santé ou de soigner des Lésions pendant toute la durée de l'effet.",
-      "description": "La Maladie blocks les soins physiques, rendant toute récupération impossible jusqu'à guérison.",
+      "description": "La Maladie bloque les soins physiques, rendant toute récupération impossible jusqu'à guérison.",
       "reference": "Crucible Core — Conditions",
       "bullets": [
         {
@@ -92,7 +92,7 @@
           "items": [
             "Tout dégât sur la Santé augmente les <b>Lésions</b> à la place.",
             "Maximum d'<b>Action réduit de 2</b>.",
-            "Perd l'accès au <b>Déplacement gratuit</b>."
+            "Perd l'accès au @[combat.free-movement]{Déplacement gratuit}."
           ]
         }
       ],
@@ -120,7 +120,7 @@
             "Tout dégât sur le Moral augmente la <b>Folie</b> à la place.",
             "Impossible de dépenser du <b>Focus</b>.",
             "<b>+2 Fléaux</b> à toutes les actions.",
-            "Ne peut pas contribuer au <b>Débordement</b>.",
+            "Ne peut pas contribuer au @[combat.engagement]{Débordement}.",
             "Les Adversaires PNJ tentent de <b>fuir</b>."
           ]
         }
@@ -235,8 +235,8 @@
             ["Attaques de mêlée reçues", "+1 Faveur (pour l'attaquant)"],
             ["Attaques à distance reçues", "+1 Fléau (pour l'attaquant)"],
             ["Attaques effectuées par la créature", "+1 Fléau"],
-            ["Déplacement gratuit", "Impossible"],
-            ["Se relever", "1 action de Déplacement"]
+            ["@[combat.free-movement]{Déplacement gratuit}", "Impossible"],
+            ["Se relever", "1 action de @[combat.movement]{Déplacement}"]
           ]
         }
       ],
@@ -270,7 +270,7 @@
       "subtitle": "Distance effective doublée",
       "icon": "fa-solid fa-person-walking-arrow-right",
       "summary": "La distance effective est doublée pour calculer le coût de Déplacement. Pas de Déplacement gratuit.",
-      "description": "Une créature Ralentie treats la distance comme doublée pour le calcul du coût de l'action de Déplacement.",
+      "description": "Une créature Ralentie traite la distance comme doublée pour le calcul du coût de l'action de Déplacement.",
       "reference": "Crucible Core — Conditions",
       "bullets": [
         {
@@ -278,7 +278,7 @@
           "title": "Effets",
           "items": [
             "La distance effective est <b>doublée</b> pour calculer le coût de Déplacement.",
-            "Perd l'accès au <b>Déplacement gratuit</b>."
+            "Perd l'accès au @[combat.free-movement]{Déplacement gratuit}."
           ]
         },
         {
@@ -301,14 +301,14 @@
       "subtitle": "Neutralisé, réveillé par les dégâts",
       "icon": "fa-solid fa-moon",
       "summary": "Traité comme Neutralisé. Tout dégât de Santé ou de Lésions réveille immédiatement la créature. Immunisé aux dégâts de Moral pendant le sommeil.",
-      "description": "Une créature Assoupie est totalement unconscious mais réagit immédiatement aux blessures physiques.",
+      "description": "Une créature Assoupie est totalement inconsciente mais réagit immédiatement aux blessures physiques.",
       "reference": "Crucible Core — Conditions",
       "bullets": [
         {
           "type": "list",
           "title": "Effets",
           "items": [
-            "Traitée comme <b>Neutralisée</b>.",
+            "Traitée comme @[conditions.incapacitated]{Neutralisée}.",
             "Tout dégât de <b>Santé ou Lésions</b> réveille immédiatement.",
             "Immunisée aux dégâts de <b>Moral</b> pendant le sommeil (sauf indication contraire)."
           ]
@@ -351,7 +351,7 @@
           "title": "Effets",
           "items": [
             "<b>Impossible d'effectuer</b> la moindre Action.",
-            "Entraîne automatiquement l'état <b>Neutralisé</b>."
+            "Entraîne automatiquement l'état @[conditions.incapacitated]{Neutralisé}."
           ]
         },
         {
@@ -402,7 +402,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "L'état Ébranlé réduit le maximum d'Action de 2 seulement. L'Étourdi est donc bien plus sévère."
+          "content": "L'état @[conditions.staggered]{Ébranlé} réduit le maximum d'Action de 2 seulement. L'Étourdi est donc bien plus sévère."
         }
       ],
       "links": ["conditions.staggered", "conditions.incapacitated"],
@@ -418,7 +418,7 @@
       "title": "Enragé",
       "subtitle": "Blocage et Parade nuls, Focus impossible",
       "icon": "fa-solid fa-face-angry",
-      "summary": "Les défenses de Blocage et de Parade sont nulles. Impossible de dépenser du Focus.",
+      "summary": "Les défenses de Blocage et de Parade sont nulles. Impossible de dépenser du Focus, sauf pour les Frappes.",
       "description": "Une créature Enragée combat avec une fougue incontrôlée, abandonnant toute défense réfléchie.",
       "reference": "Crucible Core — Conditions",
       "bullets": [
@@ -427,7 +427,7 @@
           "title": "Effets",
           "items": [
             "Défenses de <b>Blocage</b> et de <b>Parade</b> deviennent nulles.",
-            "Impossible de <b>dépenser du Focus</b>."
+            "Impossible de <b>dépenser du Focus</b>, sauf pour les actions de type <b>Frappe</b>."
           ]
         }
       ],
@@ -496,7 +496,7 @@
           "type": "list",
           "title": "Effets supplémentaires",
           "items": [
-            "Ne peut pas contribuer au Débordement si <b>Démoralisé</b>.",
+            "Ne peut pas contribuer au @[combat.engagement]{Débordement} si @[conditions.broken]{Démoralisé}.",
             "Ne peut pas effectuer de Frappe réactive si <b>Débordé</b> par d'autres adversaires."
           ]
         }
@@ -654,7 +654,7 @@
           "title": "Effets",
           "items": [
             "Impossible d'effectuer une action avec l'étiquette <b>Vocable</b>.",
-            "Impossible de lancer un sort incluant une <b>Inflexion</b> métamagique."
+            "Impossible de lancer un sort incluant une @[spellcraft.inflections]{Inflexion} métamagique."
           ]
         }
       ],
@@ -727,7 +727,7 @@
         {
           "type": "callout",
           "icon": "fa-solid fa-circle-info",
-          "content": "L'Enflammé est l'une des rares conditions de dégâts sur la durée à affecter à la fois la Santé ET le Moral (de même que l'Irradié)."
+          "content": "L'Enflammé est l'une des rares conditions de dégâts sur la durée à affecter à la fois la Santé ET le Moral (de même que l'@[conditions.irradiated]{Irradié})."
         }
       ],
       "links": ["conditions.freezing", "conditions.poisoned"],
@@ -747,7 +747,7 @@
           "title": "Effets combinés",
           "items": [
             "Dégâts <b>Psychiques</b> au <b>Moral</b> au début de chaque tour.",
-            "Également <b>Désorienté</b> (+1 Focus à toutes les actions en nécessitant)."
+            "Également @[conditions.disoriented]{Désorienté} (+1 Focus à toutes les actions en nécessitant)."
           ]
         }
       ],
@@ -808,7 +808,7 @@
           "title": "Effets combinés",
           "items": [
             "Dégâts de <b>Vide</b> à la <b>Santé</b> au début de chaque tour.",
-            "Également <b>Paniqué</b> (impossible de récupérer du Moral ou de soigner la Folie)."
+            "Également @[conditions.frightened]{Paniqué} (impossible de récupérer du Moral ou de soigner la Folie)."
           ]
         }
       ],
@@ -861,7 +861,7 @@
       "subtitle": "Dégâts Radiants (Santé + Moral)",
       "icon": "fa-solid fa-radiation",
       "summary": "Subit des dégâts Radiants à la Santé et au Moral au début de chaque tour suivant.",
-      "description": "Comme l'Enflammé, l'Irradié est l'une des rares conditions à affecter deux ressources simultanément.",
+      "description": "Comme l'@[conditions.burning]{Enflammé}, l'Irradié est l'une des rares conditions à affecter deux ressources simultanément.",
       "reference": "Crucible Core — Conditions (Dégâts sur la durée)",
       "bullets": [
         {
@@ -934,7 +934,7 @@
           "title": "Effets",
           "items": [
             "Dégâts de <b>Vide</b> aux <b>Lésions</b> et à la <b>Folie</b> au début de chaque tour.",
-            "Également <b>Aphone</b> (ne peut ni parler ni utiliser les Inflexions)."
+            "Également @[conditions.silenced]{Aphone} (ne peut ni parler ni utiliser les Inflexions)."
           ]
         }
       ],

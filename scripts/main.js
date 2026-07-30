@@ -445,7 +445,7 @@ class QuickRefApp extends ApplicationV2 {
           </span>
         </div>
       </div>
-      <div class="cqr-detail-desc">${rule.description ?? ""}</div>
+      <div class="cqr-detail-desc">${this._parseLinks(rule.description ?? "")}</div>
       <div class="cqr-bullets">${bulletsHTML}</div>
       ${seeAlsoHTML}
       ${tagsHTML}
@@ -556,4 +556,27 @@ Hooks.once("ready", () => {
 
   console.log(`[${MODULE_ID}] Ready.`);
   console.log(`[${MODULE_ID}] Macro : game.modules.get("crucible-quickref").app.render(true)`);
+});
+
+/* ── Bouton d'accès dans les contrôles de scène (sous Notes) ── */
+
+Hooks.on("getSceneControlButtons", (controls) => {
+  const notesOrder = controls.notes?.order ?? 0;
+
+  controls[MODULE_ID] = {
+    name: MODULE_ID,
+    title: "QUICKREF.OpenButton",
+    icon: "fa-solid fa-scroll",
+    order: notesOrder + 1,
+    visible: true,
+    tools: {
+      open: {
+        name: "open",
+        title: "QUICKREF.OpenButton",
+        icon: "fa-solid fa-scroll",
+        button: true,
+        onChange: () => game.modules.get(MODULE_ID).app?.render(true),
+      },
+    },
+  };
 });
