@@ -558,25 +558,25 @@ Hooks.once("ready", () => {
   console.log(`[${MODULE_ID}] Macro : game.modules.get("crucible-quickref").app.render(true)`);
 });
 
-/* ── Bouton d'accès dans les contrôles de scène (sous Notes) ── */
+/* ── Bouton d'accès dans l'onglet Journal (barre latérale) ── */
 
-Hooks.on("getSceneControlButtons", (controls) => {
-  const notesOrder = controls.notes?.order ?? 0;
+Hooks.on("renderJournalDirectory", (app, html) => {
+  try {
+    const root = html instanceof HTMLElement ? html : html[0];
+    if (!root || root.querySelector(`#${MODULE_ID}-open-btn`)) return;
 
-  controls[MODULE_ID] = {
-    name: MODULE_ID,
-    title: "QUICKREF.OpenButton",
-    icon: "fa-solid fa-scroll",
-    order: notesOrder + 1,
-    visible: true,
-    tools: {
-      open: {
-        name: "open",
-        title: "QUICKREF.OpenButton",
-        icon: "fa-solid fa-scroll",
-        button: true,
-        onChange: () => game.modules.get(MODULE_ID).app?.render(true),
-      },
-    },
-  };
+    const actions = root.querySelector(".header-actions") ?? root.querySelector(".directory-header");
+    if (!actions) return;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = `${MODULE_ID}-open-btn`;
+    btn.className = "cqr-open-btn";
+    btn.innerHTML = `<i class="fa-solid fa-scroll"></i> ${game.i18n.localize("QUICKREF.OpenButton")}`;
+    btn.addEventListener("click", () => game.modules.get(MODULE_ID).app?.render(true));
+
+    actions.appendChild(btn);
+  } catch (e) {
+    console.error(`[${MODULE_ID}] Failed to add Journal directory button:`, e);
+  }
 });

@@ -15,7 +15,7 @@ Un module de référence rapide pour les règles de Crucible sur Foundry VTT (v1
 ## Utilisation
 
 ### Ouvrir la référence
-- **Bouton** : dans la barre des contrôles de scène, icône 📜 *Quick Ref*
+- **Bouton** : dans l'onglet Journal de la barre latérale droite
 - **Macro** : `QuickRef.render()`
 - **Lien direct vers une règle** : `QuickRef.open("movement.climb")`
 
